@@ -401,10 +401,10 @@ TextureImporter:
       name: isometric_character_walk_0
       rect:
         serializedVersion: 2
-        x: 18
-        y: 450
-        width: 28
-        height: 60
+        x: 0
+        y: 448
+        width: 64
+        height: 64
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -423,10 +423,10 @@ TextureImporter:
       name: isometric_character_walk_1
       rect:
         serializedVersion: 2
-        x: 82
-        y: 452
-        width: 28
-        height: 59
+        x: 64
+        y: 448
+        width: 64
+        height: 64
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -445,10 +445,10 @@ TextureImporter:
       name: isometric_character_walk_2
       rect:
         serializedVersion: 2
-        x: 146
-        y: 450
-        width: 28
-        height: 60
+        x: 128
+        y: 448
+        width: 64
+        height: 64
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -467,10 +467,10 @@ TextureImporter:
       name: isometric_character_walk_3
       rect:
         serializedVersion: 2
-        x: 210
-        y: 450
-        width: 28
-        height: 60
+        x: 192
+        y: 448
+        width: 64
+        height: 64
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -489,10 +489,10 @@ TextureImporter:
       name: isometric_character_walk_4
       rect:
         serializedVersion: 2
-        x: 275
-        y: 450
-        width: 26
-        height: 59
+        x: 256
+        y: 448
+        width: 64
+        height: 64
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -511,10 +511,10 @@ TextureImporter:
       name: isometric_character_walk_5
       rect:
         serializedVersion: 2
-        x: 338
-        y: 453
-        width: 28
-        height: 56
+        x: 320
+        y: 448
+        width: 64
+        height: 64
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -533,10 +533,10 @@ TextureImporter:
       name: isometric_character_walk_6
       rect:
         serializedVersion: 2
-        x: 402
-        y: 450
-        width: 28
-        height: 60
+        x: 384
+        y: 448
+        width: 64
+        height: 64
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -555,10 +555,10 @@ TextureImporter:
       name: isometric_character_walk_7
       rect:
         serializedVersion: 2
-        x: 466
-        y: 452
-        width: 28
-        height: 59
+        x: 448
+        y: 448
+        width: 64
+        height: 64
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -577,10 +577,10 @@ TextureImporter:
       name: isometric_character_walk_8
       rect:
         serializedVersion: 2
-        x: 530
-        y: 450
-        width: 28
-        height: 60
+        x: 512
+        y: 448
+        width: 64
+        height: 64
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -599,10 +599,10 @@ TextureImporter:
       name: isometric_character_walk_9
       rect:
         serializedVersion: 2
-        x: 594
-        y: 450
-        width: 28
-        height: 60
+        x: 576
+        y: 448
+        width: 64
+        height: 64
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -621,10 +621,10 @@ TextureImporter:
       name: isometric_character_walk_10
       rect:
         serializedVersion: 2
-        x: 659
-        y: 450
-        width: 26
-        height: 59
+        x: 640
+        y: 448
+        width: 64
+        height: 64
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -643,10 +643,10 @@ TextureImporter:
       name: isometric_character_walk_11
       rect:
         serializedVersion: 2
-        x: 722
-        y: 453
-        width: 28
-        height: 56
+        x: 704
+        y: 448
+        width: 64
+        height: 64
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -665,10 +665,10 @@ TextureImporter:
       name: isometric_character_walk_12
       rect:
         serializedVersion: 2
-        x: 20
-        y: 388
-        width: 23
-        height: 58
+        x: 0
+        y: 384
+        width: 64
+        height: 64
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -687,10 +687,10 @@ TextureImporter:
       name: isometric_character_walk_13
       rect:
         serializedVersion: 2
-        x: 83
-        y: 390
-        width: 31
-        height: 57
+        x: 64
+        y: 384
+        width: 64
+        height: 64
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -709,10 +709,10 @@ TextureImporter:
       name: isometric_character_walk_14
       rect:
         serializedVersion: 2
-        x: 146
-        y: 387
-        width: 34
-        height: 59
+        x: 128
+        y: 384
+        width: 64
+        height: 64
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -731,10 +731,10 @@ TextureImporter:
       name: isometric_character_walk_15
       rect:
         serializedVersion: 2
-        x: 208
-        y: 388
-        width: 39
-        height: 58
+        x: 192
+        y: 384
+        width: 64
+        height: 64
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -753,10 +753,10 @@ TextureImporter:
       name: isometric_character_walk_16
       rect:
         serializedVersion: 2
-        x: 272
-        y: 388
-        width: 40
-        height: 57
+        x: 256
+        y: 384
+        width: 64
+        height: 64
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -775,10 +775,10 @@ TextureImporter:
       name: isometric_character_walk_17
       rect:
         serializedVersion: 2
-        x: 338
-        y: 387
-        width: 37
-        height: 58
+        x: 320
+        y: 384
+        width: 64
+        height: 64
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -797,10 +797,10 @@ TextureImporter:
       name: isometric_character_walk_18
       rect:
         serializedVersion: 2
-        x: 403
-        y: 387
-        width: 26
-        height: 59
+        x: 384
+        y: 384
+        width: 64
+        height: 64
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -819,10 +819,10 @@ TextureImporter:
       name: isometric_character_walk_19
       rect:
         serializedVersion: 2
-        x: 471
-        y: 387
-        width: 22
-        height: 60
+        x: 448
+        y: 384
+        width: 64
+        height: 64
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -841,10 +841,10 @@ TextureImporter:
       name: isometric_character_walk_20
       rect:
         serializedVersion: 2
-        x: 529
-        y: 389
-        width: 31
-        height: 57
+        x: 512
+        y: 384
+        width: 64
+        height: 64
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -863,10 +863,10 @@ TextureImporter:
       name: isometric_character_walk_21
       rect:
         serializedVersion: 2
-        x: 598
-        y: 388
-        width: 25
-        height: 58
+        x: 576
+        y: 384
+        width: 64
+        height: 64
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -885,10 +885,10 @@ TextureImporter:
       name: isometric_character_walk_22
       rect:
         serializedVersion: 2
-        x: 662
-        y: 388
-        width: 25
-        height: 57
+        x: 640
+        y: 384
+        width: 64
+        height: 64
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -907,10 +907,10 @@ TextureImporter:
       name: isometric_character_walk_23
       rect:
         serializedVersion: 2
-        x: 728
-        y: 387
-        width: 21
-        height: 58
+        x: 704
+        y: 384
+        width: 64
+        height: 64
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -929,10 +929,10 @@ TextureImporter:
       name: isometric_character_walk_24
       rect:
         serializedVersion: 2
-        x: 21
-        y: 324
-        width: 23
-        height: 58
+        x: 0
+        y: 320
+        width: 64
+        height: 64
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -951,10 +951,10 @@ TextureImporter:
       name: isometric_character_walk_25
       rect:
         serializedVersion: 2
-        x: 78
-        y: 326
-        width: 31
-        height: 57
+        x: 64
+        y: 320
+        width: 64
+        height: 64
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -973,10 +973,10 @@ TextureImporter:
       name: isometric_character_walk_26
       rect:
         serializedVersion: 2
-        x: 140
-        y: 323
-        width: 34
-        height: 59
+        x: 128
+        y: 320
+        width: 64
+        height: 64
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -995,10 +995,10 @@ TextureImporter:
       name: isometric_character_walk_27
       rect:
         serializedVersion: 2
-        x: 201
-        y: 324
-        width: 39
-        height: 58
+        x: 192
+        y: 320
+        width: 64
+        height: 64
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -1017,10 +1017,10 @@ TextureImporter:
       name: isometric_character_walk_28
       rect:
         serializedVersion: 2
-        x: 264
-        y: 324
-        width: 40
-        height: 57
+        x: 256
+        y: 320
+        width: 64
+        height: 64
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -1039,10 +1039,10 @@ TextureImporter:
       name: isometric_character_walk_29
       rect:
         serializedVersion: 2
-        x: 329
-        y: 323
-        width: 37
-        height: 58
+        x: 320
+        y: 320
+        width: 64
+        height: 64
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -1061,10 +1061,10 @@ TextureImporter:
       name: isometric_character_walk_30
       rect:
         serializedVersion: 2
-        x: 403
-        y: 323
-        width: 26
-        height: 59
+        x: 384
+        y: 320
+        width: 64
+        height: 64
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -1083,10 +1083,10 @@ TextureImporter:
       name: isometric_character_walk_31
       rect:
         serializedVersion: 2
-        x: 467
-        y: 323
-        width: 22
-        height: 60
+        x: 448
+        y: 320
+        width: 64
+        height: 64
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -1105,10 +1105,10 @@ TextureImporter:
       name: isometric_character_walk_32
       rect:
         serializedVersion: 2
-        x: 528
-        y: 325
-        width: 31
-        height: 57
+        x: 512
+        y: 320
+        width: 64
+        height: 64
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -1127,10 +1127,10 @@ TextureImporter:
       name: isometric_character_walk_33
       rect:
         serializedVersion: 2
-        x: 593
-        y: 324
-        width: 25
-        height: 58
+        x: 576
+        y: 320
+        width: 64
+        height: 64
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -1149,10 +1149,10 @@ TextureImporter:
       name: isometric_character_walk_34
       rect:
         serializedVersion: 2
-        x: 657
-        y: 324
-        width: 25
-        height: 57
+        x: 640
+        y: 320
+        width: 64
+        height: 64
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -1171,10 +1171,10 @@ TextureImporter:
       name: isometric_character_walk_35
       rect:
         serializedVersion: 2
-        x: 723
-        y: 323
-        width: 21
-        height: 58
+        x: 704
+        y: 320
+        width: 64
+        height: 64
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -1193,10 +1193,10 @@ TextureImporter:
       name: isometric_character_walk_36
       rect:
         serializedVersion: 2
-        x: 21
-        y: 257
-        width: 22
-        height: 60
+        x: 0
+        y: 256
+        width: 64
+        height: 64
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -1215,10 +1215,10 @@ TextureImporter:
       name: isometric_character_walk_37
       rect:
         serializedVersion: 2
-        x: 80
-        y: 260
-        width: 28
-        height: 58
+        x: 64
+        y: 256
+        width: 64
+        height: 64
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -1237,10 +1237,10 @@ TextureImporter:
       name: isometric_character_walk_38
       rect:
         serializedVersion: 2
-        x: 138
-        y: 260
-        width: 37
-        height: 57
+        x: 128
+        y: 256
+        width: 64
+        height: 64
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -1259,10 +1259,10 @@ TextureImporter:
       name: isometric_character_walk_39
       rect:
         serializedVersion: 2
-        x: 204
-        y: 260
-        width: 36
-        height: 57
+        x: 192
+        y: 256
+        width: 64
+        height: 64
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -1281,10 +1281,10 @@ TextureImporter:
       name: isometric_character_walk_40
       rect:
         serializedVersion: 2
-        x: 266
-        y: 260
-        width: 40
-        height: 56
+        x: 256
+        y: 256
+        width: 64
+        height: 64
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -1303,10 +1303,10 @@ TextureImporter:
       name: isometric_character_walk_41
       rect:
         serializedVersion: 2
-        x: 335
-        y: 258
-        width: 32
-        height: 58
+        x: 320
+        y: 256
+        width: 64
+        height: 64
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -1325,10 +1325,10 @@ TextureImporter:
       name: isometric_character_walk_42
       rect:
         serializedVersion: 2
-        x: 405
-        y: 257
-        width: 22
-        height: 60
+        x: 384
+        y: 256
+        width: 64
+        height: 64
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -1347,10 +1347,10 @@ TextureImporter:
       name: isometric_character_walk_43
       rect:
         serializedVersion: 2
-        x: 465
-        y: 260
-        width: 27
-        height: 58
+        x: 448
+        y: 256
+        width: 64
+        height: 64
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -1369,10 +1369,10 @@ TextureImporter:
       name: isometric_character_walk_44
       rect:
         serializedVersion: 2
-        x: 520
-        y: 260
-        width: 42
-        height: 57
+        x: 512
+        y: 256
+        width: 64
+        height: 64
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -1391,10 +1391,10 @@ TextureImporter:
       name: isometric_character_walk_45
       rect:
         serializedVersion: 2
-        x: 591
-        y: 260
-        width: 34
-        height: 57
+        x: 576
+        y: 256
+        width: 64
+        height: 64
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -1413,10 +1413,10 @@ TextureImporter:
       name: isometric_character_walk_46
       rect:
         serializedVersion: 2
-        x: 654
-        y: 260
-        width: 32
-        height: 56
+        x: 640
+        y: 256
+        width: 64
+        height: 64
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -1435,10 +1435,10 @@ TextureImporter:
       name: isometric_character_walk_47
       rect:
         serializedVersion: 2
-        x: 724
-        y: 258
-        width: 25
-        height: 58
+        x: 704
+        y: 256
+        width: 64
+        height: 64
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -1457,10 +1457,10 @@ TextureImporter:
       name: isometric_character_walk_48
       rect:
         serializedVersion: 2
-        x: 24
-        y: 195
-        width: 20
-        height: 59
+        x: 0
+        y: 192
+        width: 64
+        height: 64
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -1479,10 +1479,10 @@ TextureImporter:
       name: isometric_character_walk_49
       rect:
         serializedVersion: 2
-        x: 85
-        y: 197
-        width: 23
-        height: 58
+        x: 64
+        y: 192
+        width: 64
+        height: 64
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -1501,10 +1501,10 @@ TextureImporter:
       name: isometric_character_walk_50
       rect:
         serializedVersion: 2
-        x: 144
-        y: 199
-        width: 29
-        height: 55
+        x: 128
+        y: 192
+        width: 64
+        height: 64
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -1523,10 +1523,10 @@ TextureImporter:
       name: isometric_character_walk_51
       rect:
         serializedVersion: 2
-        x: 212
-        y: 202
-        width: 30
-        height: 52
+        x: 192
+        y: 192
+        width: 64
+        height: 64
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -1545,10 +1545,10 @@ TextureImporter:
       name: isometric_character_walk_52
       rect:
         serializedVersion: 2
-        x: 277
-        y: 202
-        width: 27
-        height: 51
+        x: 256
+        y: 192
+        width: 64
+        height: 64
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -1567,10 +1567,10 @@ TextureImporter:
       name: isometric_character_walk_53
       rect:
         serializedVersion: 2
-        x: 345
-        y: 198
-        width: 21
-        height: 55
+        x: 320
+        y: 192
+        width: 64
+        height: 64
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -1589,10 +1589,10 @@ TextureImporter:
       name: isometric_character_walk_54
       rect:
         serializedVersion: 2
-        x: 407
-        y: 197
-        width: 21
-        height: 57
+        x: 384
+        y: 192
+        width: 64
+        height: 64
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -1611,10 +1611,10 @@ TextureImporter:
       name: isometric_character_walk_55
       rect:
         serializedVersion: 2
-        x: 469
-        y: 196
-        width: 22
-        height: 59
+        x: 448
+        y: 192
+        width: 64
+        height: 64
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -1633,10 +1633,10 @@ TextureImporter:
       name: isometric_character_walk_56
       rect:
         serializedVersion: 2
-        x: 531
-        y: 199
-        width: 29
-        height: 55
+        x: 512
+        y: 192
+        width: 64
+        height: 64
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -1655,10 +1655,10 @@ TextureImporter:
       name: isometric_character_walk_57
       rect:
         serializedVersion: 2
-        x: 594
-        y: 203
-        width: 33
-        height: 51
+        x: 576
+        y: 192
+        width: 64
+        height: 64
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -1677,10 +1677,10 @@ TextureImporter:
       name: isometric_character_walk_58
       rect:
         serializedVersion: 2
-        x: 656
-        y: 202
-        width: 36
-        height: 51
+        x: 640
+        y: 192
+        width: 64
+        height: 64
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -1699,10 +1699,10 @@ TextureImporter:
       name: isometric_character_walk_59
       rect:
         serializedVersion: 2
-        x: 728
-        y: 198
-        width: 25
-        height: 55
+        x: 704
+        y: 192
+        width: 64
+        height: 64
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -1721,10 +1721,10 @@ TextureImporter:
       name: isometric_character_walk_60
       rect:
         serializedVersion: 2
-        x: 18
-        y: 129
-        width: 28
-        height: 60
+        x: 0
+        y: 128
+        width: 64
+        height: 64
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -1743,10 +1743,10 @@ TextureImporter:
       name: isometric_character_walk_61
       rect:
         serializedVersion: 2
-        x: 82
-        y: 129
-        width: 28
-        height: 61
+        x: 64
+        y: 128
+        width: 64
+        height: 64
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -1765,10 +1765,10 @@ TextureImporter:
       name: isometric_character_walk_62
       rect:
         serializedVersion: 2
-        x: 146
+        x: 128
         y: 128
-        width: 28
-        height: 60
+        width: 64
+        height: 64
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -1787,10 +1787,10 @@ TextureImporter:
       name: isometric_character_walk_63
       rect:
         serializedVersion: 2
-        x: 210
-        y: 130
-        width: 28
-        height: 58
+        x: 192
+        y: 128
+        width: 64
+        height: 64
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -1809,10 +1809,10 @@ TextureImporter:
       name: isometric_character_walk_64
       rect:
         serializedVersion: 2
-        x: 275
-        y: 133
-        width: 26
-        height: 54
+        x: 256
+        y: 128
+        width: 64
+        height: 64
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -1831,10 +1831,10 @@ TextureImporter:
       name: isometric_character_walk_65
       rect:
         serializedVersion: 2
-        x: 338
-        y: 131
-        width: 28
-        height: 56
+        x: 320
+        y: 128
+        width: 64
+        height: 64
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -1853,10 +1853,10 @@ TextureImporter:
       name: isometric_character_walk_66
       rect:
         serializedVersion: 2
-        x: 402
-        y: 129
-        width: 28
-        height: 60
+        x: 384
+        y: 128
+        width: 64
+        height: 64
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -1875,10 +1875,10 @@ TextureImporter:
       name: isometric_character_walk_67
       rect:
         serializedVersion: 2
-        x: 466
-        y: 129
-        width: 28
-        height: 61
+        x: 448
+        y: 128
+        width: 64
+        height: 64
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -1897,10 +1897,10 @@ TextureImporter:
       name: isometric_character_walk_68
       rect:
         serializedVersion: 2
-        x: 530
+        x: 512
         y: 128
-        width: 28
-        height: 60
+        width: 64
+        height: 64
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -1919,10 +1919,10 @@ TextureImporter:
       name: isometric_character_walk_69
       rect:
         serializedVersion: 2
-        x: 594
-        y: 130
-        width: 28
-        height: 58
+        x: 576
+        y: 128
+        width: 64
+        height: 64
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -1941,10 +1941,10 @@ TextureImporter:
       name: isometric_character_walk_70
       rect:
         serializedVersion: 2
-        x: 659
-        y: 133
-        width: 26
-        height: 54
+        x: 640
+        y: 128
+        width: 64
+        height: 64
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -1963,10 +1963,10 @@ TextureImporter:
       name: isometric_character_walk_71
       rect:
         serializedVersion: 2
-        x: 722
-        y: 131
-        width: 28
-        height: 56
+        x: 704
+        y: 128
+        width: 64
+        height: 64
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -1985,10 +1985,10 @@ TextureImporter:
       name: isometric_character_walk_72
       rect:
         serializedVersion: 2
-        x: 20
-        y: 67
-        width: 20
-        height: 59
+        x: 0
+        y: 64
+        width: 64
+        height: 64
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -2007,10 +2007,10 @@ TextureImporter:
       name: isometric_character_walk_73
       rect:
         serializedVersion: 2
-        x: 84
-        y: 69
-        width: 23
-        height: 58
+        x: 64
+        y: 64
+        width: 64
+        height: 64
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -2029,10 +2029,10 @@ TextureImporter:
       name: isometric_character_walk_74
       rect:
         serializedVersion: 2
-        x: 147
-        y: 71
-        width: 29
-        height: 55
+        x: 128
+        y: 64
+        width: 64
+        height: 64
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -2051,10 +2051,10 @@ TextureImporter:
       name: isometric_character_walk_75
       rect:
         serializedVersion: 2
-        x: 206
-        y: 74
-        width: 30
-        height: 52
+        x: 192
+        y: 64
+        width: 64
+        height: 64
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -2073,10 +2073,10 @@ TextureImporter:
       name: isometric_character_walk_76
       rect:
         serializedVersion: 2
-        x: 272
-        y: 74
-        width: 27
-        height: 51
+        x: 256
+        y: 64
+        width: 64
+        height: 64
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -2095,10 +2095,10 @@ TextureImporter:
       name: isometric_character_walk_77
       rect:
         serializedVersion: 2
-        x: 338
-        y: 70
-        width: 21
-        height: 55
+        x: 320
+        y: 64
+        width: 64
+        height: 64
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -2117,10 +2117,10 @@ TextureImporter:
       name: isometric_character_walk_78
       rect:
         serializedVersion: 2
-        x: 404
-        y: 69
-        width: 21
-        height: 57
+        x: 384
+        y: 64
+        width: 64
+        height: 64
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -2139,10 +2139,10 @@ TextureImporter:
       name: isometric_character_walk_79
       rect:
         serializedVersion: 2
-        x: 469
-        y: 68
-        width: 22
-        height: 59
+        x: 448
+        y: 64
+        width: 64
+        height: 64
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -2161,10 +2161,10 @@ TextureImporter:
       name: isometric_character_walk_80
       rect:
         serializedVersion: 2
-        x: 528
-        y: 71
-        width: 29
-        height: 55
+        x: 512
+        y: 64
+        width: 64
+        height: 64
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -2183,10 +2183,10 @@ TextureImporter:
       name: isometric_character_walk_81
       rect:
         serializedVersion: 2
-        x: 589
-        y: 75
-        width: 33
-        height: 51
+        x: 576
+        y: 64
+        width: 64
+        height: 64
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -2205,10 +2205,10 @@ TextureImporter:
       name: isometric_character_walk_82
       rect:
         serializedVersion: 2
-        x: 652
-        y: 74
-        width: 36
-        height: 51
+        x: 640
+        y: 64
+        width: 64
+        height: 64
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -2227,10 +2227,10 @@ TextureImporter:
       name: isometric_character_walk_83
       rect:
         serializedVersion: 2
-        x: 719
-        y: 70
-        width: 25
-        height: 55
+        x: 704
+        y: 64
+        width: 64
+        height: 64
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -2249,10 +2249,10 @@ TextureImporter:
       name: isometric_character_walk_84
       rect:
         serializedVersion: 2
-        x: 21
-        y: 1
-        width: 22
-        height: 60
+        x: 0
+        y: 0
+        width: 64
+        height: 64
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -2271,10 +2271,10 @@ TextureImporter:
       name: isometric_character_walk_85
       rect:
         serializedVersion: 2
-        x: 84
-        y: 4
-        width: 28
-        height: 58
+        x: 64
+        y: 0
+        width: 64
+        height: 64
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -2293,10 +2293,10 @@ TextureImporter:
       name: isometric_character_walk_86
       rect:
         serializedVersion: 2
-        x: 145
-        y: 4
-        width: 37
-        height: 57
+        x: 128
+        y: 0
+        width: 64
+        height: 64
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -2315,10 +2315,10 @@ TextureImporter:
       name: isometric_character_walk_87
       rect:
         serializedVersion: 2
-        x: 208
-        y: 4
-        width: 36
-        height: 57
+        x: 192
+        y: 0
+        width: 64
+        height: 64
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -2337,10 +2337,10 @@ TextureImporter:
       name: isometric_character_walk_88
       rect:
         serializedVersion: 2
-        x: 270
-        y: 4
-        width: 40
-        height: 56
+        x: 256
+        y: 0
+        width: 64
+        height: 64
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -2359,10 +2359,10 @@ TextureImporter:
       name: isometric_character_walk_89
       rect:
         serializedVersion: 2
-        x: 337
-        y: 2
-        width: 32
-        height: 58
+        x: 320
+        y: 0
+        width: 64
+        height: 64
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -2381,10 +2381,10 @@ TextureImporter:
       name: isometric_character_walk_90
       rect:
         serializedVersion: 2
-        x: 405
-        y: 1
-        width: 22
-        height: 60
+        x: 384
+        y: 0
+        width: 64
+        height: 64
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -2403,10 +2403,10 @@ TextureImporter:
       name: isometric_character_walk_91
       rect:
         serializedVersion: 2
-        x: 468
-        y: 4
-        width: 27
-        height: 58
+        x: 448
+        y: 0
+        width: 64
+        height: 64
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -2425,10 +2425,10 @@ TextureImporter:
       name: isometric_character_walk_92
       rect:
         serializedVersion: 2
-        x: 526
-        y: 4
-        width: 42
-        height: 57
+        x: 512
+        y: 0
+        width: 64
+        height: 64
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -2447,10 +2447,10 @@ TextureImporter:
       name: isometric_character_walk_93
       rect:
         serializedVersion: 2
-        x: 591
-        y: 4
-        width: 34
-        height: 57
+        x: 576
+        y: 0
+        width: 64
+        height: 64
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -2469,10 +2469,10 @@ TextureImporter:
       name: isometric_character_walk_94
       rect:
         serializedVersion: 2
-        x: 658
-        y: 4
-        width: 32
-        height: 56
+        x: 640
+        y: 0
+        width: 64
+        height: 64
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -2491,10 +2491,10 @@ TextureImporter:
       name: isometric_character_walk_95
       rect:
         serializedVersion: 2
-        x: 723
-        y: 2
-        width: 25
-        height: 58
+        x: 704
+        y: 0
+        width: 64
+        height: 64
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -2513,7 +2513,7 @@ TextureImporter:
     customData: 
     physicsShape: []
     bones: []
-    spriteID: 
+    spriteID: 6f58392a796571f4d9da63e333357efa
     internalID: 0
     vertices: []
     indices: 
@@ -2521,8 +2521,106 @@ TextureImporter:
     weights: []
     secondaryTextures: []
     spriteCustomMetadata:
-      entries: []
-    nameFileIdTable: {}
+      entries:
+      - key: SpriteEditor.SliceSettings
+        value: '{"sliceOnImport":false,"gridCellCount":{"x":12.0,"y":8.0},"gridSpriteSize":{"x":64.0,"y":64.0},"gridSpriteOffset":{"x":0.0,"y":0.0},"gridSpritePadding":{"x":0.0,"y":0.0},"pivot":{"x":0.0,"y":0.0},"autoSlicingMethod":0,"spriteAlignment":0,"slicingType":2,"keepEmptyRects":false,"isAlternate":false}'
+    nameFileIdTable:
+      isometric_character_walk_0: 6707447253993550234
+      isometric_character_walk_1: 5733114097043348749
+      isometric_character_walk_10: -7606570469743142439
+      isometric_character_walk_11: -6247185365789095618
+      isometric_character_walk_12: -8802815609567660485
+      isometric_character_walk_13: -8057249260367500825
+      isometric_character_walk_14: 5896841368293717155
+      isometric_character_walk_15: -2935349955864687484
+      isometric_character_walk_16: -9220397496424815523
+      isometric_character_walk_17: -2078449993959127154
+      isometric_character_walk_18: 115188449160834604
+      isometric_character_walk_19: -3323115926162890907
+      isometric_character_walk_2: -8252099359995848721
+      isometric_character_walk_20: 7762714546024365621
+      isometric_character_walk_21: -7597191470116666946
+      isometric_character_walk_22: -6690405017652079819
+      isometric_character_walk_23: -5971637983835110027
+      isometric_character_walk_24: 5076018939723358884
+      isometric_character_walk_25: -8890229794623791217
+      isometric_character_walk_26: -5023640835960058147
+      isometric_character_walk_27: -645942972161107651
+      isometric_character_walk_28: 8778021806565825350
+      isometric_character_walk_29: 5207171269531180169
+      isometric_character_walk_3: -2577355906458414373
+      isometric_character_walk_30: 3857062631123718776
+      isometric_character_walk_31: 4330453482686960369
+      isometric_character_walk_32: -4909676002215541331
+      isometric_character_walk_33: -5967048931233786972
+      isometric_character_walk_34: -8498508631070490512
+      isometric_character_walk_35: 431243419766574209
+      isometric_character_walk_36: -6454080960403174526
+      isometric_character_walk_37: -2120775983548785335
+      isometric_character_walk_38: -8973691734274155857
+      isometric_character_walk_39: -5177485572859636877
+      isometric_character_walk_4: -3870330275330693912
+      isometric_character_walk_40: 8674624080602867794
+      isometric_character_walk_41: 8081586283504171835
+      isometric_character_walk_42: -2895662243620339499
+      isometric_character_walk_43: 5586611983075569663
+      isometric_character_walk_44: 3649555228989745766
+      isometric_character_walk_45: -590853659945039906
+      isometric_character_walk_46: -6810491075629842153
+      isometric_character_walk_47: 5949118003216799569
+      isometric_character_walk_48: 7281723398494623876
+      isometric_character_walk_49: -7043791316821506488
+      isometric_character_walk_5: 5351255841694010796
+      isometric_character_walk_50: 374768685528008826
+      isometric_character_walk_51: 3357258384977474821
+      isometric_character_walk_52: 2271165511777897629
+      isometric_character_walk_53: 7333404648072364048
+      isometric_character_walk_54: 8180839985249043863
+      isometric_character_walk_55: 7265055153707269801
+      isometric_character_walk_56: 7182860132883946220
+      isometric_character_walk_57: -4680329606956487416
+      isometric_character_walk_58: -7623236892462616527
+      isometric_character_walk_59: 4232367134614801604
+      isometric_character_walk_6: -7413757257667096717
+      isometric_character_walk_60: 3151334714377931952
+      isometric_character_walk_61: -6915817813571086234
+      isometric_character_walk_62: -4317555061205501813
+      isometric_character_walk_63: -4073877204218493970
+      isometric_character_walk_64: -1942133407352917380
+      isometric_character_walk_65: -3877582074365818083
+      isometric_character_walk_66: 144692745057023350
+      isometric_character_walk_67: -7605020614506303907
+      isometric_character_walk_68: -7621170994363346948
+      isometric_character_walk_69: 8846863003388175237
+      isometric_character_walk_7: 6838106361952577135
+      isometric_character_walk_70: 3476640762374514355
+      isometric_character_walk_71: 7135991763140079059
+      isometric_character_walk_72: 108255731660723758
+      isometric_character_walk_73: 3124885519167160448
+      isometric_character_walk_74: 1826697565924623161
+      isometric_character_walk_75: -6743808881814793475
+      isometric_character_walk_76: 4438032520621968019
+      isometric_character_walk_77: -1295561062063211158
+      isometric_character_walk_78: -1321584310199552933
+      isometric_character_walk_79: -5955031044353970300
+      isometric_character_walk_8: 1991391241021503777
+      isometric_character_walk_80: -7099095914035468757
+      isometric_character_walk_81: 4613322289438131288
+      isometric_character_walk_82: -5003566743706431928
+      isometric_character_walk_83: -3212864831156309698
+      isometric_character_walk_84: -4809548510424440464
+      isometric_character_walk_85: 3505107597590677160
+      isometric_character_walk_86: 937975013562844739
+      isometric_character_walk_87: -1865077009477201470
+      isometric_character_walk_88: -8312636923109327308
+      isometric_character_walk_89: -9043288311064143565
+      isometric_character_walk_9: 8237224650777641392
+      isometric_character_walk_90: 703338743752229569
+      isometric_character_walk_91: -5348442295391428726
+      isometric_character_walk_92: -1287848973584842504
+      isometric_character_walk_93: -141476466686536904
+      isometric_character_walk_94: -7965734344995855933
+      isometric_character_walk_95: 7782640451021572633
   mipmapLimitGroupName: 
   pSDRemoveMatte: 0
   userData: 
