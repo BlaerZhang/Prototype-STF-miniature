@@ -1,0 +1,1330 @@
+fileFormatVersion: 2
+guid: 8acaf0813a7628f4fac324085c3d6cd3
+TextureImporter:
+  internalIDToNameTable:
+  - first:
+      213: 7717840121106053867
+    second: isometric_character_run_0
+  - first:
+      213: 4790501311000507604
+    second: isometric_character_run_1
+  - first:
+      213: 4138977388766459747
+    second: isometric_character_run_2
+  - first:
+      213: -1284135840185165508
+    second: isometric_character_run_3
+  - first:
+      213: -5342816486600504838
+    second: isometric_character_run_4
+  - first:
+      213: -3986376946375491704
+    second: isometric_character_run_5
+  - first:
+      213: 8495706378751557341
+    second: isometric_character_run_6
+  - first:
+      213: 2418282506166346816
+    second: isometric_character_run_7
+  - first:
+      213: 1118467979114621227
+    second: isometric_character_run_8
+  - first:
+      213: -7182600465799651081
+    second: isometric_character_run_9
+  - first:
+      213: -242993150925130456
+    second: isometric_character_run_10
+  - first:
+      213: 3371027876358999181
+    second: isometric_character_run_11
+  - first:
+      213: -3816730432966470560
+    second: isometric_character_run_12
+  - first:
+      213: 2698727909821487311
+    second: isometric_character_run_13
+  - first:
+      213: -7020727518489721103
+    second: isometric_character_run_14
+  - first:
+      213: -6338471549623356272
+    second: isometric_character_run_15
+  - first:
+      213: -5109190668094064955
+    second: isometric_character_run_16
+  - first:
+      213: 8429789913908526008
+    second: isometric_character_run_17
+  - first:
+      213: -988515721695023247
+    second: isometric_character_run_18
+  - first:
+      213: 8365180458282054136
+    second: isometric_character_run_19
+  - first:
+      213: 6777851907585061355
+    second: isometric_character_run_20
+  - first:
+      213: -5429057370229311296
+    second: isometric_character_run_21
+  - first:
+      213: -3312111269596754218
+    second: isometric_character_run_22
+  - first:
+      213: -1471766478745833563
+    second: isometric_character_run_23
+  - first:
+      213: 6969418332254020339
+    second: isometric_character_run_24
+  - first:
+      213: 5070646641500829801
+    second: isometric_character_run_25
+  - first:
+      213: 8791292635710537164
+    second: isometric_character_run_26
+  - first:
+      213: 581610914415084903
+    second: isometric_character_run_27
+  - first:
+      213: 6618433471764381467
+    second: isometric_character_run_28
+  - first:
+      213: -3309163277355628011
+    second: isometric_character_run_29
+  - first:
+      213: 3751259867362260782
+    second: isometric_character_run_30
+  - first:
+      213: -8102405712306769633
+    second: isometric_character_run_31
+  - first:
+      213: -7055602183914626094
+    second: isometric_character_run_32
+  - first:
+      213: 6519289702541252228
+    second: isometric_character_run_33
+  - first:
+      213: -1013627957643390466
+    second: isometric_character_run_34
+  - first:
+      213: 3580497995241392940
+    second: isometric_character_run_35
+  - first:
+      213: 7854408273422964015
+    second: isometric_character_run_36
+  - first:
+      213: 8121915898323787311
+    second: isometric_character_run_37
+  - first:
+      213: 8094863679743705897
+    second: isometric_character_run_38
+  - first:
+      213: 727680674214003791
+    second: isometric_character_run_39
+  - first:
+      213: -7696745223003452933
+    second: isometric_character_run_40
+  - first:
+      213: -3442137585477526205
+    second: isometric_character_run_41
+  - first:
+      213: 2418033417397940230
+    second: isometric_character_run_42
+  - first:
+      213: 448132341728209244
+    second: isometric_character_run_43
+  - first:
+      213: 5670694312749211029
+    second: isometric_character_run_44
+  - first:
+      213: -6217624684281212089
+    second: isometric_character_run_45
+  - first:
+      213: 6175259595665671911
+    second: isometric_character_run_46
+  - first:
+      213: -8930538700835215364
+    second: isometric_character_run_47
+  externalObjects: {}
+  serializedVersion: 13
+  mipmaps:
+    mipMapMode: 0
+    enableMipMap: 0
+    sRGBTexture: 1
+    linearTexture: 0
+    fadeOut: 0
+    borderMipMap: 0
+    mipMapsPreserveCoverage: 0
+    alphaTestReferenceValue: 0.5
+    mipMapFadeDistanceStart: 1
+    mipMapFadeDistanceEnd: 3
+  bumpmap:
+    convertToNormalMap: 0
+    externalNormalMap: 0
+    heightScale: 0.25
+    normalMapFilter: 0
+    flipGreenChannel: 0
+  isReadable: 0
+  streamingMipmaps: 0
+  streamingMipmapsPriority: 0
+  vTOnly: 0
+  ignoreMipmapLimit: 0
+  grayScaleToAlpha: 0
+  generateCubemap: 6
+  cubemapConvolution: 0
+  seamlessCubemap: 0
+  textureFormat: 1
+  maxTextureSize: 2048
+  textureSettings:
+    serializedVersion: 2
+    filterMode: 1
+    aniso: 1
+    mipBias: 0
+    wrapU: 1
+    wrapV: 1
+    wrapW: 1
+  nPOTScale: 0
+  lightmap: 0
+  compressionQuality: 50
+  spriteMode: 2
+  spriteExtrude: 1
+  spriteMeshType: 1
+  alignment: 0
+  spritePivot: {x: 0.5, y: 0.5}
+  spritePixelsToUnits: 100
+  spriteBorder: {x: 0, y: 0, z: 0, w: 0}
+  spriteGenerateFallbackPhysicsShape: 1
+  alphaUsage: 1
+  alphaIsTransparency: 1
+  spriteTessellationDetail: -1
+  textureType: 8
+  textureShape: 1
+  singleChannelComponent: 0
+  flipbookRows: 1
+  flipbookColumns: 1
+  maxTextureSizeSet: 0
+  compressionQualitySet: 0
+  textureFormatSet: 0
+  ignorePngGamma: 0
+  applyGammaDecoding: 0
+  swizzle: 50462976
+  cookieLightType: 0
+  platformSettings:
+  - serializedVersion: 4
+    buildTarget: DefaultTexturePlatform
+    maxTextureSize: 2048
+    resizeAlgorithm: 0
+    textureFormat: -1
+    textureCompression: 1
+    compressionQuality: 50
+    crunchedCompression: 0
+    allowsAlphaSplitting: 0
+    overridden: 0
+    ignorePlatformSupport: 0
+    androidETC2FallbackOverride: 0
+    forceMaximumCompressionQuality_BC6H_BC7: 0
+  - serializedVersion: 4
+    buildTarget: Standalone
+    maxTextureSize: 2048
+    resizeAlgorithm: 0
+    textureFormat: -1
+    textureCompression: 1
+    compressionQuality: 50
+    crunchedCompression: 0
+    allowsAlphaSplitting: 0
+    overridden: 0
+    ignorePlatformSupport: 0
+    androidETC2FallbackOverride: 0
+    forceMaximumCompressionQuality_BC6H_BC7: 0
+  - serializedVersion: 4
+    buildTarget: WebGL
+    maxTextureSize: 2048
+    resizeAlgorithm: 0
+    textureFormat: -1
+    textureCompression: 1
+    compressionQuality: 50
+    crunchedCompression: 0
+    allowsAlphaSplitting: 0
+    overridden: 0
+    ignorePlatformSupport: 0
+    androidETC2FallbackOverride: 0
+    forceMaximumCompressionQuality_BC6H_BC7: 0
+  spriteSheet:
+    serializedVersion: 2
+    sprites:
+    - serializedVersion: 2
+      name: isometric_character_run_0
+      rect:
+        serializedVersion: 2
+        x: 18
+        y: 461
+        width: 28
+        height: 49
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: beab8c303b64b1b60800000000000000
+      internalID: 7717840121106053867
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: isometric_character_run_1
+      rect:
+        serializedVersion: 2
+        x: 82
+        y: 458
+        width: 28
+        height: 51
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 4d47a3aaf874b7240800000000000000
+      internalID: 4790501311000507604
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: isometric_character_run_2
+      rect:
+        serializedVersion: 2
+        x: 146
+        y: 463
+        width: 28
+        height: 47
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 3677cce710a907930800000000000000
+      internalID: 4138977388766459747
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: isometric_character_run_3
+      rect:
+        serializedVersion: 2
+        x: 210
+        y: 461
+        width: 28
+        height: 49
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: c395a6ac145dd2ee0800000000000000
+      internalID: -1284135840185165508
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: isometric_character_run_4
+      rect:
+        serializedVersion: 2
+        x: 274
+        y: 458
+        width: 28
+        height: 51
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: af9831086b08ad5b0800000000000000
+      internalID: -5342816486600504838
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: isometric_character_run_5
+      rect:
+        serializedVersion: 2
+        x: 338
+        y: 463
+        width: 28
+        height: 47
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 88f7b7ab94b8da8c0800000000000000
+      internalID: -3986376946375491704
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: isometric_character_run_6
+      rect:
+        serializedVersion: 2
+        x: 22
+        y: 394
+        width: 35
+        height: 52
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: ddeb18570ffc6e570800000000000000
+      internalID: 8495706378751557341
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: isometric_character_run_7
+      rect:
+        serializedVersion: 2
+        x: 82
+        y: 392
+        width: 41
+        height: 53
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 044269270277f8120800000000000000
+      internalID: 2418282506166346816
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: isometric_character_run_8
+      rect:
+        serializedVersion: 2
+        x: 150
+        y: 392
+        width: 34
+        height: 53
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: b29a6cb73b8958f00800000000000000
+      internalID: 1118467979114621227
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: isometric_character_run_9
+      rect:
+        serializedVersion: 2
+        x: 212
+        y: 394
+        width: 28
+        height: 52
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 7f0e4707ee6425c90800000000000000
+      internalID: -7182600465799651081
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: isometric_character_run_10
+      rect:
+        serializedVersion: 2
+        x: 274
+        y: 392
+        width: 32
+        height: 53
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 82531444407b0acf0800000000000000
+      internalID: -242993150925130456
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: isometric_character_run_11
+      rect:
+        serializedVersion: 2
+        x: 342
+        y: 395
+        width: 34
+        height: 50
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: d8c415a3efb48ce20800000000000000
+      internalID: 3371027876358999181
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: isometric_character_run_12
+      rect:
+        serializedVersion: 2
+        x: 7
+        y: 330
+        width: 35
+        height: 52
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 0645c93a4ef380bc0800000000000000
+      internalID: -3816730432966470560
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: isometric_character_run_13
+      rect:
+        serializedVersion: 2
+        x: 69
+        y: 328
+        width: 41
+        height: 53
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: fc8975a4cbec37520800000000000000
+      internalID: 2698727909821487311
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: isometric_character_run_14
+      rect:
+        serializedVersion: 2
+        x: 136
+        y: 328
+        width: 34
+        height: 53
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 1f64c93f48d519e90800000000000000
+      internalID: -7020727518489721103
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: isometric_character_run_15
+      rect:
+        serializedVersion: 2
+        x: 208
+        y: 330
+        width: 28
+        height: 52
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 094b7c155b93908a0800000000000000
+      internalID: -6338471549623356272
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: isometric_character_run_16
+      rect:
+        serializedVersion: 2
+        x: 270
+        y: 328
+        width: 32
+        height: 53
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 5c6338238228819b0800000000000000
+      internalID: -5109190668094064955
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: isometric_character_run_17
+      rect:
+        serializedVersion: 2
+        x: 328
+        y: 331
+        width: 34
+        height: 50
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 8bb30b58341acf470800000000000000
+      internalID: 8429789913908526008
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: isometric_character_run_18
+      rect:
+        serializedVersion: 2
+        x: 7
+        y: 258
+        width: 49
+        height: 57
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 17faa7140361842f0800000000000000
+      internalID: -988515721695023247
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: isometric_character_run_19
+      rect:
+        serializedVersion: 2
+        x: 72
+        y: 257
+        width: 45
+        height: 57
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 8f1f0f16e47171470800000000000000
+      internalID: 8365180458282054136
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: isometric_character_run_20
+      rect:
+        serializedVersion: 2
+        x: 144
+        y: 257
+        width: 26
+        height: 57
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: be1bfcb3664cf0e50800000000000000
+      internalID: 6777851907585061355
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: isometric_character_run_21
+      rect:
+        serializedVersion: 2
+        x: 202
+        y: 258
+        width: 46
+        height: 57
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 0c8f34e061d18a4b0800000000000000
+      internalID: -5429057370229311296
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: isometric_character_run_22
+      rect:
+        serializedVersion: 2
+        x: 264
+        y: 257
+        width: 45
+        height: 57
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 6de0e1f39540902d0800000000000000
+      internalID: -3312111269596754218
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: isometric_character_run_23
+      rect:
+        serializedVersion: 2
+        x: 336
+        y: 257
+        width: 26
+        height: 57
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 5afe6027f2c339be0800000000000000
+      internalID: -1471766478745833563
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: isometric_character_run_24
+      rect:
+        serializedVersion: 2
+        x: 16
+        y: 198
+        width: 33
+        height: 53
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 3f2a8113c0958b060800000000000000
+      internalID: 6969418332254020339
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: isometric_character_run_25
+      rect:
+        serializedVersion: 2
+        x: 80
+        y: 202
+        width: 38
+        height: 48
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 9683f28414e8e5640800000000000000
+      internalID: 5070646641500829801
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: isometric_character_run_26
+      rect:
+        serializedVersion: 2
+        x: 144
+        y: 200
+        width: 34
+        height: 50
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: ccdb80ce212f00a70800000000000000
+      internalID: 8791292635710537164
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: isometric_character_run_27
+      rect:
+        serializedVersion: 2
+        x: 202
+        y: 198
+        width: 33
+        height: 53
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 765833f8b0c421800800000000000000
+      internalID: 581610914415084903
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: isometric_character_run_28
+      rect:
+        serializedVersion: 2
+        x: 267
+        y: 204
+        width: 39
+        height: 46
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: b1f32163d2669db50800000000000000
+      internalID: 6618433471764381467
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: isometric_character_run_29
+      rect:
+        serializedVersion: 2
+        x: 336
+        y: 203
+        width: 27
+        height: 47
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 51a437d288d7312d0800000000000000
+      internalID: -3309163277355628011
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: isometric_character_run_30
+      rect:
+        serializedVersion: 2
+        x: 18
+        y: 131
+        width: 27
+        height: 57
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: e277e4e69f62f0430800000000000000
+      internalID: 3751259867362260782
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: isometric_character_run_31
+      rect:
+        serializedVersion: 2
+        x: 82
+        y: 136
+        width: 28
+        height: 51
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: f11fbdbdee87e8f80800000000000000
+      internalID: -8102405712306769633
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: isometric_character_run_32
+      rect:
+        serializedVersion: 2
+        x: 146
+        y: 138
+        width: 28
+        height: 49
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 2d36c472237751e90800000000000000
+      internalID: -7055602183914626094
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: isometric_character_run_33
+      rect:
+        serializedVersion: 2
+        x: 211
+        y: 131
+        width: 27
+        height: 57
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 48655db917b297a50800000000000000
+      internalID: 6519289702541252228
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: isometric_character_run_34
+      rect:
+        serializedVersion: 2
+        x: 274
+        y: 136
+        width: 28
+        height: 51
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: ef1d2423ebedee1f0800000000000000
+      internalID: -1013627957643390466
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: isometric_character_run_35
+      rect:
+        serializedVersion: 2
+        x: 338
+        y: 138
+        width: 28
+        height: 49
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: c2b8c55d4fb70b130800000000000000
+      internalID: 3580497995241392940
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: isometric_character_run_36
+      rect:
+        serializedVersion: 2
+        x: 15
+        y: 70
+        width: 33
+        height: 53
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: f25d342d5b6700d60800000000000000
+      internalID: 7854408273422964015
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: isometric_character_run_37
+      rect:
+        serializedVersion: 2
+        x: 74
+        y: 74
+        width: 38
+        height: 48
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: f2edf2f4a77d6b070800000000000000
+      internalID: 8121915898323787311
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: isometric_character_run_38
+      rect:
+        serializedVersion: 2
+        x: 142
+        y: 72
+        width: 34
+        height: 50
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 923c558d0abb65070800000000000000
+      internalID: 8094863679743705897
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: isometric_character_run_39
+      rect:
+        serializedVersion: 2
+        x: 213
+        y: 70
+        width: 33
+        height: 53
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: f444170c7bd391a00800000000000000
+      internalID: 727680674214003791
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: isometric_character_run_40
+      rect:
+        serializedVersion: 2
+        x: 270
+        y: 76
+        width: 39
+        height: 46
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: bf9c130bffaaf2590800000000000000
+      internalID: -7696745223003452933
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: isometric_character_run_41
+      rect:
+        serializedVersion: 2
+        x: 341
+        y: 75
+        width: 27
+        height: 47
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 34d579d6a121b30d0800000000000000
+      internalID: -3442137585477526205
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: isometric_character_run_42
+      rect:
+        serializedVersion: 2
+        x: 8
+        y: 2
+        width: 49
+        height: 57
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 6003703f4949e8120800000000000000
+      internalID: 2418033417397940230
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: isometric_character_run_43
+      rect:
+        serializedVersion: 2
+        x: 75
+        y: 1
+        width: 45
+        height: 57
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: c59e2119df5183600800000000000000
+      internalID: 448132341728209244
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: isometric_character_run_44
+      rect:
+        serializedVersion: 2
+        x: 150
+        y: 1
+        width: 26
+        height: 57
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 59d9e3dce6a52be40800000000000000
+      internalID: 5670694312749211029
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: isometric_character_run_45
+      rect:
+        serializedVersion: 2
+        x: 200
+        y: 2
+        width: 46
+        height: 57
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 743d7b2ca4f86b9a0800000000000000
+      internalID: -6217624684281212089
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: isometric_character_run_46
+      rect:
+        serializedVersion: 2
+        x: 267
+        y: 1
+        width: 45
+        height: 57
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 7e6897362ede2b550800000000000000
+      internalID: 6175259595665671911
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: isometric_character_run_47
+      rect:
+        serializedVersion: 2
+        x: 342
+        y: 1
+        width: 26
+        height: 57
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: cf7a6db1e5a501480800000000000000
+      internalID: -8930538700835215364
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    outline: []
+    customData: 
+    physicsShape: []
+    bones: []
+    spriteID: 
+    internalID: 0
+    vertices: []
+    indices: 
+    edges: []
+    weights: []
+    secondaryTextures: []
+    spriteCustomMetadata:
+      entries: []
+    nameFileIdTable: {}
+  mipmapLimitGroupName: 
+  pSDRemoveMatte: 0
+  userData: 
+  assetBundleName: 
+  assetBundleVariant: 
