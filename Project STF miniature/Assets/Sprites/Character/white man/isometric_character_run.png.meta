@@ -1322,7 +1322,55 @@ TextureImporter:
     secondaryTextures: []
     spriteCustomMetadata:
       entries: []
-    nameFileIdTable: {}
+    nameFileIdTable:
+      isometric_character_run_0: 7717840121106053867
+      isometric_character_run_1: 4790501311000507604
+      isometric_character_run_10: -242993150925130456
+      isometric_character_run_11: 3371027876358999181
+      isometric_character_run_12: -3816730432966470560
+      isometric_character_run_13: 2698727909821487311
+      isometric_character_run_14: -7020727518489721103
+      isometric_character_run_15: -6338471549623356272
+      isometric_character_run_16: -5109190668094064955
+      isometric_character_run_17: 8429789913908526008
+      isometric_character_run_18: -988515721695023247
+      isometric_character_run_19: 8365180458282054136
+      isometric_character_run_2: 4138977388766459747
+      isometric_character_run_20: 6777851907585061355
+      isometric_character_run_21: -5429057370229311296
+      isometric_character_run_22: -3312111269596754218
+      isometric_character_run_23: -1471766478745833563
+      isometric_character_run_24: 6969418332254020339
+      isometric_character_run_25: 5070646641500829801
+      isometric_character_run_26: 8791292635710537164
+      isometric_character_run_27: 581610914415084903
+      isometric_character_run_28: 6618433471764381467
+      isometric_character_run_29: -3309163277355628011
+      isometric_character_run_3: -1284135840185165508
+      isometric_character_run_30: 3751259867362260782
+      isometric_character_run_31: -8102405712306769633
+      isometric_character_run_32: -7055602183914626094
+      isometric_character_run_33: 6519289702541252228
+      isometric_character_run_34: -1013627957643390466
+      isometric_character_run_35: 3580497995241392940
+      isometric_character_run_36: 7854408273422964015
+      isometric_character_run_37: 8121915898323787311
+      isometric_character_run_38: 8094863679743705897
+      isometric_character_run_39: 727680674214003791
+      isometric_character_run_4: -5342816486600504838
+      isometric_character_run_40: -7696745223003452933
+      isometric_character_run_41: -3442137585477526205
+      isometric_character_run_42: 2418033417397940230
+      isometric_character_run_43: 448132341728209244
+      isometric_character_run_44: 5670694312749211029
+      isometric_character_run_45: -6217624684281212089
+      isometric_character_run_46: 6175259595665671911
+      isometric_character_run_47: -8930538700835215364
+      isometric_character_run_5: -3986376946375491704
+      isometric_character_run_6: 8495706378751557341
+      isometric_character_run_7: 2418282506166346816
+      isometric_character_run_8: 1118467979114621227
+      isometric_character_run_9: -7182600465799651081
   mipmapLimitGroupName: 
   pSDRemoveMatte: 0
   userData: 

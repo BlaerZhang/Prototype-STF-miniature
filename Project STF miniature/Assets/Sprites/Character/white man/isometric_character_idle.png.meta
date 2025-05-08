@@ -1722,7 +1722,71 @@ TextureImporter:
     secondaryTextures: []
     spriteCustomMetadata:
       entries: []
-    nameFileIdTable: {}
+    nameFileIdTable:
+      isometric_character_idle_0: -2162154373751583089
+      isometric_character_idle_1: 884922528861962415
+      isometric_character_idle_10: 3032755602418020185
+      isometric_character_idle_11: 7354046091339919293
+      isometric_character_idle_12: -9215769705087434681
+      isometric_character_idle_13: -1804617599404952228
+      isometric_character_idle_14: 421663003577672459
+      isometric_character_idle_15: -4909691459879064624
+      isometric_character_idle_16: 525496175510764409
+      isometric_character_idle_17: -3439356201943907408
+      isometric_character_idle_18: 6670721321239037811
+      isometric_character_idle_19: 5031924978740505833
+      isometric_character_idle_2: -914000380403084027
+      isometric_character_idle_20: -2926030084585258739
+      isometric_character_idle_21: 2108101831993184632
+      isometric_character_idle_22: 8162889898746045771
+      isometric_character_idle_23: 5895595500853569210
+      isometric_character_idle_24: 7721850319174782035
+      isometric_character_idle_25: 3645510263432010459
+      isometric_character_idle_26: -5957250284883893672
+      isometric_character_idle_27: -14774121071565935
+      isometric_character_idle_28: -7417562979381813053
+      isometric_character_idle_29: 1576741029424330908
+      isometric_character_idle_3: -5500802189169606397
+      isometric_character_idle_30: 9001651629291682432
+      isometric_character_idle_31: 426019926250932629
+      isometric_character_idle_32: 2149644047147499028
+      isometric_character_idle_33: -2243541165582885800
+      isometric_character_idle_34: 4009240773205586312
+      isometric_character_idle_35: 7909315036226422811
+      isometric_character_idle_36: 8575839324396811109
+      isometric_character_idle_37: -6378339526628653034
+      isometric_character_idle_38: -4377338085667609271
+      isometric_character_idle_39: -3555028497801539123
+      isometric_character_idle_4: -1439227591262539153
+      isometric_character_idle_40: -6866999932474510722
+      isometric_character_idle_41: 2336357842137413943
+      isometric_character_idle_42: 2967059982215207036
+      isometric_character_idle_43: 8268399983210264478
+      isometric_character_idle_44: -6398697101108515659
+      isometric_character_idle_45: 3426325778379993602
+      isometric_character_idle_46: -8449306879098581304
+      isometric_character_idle_47: -6002877013350214234
+      isometric_character_idle_48: 3321625959301728557
+      isometric_character_idle_49: 4811735039131300709
+      isometric_character_idle_5: -5316343080701080651
+      isometric_character_idle_50: 44552872171862306
+      isometric_character_idle_51: -6134039447313912714
+      isometric_character_idle_52: 234087037723614063
+      isometric_character_idle_53: -8886184987498780683
+      isometric_character_idle_54: -3680717716589084355
+      isometric_character_idle_55: -8925529459889666892
+      isometric_character_idle_56: 7420890036289137330
+      isometric_character_idle_57: -7571180167765775868
+      isometric_character_idle_58: 3126478052277112508
+      isometric_character_idle_59: -8872349416554668153
+      isometric_character_idle_6: -5420651108514142346
+      isometric_character_idle_60: 8134332655876887926
+      isometric_character_idle_61: -8593444634051906246
+      isometric_character_idle_62: 3177583223375447256
+      isometric_character_idle_63: -4352716865132607936
+      isometric_character_idle_7: -1906244791931691264
+      isometric_character_idle_8: -1852767264589569970
+      isometric_character_idle_9: -2260472336361953346
   mipmapLimitGroupName: 
   pSDRemoveMatte: 0
   userData: 
