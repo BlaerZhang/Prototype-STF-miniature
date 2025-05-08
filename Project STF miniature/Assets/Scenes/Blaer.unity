@@ -354,7 +354,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   playerCamera: {fileID: 1172004854}
   overviewCamera: {fileID: 1826538280}
-  dragSpeed: 2
+  dragSpeed: 0.03
   player: {fileID: 418101165}
 --- !u!1 &619394800
 GameObject:

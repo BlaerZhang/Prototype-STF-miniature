@@ -9,7 +9,7 @@ public class CameraController : MonoBehaviour
     [SerializeField] private CinemachineCamera overviewCamera;
     
     [Header("相机设置")]
-    [SerializeField] private float dragSpeed = 2f;
+    [SerializeField] private float dragSpeed = 0.01f;
     [SerializeField] private Transform player;
 
     private Mouse mouse;
@@ -62,7 +62,6 @@ public class CameraController : MonoBehaviour
         if (mouse.rightButton.wasPressedThisFrame)
         {
             isDragging = true;
-            lastMousePosition = mouse.position.ReadValue();
         }
         // 结束拖拽
         else if (mouse.rightButton.wasReleasedThisFrame)
@@ -73,16 +72,13 @@ public class CameraController : MonoBehaviour
         // 处理拖拽移动
         if (isDragging)
         {
-            Vector2 currentMousePosition = mouse.position.ReadValue();
-            Vector2 delta = (currentMousePosition - lastMousePosition) * dragSpeed * Time.deltaTime;
+            Vector2 mouseDelta = mouse.delta.ReadValue() * dragSpeed;
             
             // 移动相机
             Vector3 position = overviewCamera.transform.position;
-            position.x -= delta.x;
-            position.y -= delta.y;
+            position.x -= mouseDelta.x;
+            position.y -= mouseDelta.y;
             overviewCamera.transform.position = position;
-
-            lastMousePosition = currentMousePosition;
         }
     }
 
