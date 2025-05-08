@@ -147,7 +147,8 @@ TextureImporter:
     secondaryTextures: []
     spriteCustomMetadata:
       entries: []
-    nameFileIdTable: {}
+    nameFileIdTable:
+      Sneak_as_one_layer_0: -1760590381849371049
   mipmapLimitGroupName: 
   pSDRemoveMatte: 0
   userData: 

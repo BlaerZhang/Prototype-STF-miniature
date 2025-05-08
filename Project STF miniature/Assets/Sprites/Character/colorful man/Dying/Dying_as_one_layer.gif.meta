@@ -147,7 +147,8 @@ TextureImporter:
     secondaryTextures: []
     spriteCustomMetadata:
       entries: []
-    nameFileIdTable: {}
+    nameFileIdTable:
+      Dying_as_one_layer_0: 3645683996577110615
   mipmapLimitGroupName: 
   pSDRemoveMatte: 0
   userData: 

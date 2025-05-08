@@ -93,7 +93,7 @@ public class SimpleClickerMovement : OverridableMonoBehaviour
 
             lastClickTime = currentTime;
             clickingFactor += factorIncreasePerClick;
-            // OnStep();
+            OnStep();
         }
 
         clickingFactor -= factorDecreaseRate * Time.deltaTime;
