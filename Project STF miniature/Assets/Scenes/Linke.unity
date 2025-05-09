@@ -277,7 +277,7 @@ Camera:
   far clip plane: 1000
   field of view: 34
   orthographic: 1
-  orthographic size: 15
+  orthographic size: 5
   m_Depth: -1
   m_CullingMask:
     serializedVersion: 2
@@ -448,6 +448,22 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 0}
     m_Modifications:
+    - target: {fileID: 952048107902964194, guid: b39cdc860b83d0f42bb2bfd6e12d86bc, type: 3}
+      propertyPath: m_LocalScale.x
+      value: 0.3
+      objectReference: {fileID: 0}
+    - target: {fileID: 952048107902964194, guid: b39cdc860b83d0f42bb2bfd6e12d86bc, type: 3}
+      propertyPath: m_LocalScale.y
+      value: 0.3
+      objectReference: {fileID: 0}
+    - target: {fileID: 952048107902964194, guid: b39cdc860b83d0f42bb2bfd6e12d86bc, type: 3}
+      propertyPath: m_LocalScale.z
+      value: 0.3
+      objectReference: {fileID: 0}
+    - target: {fileID: 952048107902964194, guid: b39cdc860b83d0f42bb2bfd6e12d86bc, type: 3}
+      propertyPath: m_ConstrainProportionsScale
+      value: 1
+      objectReference: {fileID: 0}
     - target: {fileID: 1506492535396917813, guid: b39cdc860b83d0f42bb2bfd6e12d86bc, type: 3}
       propertyPath: m_Color.b
       value: 0.78431374
@@ -470,15 +486,15 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 7609785472360362873, guid: b39cdc860b83d0f42bb2bfd6e12d86bc, type: 3}
       propertyPath: m_LocalScale.x
-      value: 2
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 7609785472360362873, guid: b39cdc860b83d0f42bb2bfd6e12d86bc, type: 3}
       propertyPath: m_LocalPosition.x
-      value: -0.17277
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 7609785472360362873, guid: b39cdc860b83d0f42bb2bfd6e12d86bc, type: 3}
       propertyPath: m_LocalPosition.y
-      value: 0.20637
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 7609785472360362873, guid: b39cdc860b83d0f42bb2bfd6e12d86bc, type: 3}
       propertyPath: m_LocalPosition.z
@@ -617,7 +633,7 @@ MonoBehaviour:
     CustomLookAtTarget: 0
   Lens:
     FieldOfView: 34
-    OrthographicSize: 5
+    OrthographicSize: 0.78
     NearClipPlane: 0.3
     FarClipPlane: 1000
     Dutch: 0
@@ -644,7 +660,7 @@ Transform:
   m_GameObject: {fileID: 1172004853}
   serializedVersion: 2
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: -0.17277, y: 0.20637023, z: -10}
+  m_LocalPosition: {x: 0, y: 0, z: -10}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
@@ -842,8 +858,8 @@ Transform:
   m_GameObject: {fileID: 1673153071}
   serializedVersion: 2
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: -7.38, y: 5.9, z: 0}
-  m_LocalScale: {x: 5, y: 5, z: 5}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 1
   m_Children:
   - {fileID: 1962610003}
@@ -891,7 +907,7 @@ MonoBehaviour:
     CustomLookAtTarget: 0
   Lens:
     FieldOfView: 34
-    OrthographicSize: 15
+    OrthographicSize: 5
     NearClipPlane: 0.3
     FarClipPlane: 1000
     Dutch: 0
