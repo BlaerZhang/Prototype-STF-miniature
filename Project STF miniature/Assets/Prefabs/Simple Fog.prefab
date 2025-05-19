@@ -10,7 +10,7 @@ GameObject:
   m_Component:
   - component: {fileID: 2918047400111188225}
   - component: {fileID: 3774539971523845301}
-  - component: {fileID: 8363587825404318069}
+  - component: {fileID: 5440937383107485717}
   m_Layer: 0
   m_Name: Simple Fog
   m_TagString: Fog
@@ -28,7 +28,7 @@ Transform:
   serializedVersion: 2
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
   m_LocalPosition: {x: 0, y: 0, z: 0}
-  m_LocalScale: {x: 10, y: 10, z: 1}
+  m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 0}
@@ -77,19 +77,19 @@ SpriteRenderer:
   m_SortingLayerID: 0
   m_SortingLayer: 0
   m_SortingOrder: 1
-  m_Sprite: {fileID: 21300000, guid: 4b29a4254e5ad83438b56e4ae73c65bf, type: 3}
+  m_Sprite: {fileID: 6802414005993490869, guid: 4b29a4254e5ad83438b56e4ae73c65bf, type: 3}
   m_Color: {r: 0, g: 0, b: 0, a: 1}
   m_FlipX: 0
   m_FlipY: 0
   m_DrawMode: 0
-  m_Size: {x: 1.1038095, y: 0.6409524}
+  m_Size: {x: 1, y: 1}
   m_AdaptiveModeThreshold: 0.5
   m_SpriteTileMode: 0
   m_WasSpriteAssigned: 1
   m_MaskInteraction: 0
   m_SpriteSortPoint: 0
---- !u!68 &8363587825404318069
-EdgeCollider2D:
+--- !u!58 &5440937383107485717
+CircleCollider2D:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
@@ -123,14 +123,4 @@ EdgeCollider2D:
   m_CompositeOperation: 0
   m_CompositeOrder: 0
   m_Offset: {x: 0, y: 0}
-  m_EdgeRadius: 0
-  m_Points:
-  - {x: -0.002303034, y: 0.28076681}
-  - {x: 0.48291665, y: 0}
-  - {x: -0.0028918264, y: -0.28171137}
-  - {x: -0.49086592, y: 0.0011966228}
-  - {x: -0.0022011404, y: 0.2811698}
-  m_AdjacentStartPoint: {x: 0, y: 0}
-  m_AdjacentEndPoint: {x: 0, y: 0}
-  m_UseAdjacentStartPoint: 0
-  m_UseAdjacentEndPoint: 0
+  m_Radius: 0.25
