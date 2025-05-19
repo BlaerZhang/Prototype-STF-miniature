@@ -10,7 +10,7 @@ GameObject:
   m_Component:
   - component: {fileID: 2918047400111188225}
   - component: {fileID: 3774539971523845301}
-  - component: {fileID: 5440937383107485717}
+  - component: {fileID: 6295435977595773499}
   m_Layer: 0
   m_Name: Simple Fog
   m_TagString: Fog
@@ -88,7 +88,7 @@ SpriteRenderer:
   m_WasSpriteAssigned: 1
   m_MaskInteraction: 0
   m_SpriteSortPoint: 0
---- !u!58 &5440937383107485717
+--- !u!58 &6295435977595773499
 CircleCollider2D:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -123,4 +123,4 @@ CircleCollider2D:
   m_CompositeOperation: 0
   m_CompositeOrder: 0
   m_Offset: {x: 0, y: 0}
-  m_Radius: 0.25
+  m_Radius: 0.24

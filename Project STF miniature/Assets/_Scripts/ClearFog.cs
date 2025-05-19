@@ -1,7 +1,7 @@
 using UnityEngine;
 using DG.Tweening;
 using JoostenProductions;
-
+using UnityEngine.InputSystem;
 public class ClearFog : OverridableMonoBehaviour
 {
     [Header("迷雾清除设置")]
@@ -9,6 +9,35 @@ public class ClearFog : OverridableMonoBehaviour
     [SerializeField] private float radiusRatio = 0.6f;    // 椭圆Y轴压缩比例
     [SerializeField] private float fadeTime = 0.5f;       // 淡出时间
     [SerializeField] private LayerMask fogLayer;          // 迷雾层
+    [SerializeField] private bool isPlayerMode = true;    // 是否为玩家模式
+
+    private Camera mainCamera;
+    private Mouse mouse;
+
+    private void Start()
+    {
+        mainCamera = Camera.main;
+        mouse = Mouse.current;
+    }
+
+    public override void UpdateMe()
+    {
+        if (!isPlayerMode && mouse.rightButton.wasPressedThisFrame) // 右键点击
+        {
+            HandleMouseClick();
+        }
+    }
+
+    private void HandleMouseClick()
+    {
+        Vector2 mousePosition = mainCamera.ScreenToWorldPoint(mouse.position.ReadValue());
+        Collider2D hitCollider = Physics2D.OverlapPoint(mousePosition, fogLayer);
+        
+        if (hitCollider != null && hitCollider.CompareTag("Fog"))
+        {
+            ClearFogObject(hitCollider.gameObject);
+        }
+    }
 
     private void OnDrawGizmosSelected()
     {
@@ -27,6 +56,8 @@ public class ClearFog : OverridableMonoBehaviour
 
     public override void FixedUpdateMe()
     {
+        if (!isPlayerMode) return; // 如果不是玩家模式，不执行自动清除
+
         // 获取范围内的所有碰撞体
         Collider2D[] colliders = Physics2D.OverlapCircleAll(transform.position, clearRadius, fogLayer);
 
