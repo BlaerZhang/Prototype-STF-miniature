@@ -15,6 +15,7 @@ public class AutoRunnerController : OverridableMonoBehaviour
     [SerializeField] private float brakeForce = 1500f;       // 刹车力量（比前进更强）
     [SerializeField] private float turnSpeed = 180f;         // 转向速度（度/秒）
     [SerializeField] private float frictionCoefficient = 500f; // 摩擦系数
+    private AttributePointSystem attributePointSystem;
     
     [Header("可选参数")]
     [SerializeField] private float dragCoefficient = 2f; // 拖拽系数
@@ -31,6 +32,7 @@ public class AutoRunnerController : OverridableMonoBehaviour
     {
         // 获取Rigidbody2D组件
         rb2D = GetComponent<Rigidbody2D>();
+        attributePointSystem = FindObjectsByType<AttributePointSystem>(FindObjectsSortMode.None)[0];
         
         if (rb2D == null)
         {
@@ -122,7 +124,7 @@ public class AutoRunnerController : OverridableMonoBehaviour
         if (horizontalInput > 0f)
         {
             // 前进：向前施加力
-            Vector2 forceDirection = transform.up * horizontalInput * acceleration;
+            Vector2 forceDirection = transform.up * horizontalInput * acceleration * (0.3f + attributePointSystem.GetAccelerationValue() * 0.7f / 20f);
             rb2D.AddForce(forceDirection * Time.fixedDeltaTime);
         }
         else if (horizontalInput < 0f)
@@ -135,7 +137,7 @@ public class AutoRunnerController : OverridableMonoBehaviour
             float forwardSpeed = Vector2.Dot(currentVelocity, forwardDirection);
             if (forwardSpeed > 0.1f)  // 有一定前进速度时才刹车
             {
-                Vector2 brakeDirection = -forwardDirection * Mathf.Abs(horizontalInput) * brakeForce;
+                Vector2 brakeDirection = -forwardDirection * Mathf.Abs(horizontalInput) * brakeForce * (0.3f + attributePointSystem.GetBrakingValue() * 0.7f / 20f);
                 rb2D.AddForce(brakeDirection * Time.fixedDeltaTime);
             }
         }
@@ -146,7 +148,7 @@ public class AutoRunnerController : OverridableMonoBehaviour
         if (rb2D == null) return;
         
         // 转向逻辑（不需要加速度，直接设置角速度）
-        float rotationAmount = -verticalInput * turnSpeed * Time.fixedDeltaTime;
+        float rotationAmount = -verticalInput * turnSpeed * (0.3f + attributePointSystem.GetSteeringValue() * 0.7f / 20f) * Time.fixedDeltaTime;
         transform.Rotate(0, 0, rotationAmount);
     }
     

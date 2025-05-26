@@ -36,6 +36,7 @@ public class TankAIController : OverridableMonoBehaviour
     private AutoRunnerController tankController;
     private bool isActive = false;
     private int currentWaypointIndex = 0;  // 当前目标knot索引
+    private AttributePointSystem attributePointSystem;
     
     // 当前目标位置
     private Vector3 currentTarget;
@@ -53,6 +54,7 @@ public class TankAIController : OverridableMonoBehaviour
     {
         // 获取坦克控制器组件
         tankController = GetComponent<AutoRunnerController>();
+        attributePointSystem = FindObjectsByType<AttributePointSystem>(FindObjectsSortMode.None)[0];
         
         if (tankController == null)
         {
@@ -113,7 +115,7 @@ public class TankAIController : OverridableMonoBehaviour
             rayOrigin, 
             tankWidth * 0.5f,  // 半径为坦克宽度的一半
             tankForward, 
-            visionDistance, 
+            visionDistance * (0.3f + attributePointSystem.GetVisionValue() * 0.7f / 20f), 
             obstacleLayerMask
         );
         
