@@ -1,5 +1,7 @@
 using UnityEngine;
 using System;
+using System.Collections.Generic;
+using System.Linq;
 
 [System.Serializable]
 public class AttributeData
@@ -56,19 +58,28 @@ public class AttributeData
 public class AttributePointSystem : MonoBehaviour
 {
     [Header("属性配置")]
-    [SerializeField] private AttributeData acceleration = new AttributeData("加速", 1, 10, 1);
-    [SerializeField] private AttributeData braking = new AttributeData("刹车", 1, 10, 1);
-    [SerializeField] private AttributeData vision = new AttributeData("视野", 1, 10, 1);
-    [SerializeField] private AttributeData steering = new AttributeData("转向", 1, 10, 1);
+    [SerializeField] private List<AttributeData> attributes = new List<AttributeData>();
     
     [Header("总点数限制（可选）")]
     [SerializeField] private bool useTotalPointsLimit = false;
     [SerializeField] private int totalPointsLimit = 20;
-    [SerializeField] private int currentTotalPoints = 4; // 初始总点数（4个属性各1点）
+    [SerializeField] private int currentTotalPoints = 0; // 初始总点数将根据初始属性计算
     
     // 事件：当属性值改变时触发
     public static event Action<string, int> OnAttributeChanged;
     public static event Action<int, int> OnTotalPointsChanged; // (当前点数, 最大点数)
+    
+    private void Awake()
+    {
+        // 如果没有属性，添加默认属性
+        if (attributes.Count == 0)
+        {
+            InitializeDefaultAttributes();
+        }
+        
+        // 计算当前总点数
+        RecalculateTotalPoints();
+    }
     
     private void Start()
     {
@@ -77,125 +88,146 @@ public class AttributePointSystem : MonoBehaviour
         UpdateTotalPointsEvent();
     }
     
-    #region 属性访问器
-    public AttributeData GetAcceleration() => acceleration;
-    public AttributeData GetBraking() => braking;
-    public AttributeData GetVision() => vision;
-    public AttributeData GetSteering() => steering;
+    // 初始化默认属性
+    private void InitializeDefaultAttributes()
+    {
+        attributes.Add(new AttributeData("Acceleration", 1, 20, 1));
+        attributes.Add(new AttributeData("Max Speed", 1, 20, 1));
+        attributes.Add(new AttributeData("Skill Cooldown", 1, 20, 1));
+        attributes.Add(new AttributeData("Energy Regen", 1, 20, 1));
+        attributes.Add(new AttributeData("Max Energy", 1, 20, 1));
+    }
     
-    public int GetAccelerationValue() => acceleration.currentValue;
-    public int GetBrakingValue() => braking.currentValue;
-    public int GetVisionValue() => vision.currentValue;
-    public int GetSteeringValue() => steering.currentValue;
+    // 重新计算当前总点数
+    private void RecalculateTotalPoints()
+    {
+        currentTotalPoints = attributes.Sum(attr => attr.currentValue);
+    }
+    
+    #region 属性管理
+    // 添加新属性
+    public bool AddAttribute(string name, int min = 1, int max = 10, int current = 1)
+    {
+        // 检查是否已存在同名属性
+        if (GetAttribute(name) != null)
+            return false;
+            
+        attributes.Add(new AttributeData(name, min, max, current));
+        
+        // 更新总点数
+        if (useTotalPointsLimit)
+        {
+            RecalculateTotalPoints();
+            UpdateTotalPointsEvent();
+        }
+        
+        OnAttributeChanged?.Invoke(name, current);
+        return true;
+    }
+    
+    // 移除属性
+    public bool RemoveAttribute(string name)
+    {
+        AttributeData attribute = GetAttribute(name);
+        if (attribute == null)
+            return false;
+            
+        attributes.Remove(attribute);
+        
+        // 更新总点数
+        if (useTotalPointsLimit)
+        {
+            RecalculateTotalPoints();
+            UpdateTotalPointsEvent();
+        }
+        
+        return true;
+    }
+    
+    // 通过名称获取属性
+    public AttributeData GetAttribute(string name)
+    {
+        return attributes.FirstOrDefault(a => a.attributeName == name);
+    }
+    
+    // 获取所有属性
+    public IReadOnlyList<AttributeData> GetAllAttributes()
+    {
+        return attributes.AsReadOnly();
+    }
+    
+    // 获取属性值
+    public int GetAttributeValue(string name)
+    {
+        AttributeData attribute = GetAttribute(name);
+        return attribute != null ? attribute.currentValue : 0;
+    }
+    
+    // 判断属性是否存在
+    public bool HasAttribute(string name)
+    {
+        return GetAttribute(name) != null;
+    }
     #endregion
     
     #region 属性修改方法
-    public bool IncreaseAcceleration()
+    // 增加属性值
+    public bool IncreaseAttribute(string name)
     {
-        if (CanIncreaseAttribute())
+        AttributeData attribute = GetAttribute(name);
+        if (attribute == null)
+            return false;
+            
+        if (!CanIncreaseAttribute())
+            return false;
+            
+        if (attribute.IncreaseValue())
         {
-            if (acceleration.IncreaseValue())
-            {
-                if (useTotalPointsLimit) currentTotalPoints++;
-                OnAttributeChanged?.Invoke("acceleration", acceleration.currentValue);
-                UpdateTotalPointsEvent();
-                return true;
-            }
-        }
-        return false;
-    }
-    
-    public bool DecreaseAcceleration()
-    {
-        if (acceleration.DecreaseValue())
-        {
-            if (useTotalPointsLimit) currentTotalPoints--;
-            OnAttributeChanged?.Invoke("acceleration", acceleration.currentValue);
+            if (useTotalPointsLimit) currentTotalPoints++;
+            OnAttributeChanged?.Invoke(name, attribute.currentValue);
             UpdateTotalPointsEvent();
             return true;
         }
+        
         return false;
     }
     
-    public bool IncreaseBraking()
+    // 减少属性值
+    public bool DecreaseAttribute(string name)
     {
-        if (CanIncreaseAttribute())
-        {
-            if (braking.IncreaseValue())
-            {
-                if (useTotalPointsLimit) currentTotalPoints++;
-                OnAttributeChanged?.Invoke("braking", braking.currentValue);
-                UpdateTotalPointsEvent();
-                return true;
-            }
-        }
-        return false;
-    }
-    
-    public bool DecreaseBraking()
-    {
-        if (braking.DecreaseValue())
+        AttributeData attribute = GetAttribute(name);
+        if (attribute == null)
+            return false;
+            
+        if (attribute.DecreaseValue())
         {
             if (useTotalPointsLimit) currentTotalPoints--;
-            OnAttributeChanged?.Invoke("braking", braking.currentValue);
+            OnAttributeChanged?.Invoke(name, attribute.currentValue);
             UpdateTotalPointsEvent();
             return true;
         }
+        
         return false;
     }
     
-    public bool IncreaseVision()
+    // 设置属性值
+    public bool SetAttributeValue(string name, int value)
     {
-        if (CanIncreaseAttribute())
+        AttributeData attribute = GetAttribute(name);
+        if (attribute == null)
+            return false;
+            
+        int oldValue = attribute.currentValue;
+        attribute.SetValue(value);
+        
+        if (useTotalPointsLimit)
         {
-            if (vision.IncreaseValue())
-            {
-                if (useTotalPointsLimit) currentTotalPoints++;
-                OnAttributeChanged?.Invoke("vision", vision.currentValue);
-                UpdateTotalPointsEvent();
-                return true;
-            }
-        }
-        return false;
-    }
-    
-    public bool DecreaseVision()
-    {
-        if (vision.DecreaseValue())
-        {
-            if (useTotalPointsLimit) currentTotalPoints--;
-            OnAttributeChanged?.Invoke("vision", vision.currentValue);
+            currentTotalPoints += (attribute.currentValue - oldValue);
             UpdateTotalPointsEvent();
-            return true;
         }
-        return false;
-    }
-    
-    public bool IncreaseSteering()
-    {
-        if (CanIncreaseAttribute())
-        {
-            if (steering.IncreaseValue())
-            {
-                if (useTotalPointsLimit) currentTotalPoints++;
-                OnAttributeChanged?.Invoke("steering", steering.currentValue);
-                UpdateTotalPointsEvent();
-                return true;
-            }
-        }
-        return false;
-    }
-    
-    public bool DecreaseSteering()
-    {
-        if (steering.DecreaseValue())
-        {
-            if (useTotalPointsLimit) currentTotalPoints--;
-            OnAttributeChanged?.Invoke("steering", steering.currentValue);
-            UpdateTotalPointsEvent();
-            return true;
-        }
-        return false;
+        
+        OnAttributeChanged?.Invoke(name, attribute.currentValue);
+        return true;
     }
     #endregion
     
@@ -208,10 +240,10 @@ public class AttributePointSystem : MonoBehaviour
     
     private void UpdateAllAttributeEvents()
     {
-        OnAttributeChanged?.Invoke("acceleration", acceleration.currentValue);
-        OnAttributeChanged?.Invoke("braking", braking.currentValue);
-        OnAttributeChanged?.Invoke("vision", vision.currentValue);
-        OnAttributeChanged?.Invoke("steering", steering.currentValue);
+        foreach (var attribute in attributes)
+        {
+            OnAttributeChanged?.Invoke(attribute.attributeName, attribute.currentValue);
+        }
     }
     
     private void UpdateTotalPointsEvent()
@@ -225,14 +257,14 @@ public class AttributePointSystem : MonoBehaviour
     // 重置所有属性到初始值
     public void ResetAllAttributes()
     {
-        acceleration.SetValue(1);
-        braking.SetValue(1);
-        vision.SetValue(1);
-        steering.SetValue(1);
+        foreach (var attribute in attributes)
+        {
+            attribute.SetValue(1);
+        }
         
         if (useTotalPointsLimit)
         {
-            currentTotalPoints = 4; // 4个属性各1点
+            currentTotalPoints = attributes.Count; // 每个属性1点
         }
         
         UpdateAllAttributeEvents();

@@ -18,6 +18,10 @@ public class AttributeUIGroup
     public Color normalButtonColor = Color.white;
     public Color disabledButtonColor = Color.gray;
     
+    // 跟踪是否已为此组设置了监听器
+    [System.NonSerialized]
+    public bool hasSetupListeners = false;
+    
     // 更新UI显示
     public void UpdateUI(int value, int minValue, int maxValue, bool canIncrease, bool canDecrease)
     {
@@ -25,7 +29,6 @@ public class AttributeUIGroup
         if (valueText != null)
         {
             valueText.text = value.ToString();
-            Debug.Log("valueText.text: " + valueText.text);
         }
         
         // 更新进度条
@@ -76,14 +79,19 @@ public class AttributeUIController : MonoBehaviour
     [SerializeField] private AudioClip decreaseSound;
     [SerializeField] private AudioClip errorSound;
     
+    [Header("动态UI创建（可选）")]
+    [SerializeField] private bool autoCreateUIForAttributes = false;
+    [SerializeField] private GameObject attributeUIPrefab;
+    [SerializeField] private Transform attributeUIContainer;
+    
+    [Header("调试")]
+    [SerializeField] private bool logDebugInfo = false;
+    
     // UI组件字典，用于快速查找
     private Dictionary<string, AttributeUIGroup> uiGroupDict = new Dictionary<string, AttributeUIGroup>();
     
     private void Start()
     {
-        InitializeUI();
-        SetupEventListeners();
-        
         // 如果没有手动指定属性系统，尝试自动查找
         if (attributeSystem == null)
         {
@@ -93,6 +101,17 @@ public class AttributeUIController : MonoBehaviour
                 Debug.LogError("AttributeUIController: 未找到AttributePointSystem组件！");
                 return;
             }
+        }
+        
+        InitializeUI();
+        SetupEventListeners();
+        
+        // 初始化UI显示
+        UpdateAllAttributeUI();
+        
+        if (logDebugInfo)
+        {
+            Debug.Log($"AttributeUIController: 初始化完成，UI组数量: {attributeUIGroups.Count}");
         }
     }
     
@@ -118,7 +137,7 @@ public class AttributeUIController : MonoBehaviour
         {
             if (!string.IsNullOrEmpty(group.attributeName))
             {
-                uiGroupDict[group.attributeName] = group;
+                uiGroupDict[group.attributeName.ToLower()] = group;
                 
                 // 设置属性名称文本
                 if (group.nameText != null && string.IsNullOrEmpty(group.nameText.text))
@@ -127,6 +146,67 @@ public class AttributeUIController : MonoBehaviour
                 }
             }
         }
+        
+        // 自动创建所有属性的UI（如果启用）
+        if (autoCreateUIForAttributes && attributeUIPrefab != null && attributeUIContainer != null)
+        {
+            CreateUIForAttributes();
+        }
+    }
+    
+    private void CreateUIForAttributes()
+    {
+        // 获取所有属性
+        var attributes = attributeSystem.GetAllAttributes();
+        
+        // 检查每个属性是否已有UI
+        foreach (var attribute in attributes)
+        {
+            if (!uiGroupDict.ContainsKey(attribute.attributeName.ToLower()))
+            {
+                // 为没有UI的属性创建UI
+                CreateUIForAttribute(attribute);
+            }
+        }
+    }
+    
+    private void CreateUIForAttribute(AttributeData attribute)
+    {
+        // 实例化UI预制体
+        GameObject uiObject = Instantiate(attributeUIPrefab, attributeUIContainer);
+        uiObject.name = $"UI_{attribute.attributeName}";
+        
+        // 查找并配置UI组件
+        AttributeUIGroup newGroup = new AttributeUIGroup();
+        newGroup.attributeName = attribute.attributeName;
+        
+        // 查找按钮和文本组件
+        newGroup.increaseButton = uiObject.transform.Find("IncreaseButton")?.GetComponent<Button>();
+        newGroup.decreaseButton = uiObject.transform.Find("DecreaseButton")?.GetComponent<Button>();
+        newGroup.valueText = uiObject.transform.Find("ValueText")?.GetComponent<TextMeshProUGUI>();
+        newGroup.nameText = uiObject.transform.Find("NameText")?.GetComponent<TextMeshProUGUI>();
+        newGroup.valueSlider = uiObject.transform.Find("ValueSlider")?.GetComponent<Slider>();
+        
+        // 设置名称文本
+        if (newGroup.nameText != null)
+        {
+            newGroup.nameText.text = attribute.attributeName;
+        }
+        
+        // 添加到列表和字典
+        attributeUIGroups.Add(newGroup);
+        uiGroupDict[attribute.attributeName.ToLower()] = newGroup;
+        
+        // 标记为未设置监听器，让SetupEventListeners处理
+        newGroup.hasSetupListeners = false;
+        
+        // 更新UI显示
+        UpdateAttributeUI(attribute.attributeName, newGroup);
+        
+        if (logDebugInfo)
+        {
+            Debug.Log($"AttributeUIController: 为属性 {attribute.attributeName} 创建UI成功");
+        }
     }
     
     private void SetupEventListeners()
@@ -134,24 +214,41 @@ public class AttributeUIController : MonoBehaviour
         // 为每个UI组设置按钮事件
         foreach (var group in attributeUIGroups)
         {
+            // 如果已经设置过监听器，则跳过
+            if (group.hasSetupListeners)
+                continue;
+                
             string attributeName = group.attributeName;
             
             // +按钮事件
             if (group.increaseButton != null)
             {
+                // 先移除所有已有的监听器，确保不会重复
+                group.increaseButton.onClick.RemoveAllListeners();
                 group.increaseButton.onClick.AddListener(() => OnIncreaseButtonClicked(attributeName));
             }
             
             // -按钮事件
             if (group.decreaseButton != null)
             {
+                // 先移除所有已有的监听器，确保不会重复
+                group.decreaseButton.onClick.RemoveAllListeners();
                 group.decreaseButton.onClick.AddListener(() => OnDecreaseButtonClicked(attributeName));
+            }
+            
+            // 标记为已设置监听器
+            group.hasSetupListeners = true;
+            
+            if (logDebugInfo)
+            {
+                Debug.Log($"AttributeUIController: 为属性 {attributeName} 设置按钮事件");
             }
         }
         
         // 重置按钮事件
         if (resetButton != null)
         {
+            resetButton.onClick.RemoveAllListeners();
             resetButton.onClick.AddListener(OnResetButtonClicked);
         }
     }
@@ -161,27 +258,13 @@ public class AttributeUIController : MonoBehaviour
     {
         if (attributeSystem == null) return;
         
-        bool success = false;
-        
-        switch (attributeName.ToLower())
+        if (logDebugInfo)
         {
-            case "acceleration":
-            case "加速":
-                success = attributeSystem.IncreaseAcceleration();
-                break;
-            case "braking":
-            case "刹车":
-                success = attributeSystem.IncreaseBraking();
-                break;
-            case "vision":
-            case "视野":
-                success = attributeSystem.IncreaseVision();
-                break;
-            case "steering":
-            case "转向":
-                success = attributeSystem.IncreaseSteering();
-                break;
+            Debug.Log($"AttributeUIController: 点击增加按钮 - 属性: {attributeName}");
         }
+        
+        // 使用通用方法增加属性值
+        bool success = attributeSystem.IncreaseAttribute(attributeName);
         
         // 播放音效
         PlaySound(success ? increaseSound : errorSound);
@@ -191,27 +274,13 @@ public class AttributeUIController : MonoBehaviour
     {
         if (attributeSystem == null) return;
         
-        bool success = false;
-        
-        switch (attributeName.ToLower())
+        if (logDebugInfo)
         {
-            case "acceleration":
-            case "加速":
-                success = attributeSystem.DecreaseAcceleration();
-                break;
-            case "braking":
-            case "刹车":
-                success = attributeSystem.DecreaseBraking();
-                break;
-            case "vision":
-            case "视野":
-                success = attributeSystem.DecreaseVision();
-                break;
-            case "steering":
-            case "转向":
-                success = attributeSystem.DecreaseSteering();
-                break;
+            Debug.Log($"AttributeUIController: 点击减少按钮 - 属性: {attributeName}");
         }
+        
+        // 使用通用方法减少属性值
+        bool success = attributeSystem.DecreaseAttribute(attributeName);
         
         // 播放音效
         PlaySound(success ? decreaseSound : errorSound);
@@ -221,6 +290,11 @@ public class AttributeUIController : MonoBehaviour
     {
         if (attributeSystem != null)
         {
+            if (logDebugInfo)
+            {
+                Debug.Log("AttributeUIController: 点击重置按钮");
+            }
+            
             attributeSystem.ResetAllAttributes();
             PlaySound(decreaseSound); // 使用减少音效作为重置音效
         }
@@ -232,19 +306,16 @@ public class AttributeUIController : MonoBehaviour
     {
         if (attributeSystem == null) return;
         
+        if (logDebugInfo)
+        {
+            Debug.Log($"AttributeUIController: 属性值变化 - {attributeName}: {newValue}");
+        }
+        
         // 更新对应的UI组
-        if (uiGroupDict.TryGetValue(attributeName, out AttributeUIGroup uiGroup))
+        string lowerName = attributeName.ToLower();
+        if (uiGroupDict.TryGetValue(lowerName, out AttributeUIGroup uiGroup))
         {
             UpdateAttributeUI(attributeName, uiGroup);
-        }
-        else
-        {
-            // 尝试中文名称匹配
-            string chineseName = GetChineseAttributeName(attributeName);
-            if (uiGroupDict.TryGetValue(chineseName, out uiGroup))
-            {
-                UpdateAttributeUI(attributeName, uiGroup);
-            }
         }
     }
     
@@ -262,6 +333,14 @@ public class AttributeUIController : MonoBehaviour
             int remaining = maxPoints - currentPoints;
             remainingPointsText.text = $"Remaining Points: {remaining}";
         }
+        
+        if (logDebugInfo)
+        {
+            Debug.Log($"AttributeUIController: 总点数变化 - 当前: {currentPoints}, 最大: {maxPoints}");
+        }
+        
+        // 因为总点数变化可能影响所有属性的可增加状态，更新所有UI
+        UpdateAllAttributeUI();
     }
     #endregion
     
@@ -270,7 +349,7 @@ public class AttributeUIController : MonoBehaviour
     {
         if (attributeSystem == null) return;
         
-        AttributeData attributeData = GetAttributeData(attributeName);
+        AttributeData attributeData = attributeSystem.GetAttribute(attributeName);
         if (attributeData == null) return;
         
         // 检查是否可以增加/减少
@@ -278,7 +357,7 @@ public class AttributeUIController : MonoBehaviour
         bool canDecrease = attributeData.currentValue > attributeData.minValue;
         
         // 如果使用总点数限制，还需要检查剩余点数
-        if (attributeSystem.GetRemainingPoints() <= 0)
+        if (!attributeSystem.HasRemainingPoints())
         {
             canIncrease = false;
         }
@@ -293,32 +372,21 @@ public class AttributeUIController : MonoBehaviour
         );
     }
     
-    private AttributeData GetAttributeData(string attributeName)
+    private void UpdateAllAttributeUI()
     {
-        switch (attributeName.ToLower())
+        if (attributeSystem == null) return;
+        
+        // 获取所有属性
+        var attributes = attributeSystem.GetAllAttributes();
+        
+        // 更新每个属性的UI
+        foreach (var attribute in attributes)
         {
-            case "acceleration":
-                return attributeSystem.GetAcceleration();
-            case "braking":
-                return attributeSystem.GetBraking();
-            case "vision":
-                return attributeSystem.GetVision();
-            case "steering":
-                return attributeSystem.GetSteering();
-            default:
-                return null;
-        }
-    }
-    
-    private string GetChineseAttributeName(string englishName)
-    {
-        switch (englishName.ToLower())
-        {
-            case "acceleration": return "加速";
-            case "braking": return "刹车";
-            case "vision": return "视野";
-            case "steering": return "转向";
-            default: return englishName;
+            string lowerName = attribute.attributeName.ToLower();
+            if (uiGroupDict.TryGetValue(lowerName, out AttributeUIGroup uiGroup))
+            {
+                UpdateAttributeUI(attribute.attributeName, uiGroup);
+            }
         }
     }
     
@@ -334,20 +402,27 @@ public class AttributeUIController : MonoBehaviour
     [ContextMenu("刷新所有UI")]
     public void RefreshAllUI()
     {
-        if (attributeSystem == null) return;
+        UpdateAllAttributeUI();
         
-        OnAttributeValueChanged("acceleration", attributeSystem.GetAccelerationValue());
-        OnAttributeValueChanged("braking", attributeSystem.GetBrakingValue());
-        OnAttributeValueChanged("vision", attributeSystem.GetVisionValue());
-        OnAttributeValueChanged("steering", attributeSystem.GetSteeringValue());
-        
+        // 更新总点数
+        if (attributeSystem != null)
+        {
+            int totalPoints = 0;
+            int maxPoints = 0;
+            
+            // 这里假设GetRemainingPoints方法返回int.MaxValue表示没有限制
         if (attributeSystem.GetRemainingPoints() != int.MaxValue)
         {
-            OnTotalPointsChanged(
-                attributeSystem.GetAccelerationValue() + attributeSystem.GetBrakingValue() + 
-                attributeSystem.GetVisionValue() + attributeSystem.GetSteeringValue(),
-                20 // 这里应该从attributeSystem获取，但当前没有公开接口
-            );
+                // 计算已使用点数和总点数
+                var attributes = attributeSystem.GetAllAttributes();
+                foreach (var attribute in attributes)
+                {
+                    totalPoints += attribute.currentValue;
+                }
+                
+                maxPoints = totalPoints + attributeSystem.GetRemainingPoints();
+                OnTotalPointsChanged(totalPoints, maxPoints);
+            }
         }
     }
     #endregion

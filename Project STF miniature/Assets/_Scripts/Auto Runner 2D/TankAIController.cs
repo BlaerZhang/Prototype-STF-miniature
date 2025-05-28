@@ -115,7 +115,7 @@ public class TankAIController : OverridableMonoBehaviour
             rayOrigin, 
             tankWidth * 0.5f,  // 半径为坦克宽度的一半
             tankForward, 
-            visionDistance * (0.3f + attributePointSystem.GetVisionValue() * 0.7f / 20f), 
+            visionDistance * (0.3f + attributePointSystem.GetAttribute("Vision").currentValue * 0.7f / 20f), 
             obstacleLayerMask
         );
         

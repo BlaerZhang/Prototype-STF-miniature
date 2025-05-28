@@ -28,6 +28,7 @@ public class Skill
     [System.NonSerialized] public bool isOnCooldown = false;       // 是否在冷却中
     [System.NonSerialized] public float remainingDuration = 0f;    // 剩余持续时间
     [System.NonSerialized] public float remainingCooldown = 0f;    // 剩余冷却时间
+    [System.NonSerialized] public float currentCooldownModifier = 1f; // 当前冷却修饰符
     
     /// <summary>
     /// 动画参数类型
@@ -78,6 +79,18 @@ public class Skill
     /// </summary>
     public void UpdateSkill()
     {
+        UpdateSkill(1f);
+    }
+    
+    /// <summary>
+    /// 更新技能状态（每帧调用）
+    /// </summary>
+    /// <param name="cooldownModifier">冷却时间修饰符 (小于1加速冷却)</param>
+    public void UpdateSkill(float cooldownModifier)
+    {
+        // 保存当前的冷却修饰符用于UI显示
+        currentCooldownModifier = cooldownModifier;
+        
         // 更新持续时间
         if (isActive)
         {
@@ -88,10 +101,10 @@ public class Skill
             }
         }
         
-        // 更新冷却时间
+        // 更新冷却时间（应用修饰符）
         if (isOnCooldown)
         {
-            remainingCooldown -= Time.deltaTime;
+            remainingCooldown -= Time.deltaTime * (1f / Mathf.Max(0.1f, cooldownModifier));
             if (remainingCooldown <= 0f)
             {
                 isOnCooldown = false;
@@ -127,5 +140,15 @@ public class Skill
         isOnCooldown = false;
         remainingDuration = 0f;
         remainingCooldown = 0f;
+    }
+    
+    /// <summary>
+    /// 获取用于UI显示的剩余冷却时间
+    /// </summary>
+    public float GetDisplayRemainingCooldown()
+    {
+        if (!isOnCooldown) return 0f;
+        // 应用冷却修饰符来计算显示时间
+        return remainingCooldown * currentCooldownModifier;
     }
 } 

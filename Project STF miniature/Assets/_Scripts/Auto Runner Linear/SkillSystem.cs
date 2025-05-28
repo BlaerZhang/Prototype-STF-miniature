@@ -16,6 +16,9 @@ public class SkillSystem : MonoBehaviour
     
     [Header("精力系统")]
     [SerializeField] private EnergySystem energySystem = new EnergySystem();
+
+    [Header("加点系统")]
+    [SerializeField] private AttributePointSystem attributePointSystem;
     
     [Header("动画控制")]
     [SerializeField] private Animator characterAnimator;
@@ -95,6 +98,18 @@ public class SkillSystem : MonoBehaviour
         // 更新精力系统
         energySystem.UpdateEnergy();
         
+        // 获取技能冷却时间属性值
+        float cooldownModifier = 1f;
+        if (attributePointSystem != null)
+        {
+            AttributeData cooldownAttribute = attributePointSystem.GetAttribute("Skill Cooldown");
+            if (cooldownAttribute != null)
+            {
+                // 冷却值越高，冷却时间越短，最大可减少到原来的75%
+                cooldownModifier = 1f - (0.75f * cooldownAttribute.GetProgressPercent());
+            }
+        }
+        
         // 更新所有技能
         foreach (var skill in skills)
         {
@@ -102,7 +117,8 @@ public class SkillSystem : MonoBehaviour
             bool wasOnCooldown = skill.isOnCooldown;
             float previousCooldown = skill.remainingCooldown;
             
-            skill.UpdateSkill();
+            // 应用冷却修饰符
+            skill.UpdateSkill(cooldownModifier);
             
             // 检查技能状态变化
             if (wasActive && !skill.isActive)
@@ -320,7 +336,19 @@ public class SkillSystem : MonoBehaviour
         // 初始化精力条
         if (energySlider != null)
         {
-            energySlider.maxValue = energySystem.MaxEnergy;
+            // 计算有效最大精力
+            float effectiveMaxEnergy = energySystem.MaxEnergy;
+            if (attributePointSystem != null)
+            {
+                AttributeData maxEnergyAttr = attributePointSystem.GetAttribute("Max Energy");
+                if (maxEnergyAttr != null)
+                {
+                    float maxEnergyModifier = 1f + maxEnergyAttr.GetProgressPercent();
+                    effectiveMaxEnergy *= maxEnergyModifier;
+                }
+            }
+            
+            energySlider.maxValue = effectiveMaxEnergy;
             energySlider.value = energySystem.CurrentEnergy;
         }
         
@@ -342,6 +370,20 @@ public class SkillSystem : MonoBehaviour
         // 更新精力条
         if (energySlider != null)
         {
+            // 计算有效最大精力
+            float effectiveMaxEnergy = energySystem.MaxEnergy;
+            if (attributePointSystem != null)
+            {
+                AttributeData maxEnergyAttr = attributePointSystem.GetAttribute("Max Energy");
+                if (maxEnergyAttr != null)
+                {
+                    float maxEnergyModifier = 1f + maxEnergyAttr.GetProgressPercent();
+                    effectiveMaxEnergy *= maxEnergyModifier;
+                }
+            }
+            
+            // 更新滑动条的最大值和当前值
+            energySlider.maxValue = effectiveMaxEnergy;
             energySlider.value = energySystem.CurrentEnergy;
         }
         
@@ -503,7 +545,7 @@ public class SkillUIElement
                 if (cooldownText != null)
                 {
                     cooldownText.gameObject.SetActive(true);
-                    cooldownText.text = Mathf.Ceil(skill.remainingCooldown).ToString();
+                    cooldownText.text = Mathf.Ceil(skill.GetDisplayRemainingCooldown()).ToString();
                 }
             }
             else

@@ -13,9 +13,12 @@ public class EnergySystem
     [SerializeField] private float energyRegenRate = 5f;       // 精力回复速度（每秒）
     [SerializeField] private float currentEnergy = 100f;       // 当前精力值
     
+    [Header("加点系统")]
+    [SerializeField] private AttributePointSystem attributePointSystem;  // 属性点系统
+    
     [Header("调试信息")]
     [SerializeField] private bool showDebugInfo = true;        // 是否显示调试信息
-    
+
     // 事件
     public Action<float, float> OnEnergyChanged;    // 精力变化事件 (当前精力, 最大精力)
     public Action OnEnergyEmpty;                    // 精力耗尽事件
@@ -47,19 +50,46 @@ public class EnergySystem
     /// </summary>
     public void UpdateEnergy()
     {
-        // 自动回复精力
-        if (currentEnergy < maxEnergy)
+        // 获取属性加成
+        float regenModifier = 1f;
+        float maxEnergyModifier = 1f;
+        
+        if (attributePointSystem != null)
+        {
+            // 获取能量恢复属性
+            AttributeData energyRegenAttr = attributePointSystem.GetAttribute("Energy Regen");
+            if (energyRegenAttr != null)
+            {
+                // 恢复值越高，恢复速度越快，最高可增加100%
+                regenModifier = 1f + energyRegenAttr.GetProgressPercent();
+            }
+            
+            // 获取最大能量属性
+            AttributeData maxEnergyAttr = attributePointSystem.GetAttribute("Max Energy");
+            if (maxEnergyAttr != null)
+            {
+                // 最大能量值越高，最大能量越大，最高可增加100%
+                maxEnergyModifier = 1f + maxEnergyAttr.GetProgressPercent();
+            }
+        }
+        
+        // 计算当前最大能量
+        float effectiveMaxEnergy = maxEnergy * maxEnergyModifier;
+        
+        // 自动回复精力（应用属性加成）
+        if (currentEnergy < effectiveMaxEnergy)
         {
             float previousEnergy = currentEnergy;
-            currentEnergy = Mathf.Min(currentEnergy + energyRegenRate * Time.deltaTime, maxEnergy);
+            float effectiveRegenRate = energyRegenRate * regenModifier;
+            currentEnergy = Mathf.Min(currentEnergy + effectiveRegenRate * Time.deltaTime, effectiveMaxEnergy);
             
             // 触发事件
             if (Mathf.Abs(currentEnergy - previousEnergy) > 0.01f)
             {
-                OnEnergyChanged?.Invoke(currentEnergy, maxEnergy);
+                OnEnergyChanged?.Invoke(currentEnergy, effectiveMaxEnergy);
                 
                 // 检查是否达到满值
-                if (IsFull && !Mathf.Approximately(previousEnergy, maxEnergy))
+                if (currentEnergy >= effectiveMaxEnergy && previousEnergy < effectiveMaxEnergy)
                 {
                     OnEnergyFull?.Invoke();
                     if (showDebugInfo)
@@ -250,5 +280,13 @@ public class EnergySystem
         {
             Debug.Log("精力系统已重置");
         }
+    }
+    
+    /// <summary>
+    /// 设置属性系统引用
+    /// </summary>
+    public void SetAttributeSystem(AttributePointSystem aps)
+    {
+        attributePointSystem = aps;
     }
 } 
