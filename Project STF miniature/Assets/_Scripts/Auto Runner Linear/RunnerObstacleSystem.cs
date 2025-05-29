@@ -274,6 +274,12 @@ public class RunnerObstacleSystem : MonoBehaviour
         isInObstacleEffect = true;
         currentObstacleEffect = ObstacleEffectType.Slowing;
         obstacleEffectEndTime = Time.time + slowingEffectDuration;
+
+        // 设置减速动画
+        if (effectsManager != null)
+        {
+            effectsManager.StartSlowingAnimation();
+        }
         
         if (debugMode)
         {
@@ -294,6 +300,12 @@ public class RunnerObstacleSystem : MonoBehaviour
         isInObstacleEffect = false;
         currentObstacleEffect = ObstacleEffectType.None;
         obstacleEffectEndTime = 0f;
+
+        // 重置减速动画
+        if (effectsManager != null)
+        {
+            effectsManager.ResetSlowingAnimation();
+        }
         
         // 重新开始加速
         if (runnerController != null)

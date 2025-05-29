@@ -4,12 +4,13 @@ using System.Linq;
 using DG.Tweening;
 using TMPro;
 using UnityEngine.InputSystem;
+using JoostenProductions;
 
 /// <summary>
 /// 技能系统管理器
 /// 管理所有技能的激活、冷却和动画控制
 /// </summary>
-public class SkillSystem : MonoBehaviour
+public class SkillSystem : OverridableMonoBehaviour
 {
     [Header("技能列表")]
     [SerializeField] private List<Skill> skills = new List<Skill>();
@@ -50,7 +51,7 @@ public class SkillSystem : MonoBehaviour
         keyboardInput = Keyboard.current;
     }
     
-    void Update()
+    public override void UpdateMe()
     {
         UpdateSkillSystem();
         HandleDebugInput();

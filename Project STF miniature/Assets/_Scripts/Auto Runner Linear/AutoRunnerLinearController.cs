@@ -1,6 +1,7 @@
 using UnityEngine;
 using JoostenProductions;
 using System.Collections.Generic;
+using UnityEngine.InputSystem;
 
 /// <summary>
 /// 高级3D自动跑酷控制器
@@ -162,7 +163,14 @@ public class AutoRunnerLinearController : OverridableMonoBehaviour
     
     public override void UpdateMe()
     {
-        if (!isRunning) return;
+        if (!isRunning) 
+        {
+            if (Keyboard.current[Key.Space].wasPressedThisFrame)
+            {
+                StartRunning();
+            }
+            return;
+        }
         
         UpdateSpeed();
         MoveCharacter();

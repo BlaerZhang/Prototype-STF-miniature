@@ -10,6 +10,7 @@ public class RunnerEffectsManager : MonoBehaviour
     [SerializeField] private string speedParameterName = "Speed"; // 速度参数名
     [SerializeField] private string isRunningParameterName = "IsRunning"; // 是否跑步参数名
     [SerializeField] private string stumbleAnimationTrigger = "Stumble"; // 踉跄动画触发器名称
+    [SerializeField] private string slowingAnimationBool = "isSlowing"; // 减速动画bool值名称
     [SerializeField] private float animationSpeedMultiplier = 1f; // 动画速度倍数
     
     [Header("音效设置")]
@@ -239,6 +240,28 @@ public class RunnerEffectsManager : MonoBehaviour
             {
                 Debug.LogWarning($"触发踉跄动画失败: {stumbleAnimationTrigger}, 错误: {e.Message}");
             }
+        }
+    }
+
+    /// <summary>
+    /// 播放减速动画
+    /// </summary>
+    public void StartSlowingAnimation()
+    {
+        if (characterAnimator != null && !string.IsNullOrEmpty(slowingAnimationBool))
+        {
+            characterAnimator.SetBool(slowingAnimationBool, true);
+        }
+    }
+
+    /// <summary>
+    /// 重置减速动画
+    /// </summary>
+    public void ResetSlowingAnimation()
+    {
+        if (characterAnimator != null && !string.IsNullOrEmpty(slowingAnimationBool))
+        {
+            characterAnimator.SetBool(slowingAnimationBool, false);
         }
     }
     

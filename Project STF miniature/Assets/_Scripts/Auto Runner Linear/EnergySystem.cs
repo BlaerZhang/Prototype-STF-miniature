@@ -13,12 +13,12 @@ public class EnergySystem
     [SerializeField] private float energyRegenRate = 5f;       // 精力回复速度（每秒）
     [SerializeField] private float currentEnergy = 100f;       // 当前精力值
     
-    [Header("加点系统")]
+    [Header("属性系统")]
     [SerializeField] private AttributePointSystem attributePointSystem;  // 属性点系统
     
     [Header("调试信息")]
     [SerializeField] private bool showDebugInfo = true;        // 是否显示调试信息
-
+    
     // 事件
     public Action<float, float> OnEnergyChanged;    // 精力变化事件 (当前精力, 最大精力)
     public Action OnEnergyEmpty;                    // 精力耗尽事件
@@ -60,16 +60,16 @@ public class EnergySystem
             AttributeData energyRegenAttr = attributePointSystem.GetAttribute("Energy Regen");
             if (energyRegenAttr != null)
             {
-                // 恢复值越高，恢复速度越快，最高可增加100%
-                regenModifier = 1f + energyRegenAttr.GetProgressPercent();
+                // 恢复值越高，恢复速度越快，最高可增加200%
+                regenModifier = 1f + energyRegenAttr.GetProgressPercent() * 2f;
             }
             
             // 获取最大能量属性
             AttributeData maxEnergyAttr = attributePointSystem.GetAttribute("Max Energy");
             if (maxEnergyAttr != null)
             {
-                // 最大能量值越高，最大能量越大，最高可增加100%
-                maxEnergyModifier = 1f + maxEnergyAttr.GetProgressPercent();
+                // 最大能量值越高，最大能量越大，最高可增加50%
+                maxEnergyModifier = 1f + maxEnergyAttr.GetProgressPercent() * 0.5f;
             }
         }
         
