@@ -1,0 +1,155 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 541db86164bf8d94186354d3c69695d7, type: 3}
+  m_Name: ItemData
+  m_EditorClassIdentifier: 
+  items:
+  - itemId: 01
+    itemName: Apple
+    traits: 0700000002000000
+    icon: {fileID: 21300000, guid: 0336dff0095286544b14a435faabad56, type: 3}
+    description: Think different
+  - itemId: 02
+    itemName: Bandage
+    traits: 0000000006000000
+    icon: {fileID: 21300000, guid: b98f9c30b11da9c43a5b1489ed37b580, type: 3}
+    description: 
+  - itemId: 03
+    itemName: Popcorn
+    traits: 0500000007000000
+    icon: {fileID: 21300000, guid: 955161921fd600e4dbf3824adeeab0f4, type: 3}
+    description: 
+  - itemId: 04
+    itemName: Boba
+    traits: 0500000008000000
+    icon: {fileID: 21300000, guid: af0fd9c0f48960e468a5d8bf2caec841, type: 3}
+    description: 
+  - itemId: 05
+    itemName: Fishing Rod
+    traits: 060000000400000009000000
+    icon: {fileID: 21300000, guid: ac019c7f338e3bc4f8f660d0f4be4bdb, type: 3}
+    description: 
+  - itemId: 06
+    itemName: Foot Binding
+    traits: 0100000000000000
+    icon: {fileID: 21300000, guid: cf529ee48b4800146b143bf2f8854659, type: 3}
+    description: 
+  - itemId: 07
+    itemName: Ladder
+    traits: 0300000009000000
+    icon: {fileID: 21300000, guid: 59eaa7036da24354c928b13e99a956a8, type: 3}
+    description: 
+  - itemId: 08
+    itemName: Hammer
+    traits: 0900000001000000
+    icon: {fileID: 21300000, guid: e04984c04112ee842a497efcce7fc03d, type: 3}
+    description: 
+  - itemId: 09
+    itemName: Pumpkin Lantern
+    traits: 0500000009000000
+    icon: {fileID: 21300000, guid: 2e88444ee24f8c141ab95cb0c0919073, type: 3}
+    description: 
+  - itemId: 10
+    itemName: Booster
+    traits: 0600000002000000
+    icon: {fileID: 21300000, guid: 2fae0eb60b0a94943a0c2e05af3eb223, type: 3}
+    description: 
+  - itemId: 11
+    itemName: Canned Fish
+    traits: 0700000006000000
+    icon: {fileID: 21300000, guid: 132a775a7dd205b4e85ac690a9cf30dc, type: 3}
+    description: 
+  - itemId: 12
+    itemName: Carabiner
+    traits: 000000000300000009000000
+    icon: {fileID: 21300000, guid: 17a21bf6568c5ce44bf8cda5906dd7f0, type: 3}
+    description: 
+  - itemId: 13
+    itemName: Tea Pot
+    traits: 0800000004000000
+    icon: {fileID: 21300000, guid: 26cae1c56374eb14ea90290b30161476, type: 3}
+    description: 
+  - itemId: 14
+    itemName: Shears
+    traits: 0100000009000000
+    icon: {fileID: 21300000, guid: ecf68e9c269bcba42b451cefb8865b90, type: 3}
+    description: 
+  - itemId: 15
+    itemName: Cookie
+    traits: 0500000002000000
+    icon: {fileID: 21300000, guid: 8541f4ef8fc142744ac8b06467f98769, type: 3}
+    description: 
+  - itemId: 16
+    itemName: Watering Can
+    traits: 080000000400000002000000
+    icon: {fileID: 21300000, guid: 7f79f36de45605a44ac30262dced457c, type: 3}
+    description: 
+  - itemId: 17
+    itemName: Someone's Foot
+    traits: 0600000001000000
+    icon: {fileID: 3871960850478099088, guid: 2e1432d1ba6930e4f8d1e77bf063d195, type: 3}
+    description: 
+  - itemId: 18
+    itemName: Bunny Slippers
+    traits: 0500000004000000
+    icon: {fileID: -7915605829917377408, guid: 5fd164f253ac6c74d8e47c8738b1b5f7, type: 3}
+    description: 
+  - itemId: 19
+    itemName: Cowboy Boot
+    traits: 0900000001000000
+    icon: {fileID: -1684502010937826369, guid: d6d30f9d69c7f6c4e9ddbd5e9094b596, type: 3}
+    description: 
+  - itemId: 20
+    itemName: Ice Skate
+    traits: 080000000100000005000000
+    icon: {fileID: -645697205197981306, guid: 893adede81be59345951fce670810210, type: 3}
+    description: 
+  - itemId: 21
+    itemName: Swim Fins
+    traits: 080000000000000009000000
+    icon: {fileID: 5162628112339429813, guid: 2a2bd23c91fc59d49811412d3ce48dae, type: 3}
+    description: 
+  - itemId: 22
+    itemName: Salt
+    traits: 0200000006000000
+    icon: {fileID: 21300000, guid: efed3cbeb03cdec4a95c37775027d171, type: 3}
+    description: 
+  - itemId: 23
+    itemName: Roller Skate
+    traits: 0100000005000000
+    icon: {fileID: -1316750696768038797, guid: f766826286c1d4242bf1f10be08f9bba, type: 3}
+    description: 
+  - itemId: 24
+    itemName: Flip Flops
+    traits: 0400000005000000
+    icon: {fileID: 2208248899624386230, guid: 78154edf25044ba44a126deb2389227f, type: 3}
+    description: 
+  - itemId: 25
+    itemName: Knot
+    traits: 0600000003000000
+    icon: {fileID: 21300000, guid: d3e1ad3f0e8664d4c84c5ca3bd99584e, type: 3}
+    description: 
+  - itemId: 26
+    itemName: Honey
+    traits: 020000000700000008000000
+    icon: {fileID: 21300000, guid: 5bc65589948b2a546b4f4b41ebe737f8, type: 3}
+    description: 
+  - itemId: 27
+    itemName: Coffee
+    traits: 0800000000000000
+    icon: {fileID: 21300000, guid: 042a01581c581db49b2619e215685839, type: 3}
+    description: 
+  - itemId: 28
+    itemName: Chocolate
+    traits: 080000000700000001000000
+    icon: {fileID: 21300000, guid: 4b4d7abc9a39883438cc5cde5628ad88, type: 3}
+    description: 
