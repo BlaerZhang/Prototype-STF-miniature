@@ -15,5 +15,8 @@ namespace TemuGameplay.Data
         Food,           // 食物
         Water,          // 水
         Tool,           // 工具
+        Medic,
+        Booster,
+        Movement,
     }
 } 

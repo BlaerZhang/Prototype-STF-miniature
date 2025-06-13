@@ -157,14 +157,17 @@ namespace TemuGameplay.UI
             {
                 case TraitType.Hiking: return new Color(0.4f, 0.8f, 0.4f, 1f); // 绿色
                 case TraitType.Running: return new Color(0.8f, 0.4f, 0.4f, 1f); // 红色
-                case TraitType.Nutrition: return new Color(0.4f, 0.4f, 0.8f, 1f); // 蓝色
-                case TraitType.Climbing: return new Color(0.6f, 0.4f, 0.2f, 1f); // 棕色
-                case TraitType.Sitting: return new Color(0.7f, 0.7f, 0.7f, 1f); // 浅灰
+                case TraitType.Nutrition: return new Color(0.4f, 0.4f, 0.4f, 1f); // 深灰色
+                case TraitType.Climbing: return new Color(0.6f, 0.6f, 1f, 1f); // 深蓝色
+                case TraitType.Sitting: return new Color(1f, 0.6f, 0.6f, 1f); // 粉红
                 case TraitType.Entertainment: return new Color(1f, 0.8f, 0.2f, 1f); // 金色
                 case TraitType.Survival: return new Color(0.8f, 0.6f, 0.2f, 1f); // 橙黄
                 case TraitType.Food: return new Color(1f, 0.6f, 0.6f, 1f); // 粉红
                 case TraitType.Water: return new Color(0.3f, 0.7f, 1f, 1f); // 水蓝
-                case TraitType.Tool: return new Color(0.8f, 0.8f, 0.2f, 1f); // 黄色
+                case TraitType.Tool: return new Color(0.8f, 0.8f, 0.8f, 1f); // 深灰色
+                case TraitType.Medic: return new Color(0.8f, 0.2f, 0.2f, 1f); // 十字架红
+                case TraitType.Booster: return new Color(0.8f, 0.8f, 0.2f, 1f); // 电浆绿
+                case TraitType.Movement: return new Color(0.8f, 0.2f, 0.8f, 1f); // 亮黄色
                 default: return Color.white;
             }
         }

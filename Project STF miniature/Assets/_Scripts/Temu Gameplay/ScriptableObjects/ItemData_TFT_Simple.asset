@@ -1,0 +1,75 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 541db86164bf8d94186354d3c69695d7, type: 3}
+  m_Name: ItemData_TFT_Simple
+  m_EditorClassIdentifier: 
+  items:
+  - itemId: 01
+    itemName: Burger
+    traits: 0c00000007000000
+    icon: {fileID: 21300000, guid: 8165bd4cb7b83a54580639d3716b2fd6, type: 3}
+    description: 
+  - itemId: 03
+    itemName: Canned Fish
+    traits: 0600000007000000
+    icon: {fileID: 21300000, guid: 132a775a7dd205b4e85ac690a9cf30dc, type: 3}
+    description: 
+  - itemId: 04
+    itemName: Smore
+    traits: 0400000007000000
+    icon: {fileID: 21300000, guid: 4f3287faee2165146910a9b5cba3721b, type: 3}
+    description: 
+  - itemId: 06
+    itemName: Tea
+    traits: 04000000070000000a000000
+    icon: {fileID: 21300000, guid: 26cae1c56374eb14ea90290b30161476, type: 3}
+    description: 
+  - itemId: 07
+    itemName: Plaster
+    traits: 0c0000000a000000
+    icon: {fileID: 21300000, guid: cf529ee48b4800146b143bf2f8854659, type: 3}
+    description: 
+  - itemId: 09
+    itemName: Antibionic
+    traits: 060000000a000000
+    icon: {fileID: 21300000, guid: 1594ed6cc21c1d94fbe02802766a59ed, type: 3}
+    description: 
+  - itemId: 10
+    itemName: Ointment
+    traits: 040000000a000000
+    icon: {fileID: 21300000, guid: 14e23134be535a14e93435c1c551a439, type: 3}
+    description: 
+  - itemId: 11
+    itemName: Defibrillator
+    traits: 060000000a00000009000000
+    icon: {fileID: 21300000, guid: 262ed9f82886cf142a81208e969fb0ad, type: 3}
+    description: 
+  - itemId: 17
+    itemName: Roller Skate
+    traits: 0c00000009000000
+    icon: {fileID: -1316750696768038797, guid: f766826286c1d4242bf1f10be08f9bba, type: 3}
+    description: 
+  - itemId: 19
+    itemName: Swiss Knife
+    traits: 0600000009000000
+    icon: {fileID: 21300000, guid: 727512c853dfda9488138cd544f20dd0, type: 3}
+    description: 
+  - itemId: 20
+    itemName: Fishing Rod
+    traits: 0400000009000000
+    icon: {fileID: 21300000, guid: ac019c7f338e3bc4f8f660d0f4be4bdb, type: 3}
+    description: 
+  - itemId: 21
+    itemName: Candy Cane
+    traits: 0c0000000700000009000000
+    icon: {fileID: 21300000, guid: 6603a1598f159b142a4d0b741e4fd209, type: 3}
+    description: 
