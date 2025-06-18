@@ -147,7 +147,8 @@ TextureImporter:
     secondaryTextures: []
     spriteCustomMetadata:
       entries: []
-    nameFileIdTable: {}
+    nameFileIdTable:
+      nailed-foot_0: -6042269920341470534
   mipmapLimitGroupName: 
   pSDRemoveMatte: 0
   userData: 

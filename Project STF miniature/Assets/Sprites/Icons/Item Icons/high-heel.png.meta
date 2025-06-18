@@ -147,7 +147,8 @@ TextureImporter:
     secondaryTextures: []
     spriteCustomMetadata:
       entries: []
-    nameFileIdTable: {}
+    nameFileIdTable:
+      high-heel_0: 580430147401932112
   mipmapLimitGroupName: 
   pSDRemoveMatte: 0
   userData: 

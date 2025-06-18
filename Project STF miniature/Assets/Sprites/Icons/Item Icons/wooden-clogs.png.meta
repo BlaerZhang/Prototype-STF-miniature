@@ -147,7 +147,8 @@ TextureImporter:
     secondaryTextures: []
     spriteCustomMetadata:
       entries: []
-    nameFileIdTable: {}
+    nameFileIdTable:
+      wooden-clogs_0: 2796207114196846297
   mipmapLimitGroupName: 
   pSDRemoveMatte: 0
   userData: 

@@ -147,7 +147,8 @@ TextureImporter:
     secondaryTextures: []
     spriteCustomMetadata:
       entries: []
-    nameFileIdTable: {}
+    nameFileIdTable:
+      lost-limb_0: 3871960850478099088
   mipmapLimitGroupName: 
   pSDRemoveMatte: 0
   userData: 

@@ -2,6 +2,7 @@ using UnityEngine;
 using TMPro;
 using System.Linq;
 using TemuGameplay.Data;
+using UnityEngine.InputSystem;
 
 namespace TemuGameplay.UI
 {
@@ -22,6 +23,16 @@ namespace TemuGameplay.UI
             }
             
             ClearDisplay();
+        }
+
+        private void Update()
+        {
+            // follow mouse X position when active
+            if (detailPanel.activeSelf)
+            {
+                Vector2 mousePos = Mouse.current.position.ReadValue();
+                detailPanel.transform.position = new Vector3(mousePos.x, detailPanel.transform.position.y, detailPanel.transform.position.z);
+            }
         }
 
         public void ShowItemDetail(Item item)

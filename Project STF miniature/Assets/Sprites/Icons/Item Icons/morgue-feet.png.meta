@@ -147,7 +147,8 @@ TextureImporter:
     secondaryTextures: []
     spriteCustomMetadata:
       entries: []
-    nameFileIdTable: {}
+    nameFileIdTable:
+      morgue-feet_0: 5854491624694196964
   mipmapLimitGroupName: 
   pSDRemoveMatte: 0
   userData: 

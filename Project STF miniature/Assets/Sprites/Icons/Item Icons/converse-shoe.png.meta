@@ -147,7 +147,8 @@ TextureImporter:
     secondaryTextures: []
     spriteCustomMetadata:
       entries: []
-    nameFileIdTable: {}
+    nameFileIdTable:
+      converse-shoe_0: -419419609568797404
   mipmapLimitGroupName: 
   pSDRemoveMatte: 0
   userData: 

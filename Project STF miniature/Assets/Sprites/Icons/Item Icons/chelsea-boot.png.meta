@@ -147,7 +147,8 @@ TextureImporter:
     secondaryTextures: []
     spriteCustomMetadata:
       entries: []
-    nameFileIdTable: {}
+    nameFileIdTable:
+      chelsea-boot_0: -4980173801555852919
   mipmapLimitGroupName: 
   pSDRemoveMatte: 0
   userData: 

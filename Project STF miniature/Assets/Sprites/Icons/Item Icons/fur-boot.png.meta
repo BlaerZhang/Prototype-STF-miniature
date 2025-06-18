@@ -147,7 +147,8 @@ TextureImporter:
     secondaryTextures: []
     spriteCustomMetadata:
       entries: []
-    nameFileIdTable: {}
+    nameFileIdTable:
+      fur-boot_0: 7653646006113291092
   mipmapLimitGroupName: 
   pSDRemoveMatte: 0
   userData: 

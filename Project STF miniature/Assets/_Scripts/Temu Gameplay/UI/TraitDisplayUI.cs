@@ -86,6 +86,7 @@ namespace TemuGameplay.UI
             objectiveLines.Add($"Objective: {level.LevelName}");
             objectiveLines.Add(""); // Empty line
 
+            // 显示普通要求
             foreach (var requirement in level.RequiredTraits)
             {
                 string traitName = GetTraitDisplayName(requirement.Key);
@@ -100,6 +101,29 @@ namespace TemuGameplay.UI
                 string statusIcon = currentCount >= requirement.Value ? "√" : "×";
                 string line = $"{statusIcon}{traitName}: {currentCount}/{requirement.Value}";
                 objectiveLines.Add(line);
+            }
+
+            // 显示金色要求
+            if (level.GoldenRequirements != null && level.GoldenRequirements.Count > 0)
+            {
+                objectiveLines.Add(""); // Empty line
+                objectiveLines.Add("Golden Requirements:");
+
+                foreach (var goldenReq in level.GoldenRequirements)
+                {
+                    string traitName = GetTraitDisplayName(goldenReq.Key);
+                    int currentCount = 0;
+                    
+                    if (gameplayManager?.CurrentSet?.TraitCounters?.ContainsKey(goldenReq.Key) == true)
+                    {
+                        currentCount = gameplayManager.CurrentSet.TraitCounters[goldenReq.Key].CurrentCount;
+                    }
+
+                    // Golden requirements use different icons and formatting
+                    string statusIcon = currentCount >= goldenReq.Value ? "✨" : "🔸";
+                    string line = $"{statusIcon}<color=#FFD700>{traitName}: {currentCount}/{goldenReq.Value} (Heal +10)</color>";
+                    objectiveLines.Add(line);
+                }
             }
 
             levelObjectiveText.text = string.Join("\n", objectiveLines);

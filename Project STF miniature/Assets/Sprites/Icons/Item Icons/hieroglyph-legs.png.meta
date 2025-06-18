@@ -147,7 +147,8 @@ TextureImporter:
     secondaryTextures: []
     spriteCustomMetadata:
       entries: []
-    nameFileIdTable: {}
+    nameFileIdTable:
+      hieroglyph-legs_0: -7053421049830865167
   mipmapLimitGroupName: 
   pSDRemoveMatte: 0
   userData: 

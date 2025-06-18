@@ -147,7 +147,8 @@ TextureImporter:
     secondaryTextures: []
     spriteCustomMetadata:
       entries: []
-    nameFileIdTable: {}
+    nameFileIdTable:
+      tabi-boot_0: -2534393188508058576
   mipmapLimitGroupName: 
   pSDRemoveMatte: 0
   userData: 

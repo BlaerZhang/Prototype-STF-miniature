@@ -147,7 +147,8 @@ TextureImporter:
     secondaryTextures: []
     spriteCustomMetadata:
       entries: []
-    nameFileIdTable: {}
+    nameFileIdTable:
+      ski-boot_0: -5942120229394253398
   mipmapLimitGroupName: 
   pSDRemoveMatte: 0
   userData: 

@@ -147,7 +147,8 @@ TextureImporter:
     secondaryTextures: []
     spriteCustomMetadata:
       entries: []
-    nameFileIdTable: {}
+    nameFileIdTable:
+      wooden-pegleg_0: -4694025591628695277
   mipmapLimitGroupName: 
   pSDRemoveMatte: 0
   userData: 

@@ -147,7 +147,8 @@ TextureImporter:
     secondaryTextures: []
     spriteCustomMetadata:
       entries: []
-    nameFileIdTable: {}
+    nameFileIdTable:
+      leather-boot_0: 5334577110283994756
   mipmapLimitGroupName: 
   pSDRemoveMatte: 0
   userData: 

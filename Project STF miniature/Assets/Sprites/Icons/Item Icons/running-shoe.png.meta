@@ -147,7 +147,8 @@ TextureImporter:
     secondaryTextures: []
     spriteCustomMetadata:
       entries: []
-    nameFileIdTable: {}
+    nameFileIdTable:
+      running-shoe_0: -3907782666050386449
   mipmapLimitGroupName: 
   pSDRemoveMatte: 0
   userData: 

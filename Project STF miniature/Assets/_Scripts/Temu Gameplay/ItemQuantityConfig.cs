@@ -11,9 +11,19 @@ namespace TemuGameplay
     /// </summary>
     public class ItemQuantityConfig : MonoBehaviour
     {
+        [System.Serializable]
+        public enum QuantityMode
+        {
+            Global,     // 全局设置：所有物品使用相同数量
+            Individual, // 单独设置：只使用列表中配置的物品
+            Mixed       // 混合设置：有配置的物品使用单独设置，其余使用全局设置
+        }
+
+        [Header("数量配置模式")]
+        [SerializeField] private QuantityMode quantityMode = QuantityMode.Mixed;
+        
         [Header("全局数量设置")]
         [SerializeField] private int defaultMaxQuantity = 3;
-        [SerializeField] private bool useGlobalSetting = false;
         
         [Header("单个物品数量配置")]
         [SerializeField] private List<ItemQuantitySetting> itemQuantities = new List<ItemQuantitySetting>();
@@ -58,18 +68,20 @@ namespace TemuGameplay
                 return;
             }
 
-            if (useGlobalSetting)
+            switch (quantityMode)
             {
-                // 使用全局设置
-                ApplyGlobalQuantitySettings();
-            }
-            else
-            {
-                // 使用单个物品设置
-                ApplyIndividualQuantitySettings();
+                case QuantityMode.Global:
+                    ApplyGlobalQuantitySettings();
+                    break;
+                case QuantityMode.Individual:
+                    ApplyIndividualQuantitySettings();
+                    break;
+                case QuantityMode.Mixed:
+                    ApplyMixedQuantitySettings();
+                    break;
             }
 
-            Debug.Log($"Applied quantity settings to {gameplayManager.ItemDatabase.AllItems.Count} items");
+            Debug.Log($"Applied quantity settings to {gameplayManager.ItemDatabase.AllItems.Count} items using {quantityMode} mode");
             
             // 触发UI更新
             if (gameplayManager != null)
@@ -108,6 +120,44 @@ namespace TemuGameplay
                     Debug.LogWarning($"Item not found: {setting.itemId} ({setting.itemName})");
                 }
             }
+        }
+
+        private void ApplyMixedQuantitySettings()
+        {
+            var database = gameplayManager.ItemDatabase;
+            var allItems = database.AllItems;
+            var configuredItemIds = new HashSet<string>();
+            
+            // 首先应用单个物品配置
+            foreach (var setting in itemQuantities)
+            {
+                var item = database.GetItem(setting.itemId);
+                if (item != null)
+                {
+                    item.SetMaxQuantity(setting.maxQuantity);
+                    item.SetCurrentQuantity(setting.currentQuantity);
+                    configuredItemIds.Add(setting.itemId);
+                    
+                    Debug.Log($"[个性化] Set {item.ItemName}: {setting.currentQuantity}/{setting.maxQuantity}");
+                }
+                else
+                {
+                    Debug.LogWarning($"Item not found: {setting.itemId} ({setting.itemName})");
+                }
+            }
+            
+            // 然后对未配置的物品应用全局设置
+            int globallySetCount = 0;
+            foreach (var item in allItems)
+            {
+                if (!configuredItemIds.Contains(item.ItemId))
+                {
+                    item.SetMaxQuantity(defaultMaxQuantity);
+                    globallySetCount++;
+                }
+            }
+            
+            Debug.Log($"[混合设置] 个性化配置: {configuredItemIds.Count} 个物品, 全局配置: {globallySetCount} 个物品 (默认数量: {defaultMaxQuantity})");
         }
 
         #region Context Menu Methods
@@ -179,36 +229,59 @@ namespace TemuGameplay
 
             Debug.Log("=== 当前物品数量 ===");
             var allItems = gameplayManager.ItemDatabase.AllItems;
+            var configuredItems = new HashSet<string>();
+            
+            // 收集已配置的物品ID
+            foreach (var setting in itemQuantities)
+            {
+                configuredItems.Add(setting.itemId);
+            }
+            
             foreach (var item in allItems)
             {
                 string status = item.IsAvailable ? "✅" : "❌";
-                Debug.Log($"{status} {item.ItemName}: {item.CurrentQuantity}/{item.MaxQuantity}");
+                string configType = "";
+                
+                if (quantityMode == QuantityMode.Mixed)
+                {
+                    configType = configuredItems.Contains(item.ItemId) ? "[个性化]" : "[全局]";
+                }
+                
+                Debug.Log($"{status} {configType} {item.ItemName}: {item.CurrentQuantity}/{item.MaxQuantity}");
             }
         }
         #endregion
 
         #region Preset Configurations
-        [ContextMenu("Apply Preset: Low Stock")]
+        [ContextMenu("Apply Preset: Low Stock (Global)")]
         public void ApplyPresetLowStock()
         {
             defaultMaxQuantity = 2;
-            useGlobalSetting = true;
+            quantityMode = QuantityMode.Global;
             if (Application.isPlaying) ApplyQuantitySettings();
         }
 
-        [ContextMenu("Apply Preset: Medium Stock")]
+        [ContextMenu("Apply Preset: Medium Stock (Global)")]
         public void ApplyPresetMediumStock()
         {
             defaultMaxQuantity = 5;
-            useGlobalSetting = true;
+            quantityMode = QuantityMode.Global;
             if (Application.isPlaying) ApplyQuantitySettings();
         }
 
-        [ContextMenu("Apply Preset: High Stock")]
+        [ContextMenu("Apply Preset: High Stock (Global)")]
         public void ApplyPresetHighStock()
         {
             defaultMaxQuantity = 10;
-            useGlobalSetting = true;
+            quantityMode = QuantityMode.Global;
+            if (Application.isPlaying) ApplyQuantitySettings();
+        }
+
+        [ContextMenu("Apply Preset: Mixed Default")]
+        public void ApplyPresetMixedDefault()
+        {
+            defaultMaxQuantity = 3;
+            quantityMode = QuantityMode.Mixed;
             if (Application.isPlaying) ApplyQuantitySettings();
         }
         #endregion
@@ -220,19 +293,25 @@ namespace TemuGameplay
             Debug.Log(@"
 === 物品数量配置帮助 ===
 
+配置模式:
+1. Global (全局): 所有物品使用相同的默认数量
+2. Individual (单独): 只有列表中配置的物品会被设置，其他物品保持原样
+3. Mixed (混合): 列表中的物品使用单独配置，其余物品使用全局设置 ⭐推荐
+
 设置方法:
-1. 全局设置: 勾选 'Use Global Setting'，所有物品使用相同数量
-2. 单独设置: 取消勾选，在 'Item Quantities' 列表中单独配置每个物品
+- 选择配置模式
+- 设置默认最大数量 (用于全局或混合模式)
+- 在列表中添加需要特殊配置的物品 (用于单独或混合模式)
 
 快捷操作:
 - 右键 → 'Auto Fill Item List': 自动填充当前所有物品
-- 右键 → 'Apply Preset': 应用预设配置 (低/中/高库存)
-- 右键 → 'Show Current Quantities': 显示当前数量状态
+- 右键 → 'Apply Preset': 应用预设配置
+- 右键 → 'Show Current Quantities': 显示当前数量状态 (混合模式会标注配置类型)
 
 注意事项:
 - Item ID 必须与数据库中的物品ID完全匹配
+- 混合模式最灵活，可以对重要物品单独配置，其他使用默认值
 - 修改后需要重新运行或点击 'Apply Quantity Settings'
-- 运行时的修改会立即生效
 ");
         }
     }

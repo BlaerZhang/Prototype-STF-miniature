@@ -4,6 +4,7 @@ using System.Linq;
 using UnityEngine;
 using TemuGameplay.Data;
 using TemuGameplay.ScriptableObjects;
+using UnityEngine.InputSystem;
 
 namespace TemuGameplay.Core
 {
@@ -23,14 +24,20 @@ namespace TemuGameplay.Core
         [Header("Level Generation")]
         [SerializeField] private LevelGenerationMode levelMode = LevelGenerationMode.ScriptableObject;
         [SerializeField] private RandomLevelSettings randomSettings = new RandomLevelSettings();
+        
+        [Header("Golden Requirements")]
+        [SerializeField] private float goldenRequirementChance = 0.3f; // 30% 概率生成金色要求
+        [SerializeField] private int goldenHealAmount = 10; // 金色要求恢复的血量
 
         private ItemDatabase itemDatabase;
         private PlayerSet currentSet;
         private LevelRequirement currentLevel;
+        private HealthSystem healthSystem;
 
         public ItemDatabase ItemDatabase => itemDatabase;
         public PlayerSet CurrentSet => currentSet;
         public LevelRequirement CurrentLevel => currentLevel;
+        public HealthSystem HealthSystem => healthSystem;
 
         public event Action<bool> OnLevelSubmitted; // 提交验证结果事件
         public event Action<LevelRequirement> OnLevelChanged;
@@ -41,11 +48,30 @@ namespace TemuGameplay.Core
             Initialize();
         }
 
+        private void Update()
+        {
+            // 按R键重新生成关卡
+            if (Keyboard.current.rKey.wasPressedThisFrame)
+            {
+                RerollRequirements();
+            }
+        }
+
         private void Initialize()
         {
             // 初始化数据库和玩家集合
             itemDatabase = new ItemDatabase();
             currentSet = new PlayerSet(defaultMaxSetSize);
+
+            // 初始化血量系统
+            healthSystem = FindObjectOfType<HealthSystem>();
+            if (healthSystem == null)
+            {
+                // 如果没找到现有的血量系统，创建一个
+                GameObject healthObj = new GameObject("HealthSystem");
+                healthObj.transform.SetParent(transform);
+                healthSystem = healthObj.AddComponent<HealthSystem>();
+            }
 
             // 从ScriptableObject加载数据，如果没有则使用示例数据
             if (itemDataSO != null)
@@ -148,6 +174,9 @@ namespace TemuGameplay.Core
             currentLevel.AddRequirement(req.Key, req.Value);
         }
         
+        // 生成金色要求
+        GenerateGoldenRequirements(selectedTraits);
+        
         OnLevelChanged?.Invoke(currentLevel);
         // 移除自动验证，等待手动提交
         
@@ -220,6 +249,17 @@ namespace TemuGameplay.Core
                 currentSet.SetMaxSetSize(currentLevelConfig.MaxSetSize);
             }
             
+            // 为ScriptableObject关卡也生成金色要求
+            var availableTraits = new List<TraitType>();
+            foreach (var req in currentLevelConfig.Requirements)
+            {
+                if (!availableTraits.Contains(req.traitType))
+                {
+                    availableTraits.Add(req.traitType);
+                }
+            }
+            GenerateGoldenRequirements(availableTraits);
+            
             OnLevelChanged?.Invoke(currentLevel);
             // 移除自动验证，等待手动提交
             
@@ -272,6 +312,10 @@ namespace TemuGameplay.Core
             currentLevel = new LevelRequirement("Tutorial Level");
             currentLevel.AddRequirement(TraitType.Hiking, 2);
             currentLevel.AddRequirement(TraitType.Running, 1);
+
+            // 生成金色要求
+            var defaultTraits = new List<TraitType> { TraitType.Hiking, TraitType.Running };
+            GenerateGoldenRequirements(defaultTraits);
 
             OnLevelChanged?.Invoke(currentLevel);
             // 移除自动验证，等待手动提交
@@ -360,25 +404,52 @@ namespace TemuGameplay.Core
             }
 
             bool isValid = ValidateCurrentSet();
-            OnLevelSubmitted?.Invoke(isValid);
+
+            // 总是消耗选中的物品，无论是否满足条件
+            ConsumeSelectedItems();
 
             if (isValid)
             {
                 Debug.Log("🎉 Level completed successfully!");
                 
-                // 成功时消耗选中物品的数量
-                ConsumeSelectedItems();
+                // 成功时也要检查金色要求并恢复血量
+                ProcessGoldenRequirements();
                 
+                OnLevelSubmitted?.Invoke(true);
                 OnLevelCompleted();
                 return true;
             }
             else
             {
+                // 先计算并扣除血量
+                int damage = 0;
+                if (healthSystem != null)
+                {
+                    damage = healthSystem.CalculateDamageFromUnmetRequirements(
+                        currentLevel.RequiredTraits, 
+                        currentSet.TraitCounters
+                    );
+                    
+                    if (damage > 0)
+                    {
+                        healthSystem.TakeDamage(damage);
+                        Debug.Log($"💀 Took {damage} damage for unmet requirements!");
+                    }
+                }
+
+                // 然后处理金色要求恢复血量（这样可以抵消部分伤害）
+                ProcessGoldenRequirements();
+
                 var unmet = GetUnmetRequirements();
                 if (unmet.Count > 0)
                 {
                     Debug.Log($"❌ Requirements not met: {string.Join(", ", unmet)}");
                 }
+                
+                OnLevelSubmitted?.Invoke(false);
+                
+                // 失败后也要清空选择并刷新关卡
+                OnLevelCompleted();
                 return false;
             }
         }
@@ -526,6 +597,110 @@ namespace TemuGameplay.Core
         {
             OnItemQuantitiesChanged?.Invoke();
         }
+
+        /// <summary>
+        /// 重新生成关卡要求 (按R键触发)
+        /// </summary>
+        public void RerollRequirements()
+        {
+            if (!Application.isPlaying) return;
+
+            // 清空当前选择
+            currentSet.ClearSet();
+
+            // 根据当前模式重新生成
+            switch (levelMode)
+            {
+                case LevelGenerationMode.RandomGeneration:
+                    GenerateRandomLevel();
+                    Debug.Log("🎲 Rerolled random requirements (Press R)");
+                    break;
+
+                case LevelGenerationMode.ScriptableObject:
+                    if (currentLevelConfig != null)
+                    {
+                        LoadLevelFromScriptableObject();
+                        Debug.Log("🔄 Reloaded ScriptableObject level (Press R)");
+                    }
+                    else
+                    {
+                        SetupDefaultLevel();
+                        Debug.Log("🔄 Reloaded default level (Press R)");
+                    }
+                    break;
+
+                default:
+                    SetupDefaultLevel();
+                    break;
+            }
+        }
+
+        /// <summary>
+        /// 生成金色要求
+        /// </summary>
+        private void GenerateGoldenRequirements(List<TraitType> availableTraits)
+        {
+            if (currentLevel == null || availableTraits.Count == 0) return;
+
+            // 根据概率决定是否生成金色要求
+            if (UnityEngine.Random.Range(0f, 1f) <= goldenRequirementChance)
+            {
+                // 随机选择一个trait作为金色要求
+                var goldenTrait = availableTraits[UnityEngine.Random.Range(0, availableTraits.Count)];
+                int goldenCount = UnityEngine.Random.Range(1, 3); // 1-2个数量要求
+
+                currentLevel.AddGoldenRequirement(goldenTrait, goldenCount);
+                Debug.Log($"✨ Generated golden requirement: {goldenTrait} x{goldenCount} (Heal +{goldenHealAmount})");
+            }
+        }
+
+        /// <summary>
+        /// 处理金色要求，满足的话恢复血量
+        /// </summary>
+        private void ProcessGoldenRequirements()
+        {
+            if (currentLevel == null || healthSystem == null) 
+            {
+                Debug.Log("ProcessGoldenRequirements: currentLevel or healthSystem is null");
+                return;
+            }
+
+            // 调试：显示当前金色要求
+            if (currentLevel.GoldenRequirements != null && currentLevel.GoldenRequirements.Count > 0)
+            {
+                Debug.Log($"🔍 Current golden requirements: {string.Join(", ", currentLevel.GoldenRequirements)}");
+                Debug.Log($"🔍 Current trait counters: {string.Join(", ", currentSet.TraitCounters.Select(kvp => $"{kvp.Key}:{kvp.Value.CurrentCount}"))}");
+            }
+
+            var metGoldenRequirements = currentLevel.CheckGoldenRequirements(currentSet.TraitCounters);
+            
+            if (metGoldenRequirements.Count > 0)
+            {
+                int totalHeal = metGoldenRequirements.Count * goldenHealAmount;
+                int healthBefore = healthSystem.CurrentHealth;
+                int maxHealth = healthSystem.MaxHealth;
+                
+                healthSystem.Heal(totalHeal);
+                
+                int healthAfter = healthSystem.CurrentHealth;
+                int actualHealed = healthAfter - healthBefore;
+                
+                string traitsList = string.Join(", ", metGoldenRequirements);
+                
+                if (actualHealed < totalHeal)
+                {
+                    Debug.Log($"✨ Golden requirements met: {traitsList} - Attempted to heal {totalHeal}, actually healed {actualHealed} (was capped at max health {maxHealth}) ({healthBefore} -> {healthAfter})");
+                }
+                else
+                {
+                    Debug.Log($"✨ Golden requirements met: {traitsList} - Healed {totalHeal} health! ({healthBefore} -> {healthAfter})");
+                }
+            }
+            else
+            {
+                Debug.Log("🔍 No golden requirements met this turn");
+            }
+        }
         
         #region Context Menu Methods (Inspector调试用)
         [ContextMenu("Reset All Item Quantities")]
@@ -582,6 +757,43 @@ namespace TemuGameplay.Core
             {
                 Debug.Log("只能在运行时设置物品数量");
             }
+        }
+        
+        [ContextMenu("Debug Golden Requirements")]
+        public void DebugGoldenRequirements()
+        {
+            if (!Application.isPlaying)
+            {
+                Debug.Log("请在运行时使用调试功能");
+                return;
+            }
+            
+            if (currentLevel == null)
+            {
+                Debug.Log("❌ No current level");
+                return;
+            }
+            
+            Debug.Log("=== Golden Requirements Debug ===");
+            
+            if (currentLevel.GoldenRequirements == null || currentLevel.GoldenRequirements.Count == 0)
+            {
+                Debug.Log("❌ No golden requirements in current level");
+            }
+            else
+            {
+                Debug.Log($"✨ Golden requirements ({currentLevel.GoldenRequirements.Count}):");
+                foreach (var golden in currentLevel.GoldenRequirements)
+                {
+                    int currentCount = currentSet.TraitCounters.ContainsKey(golden.Key) 
+                        ? currentSet.TraitCounters[golden.Key].CurrentCount : 0;
+                    bool isMet = currentCount >= golden.Value;
+                    string status = isMet ? "✅ MET" : "❌ NOT MET";
+                    Debug.Log($"  {golden.Key}: {currentCount}/{golden.Value} {status}");
+                }
+            }
+            
+            Debug.Log($"Health System: {(healthSystem != null ? $"{healthSystem.CurrentHealth}/{healthSystem.MaxHealth}" : "NULL")}");
         }
         #endregion
     }

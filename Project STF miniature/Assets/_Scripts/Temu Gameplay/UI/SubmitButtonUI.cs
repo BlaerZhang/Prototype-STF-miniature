@@ -117,7 +117,23 @@ namespace TemuGameplay.UI
         private void ShowSuccess()
         {
             UpdateButtonText(successText);
-            ShowFeedback("🎉 Level Completed!", Color.green);
+            
+            string feedbackMessage = "🎉 Level Completed!";
+            
+            // 检查是否有金色要求被满足
+            if (gameplayManager.CurrentLevel != null)
+            {
+                var metGoldenRequirements = gameplayManager.CurrentLevel.CheckGoldenRequirements(
+                    gameplayManager.CurrentSet.TraitCounters
+                );
+                
+                if (metGoldenRequirements.Count > 0)
+                {
+                    feedbackMessage += $"\n✨ Golden bonus: +{metGoldenRequirements.Count * 10} health!";
+                }
+            }
+            
+            ShowFeedback(feedbackMessage, Color.green);
             
             // 短暂延迟后重置按钮文本
             Invoke(nameof(ResetButtonText), 1f);
@@ -127,13 +143,43 @@ namespace TemuGameplay.UI
         {
             UpdateButtonText(failText);
             
-            // 获取未满足的要求
+            // 获取未满足的要求和扣除的血量信息
             var unmetRequirements = gameplayManager.GetUnmetRequirements();
             string feedbackMessage = "❌ Requirements not met:";
+            
             if (unmetRequirements.Count > 0)
             {
                 feedbackMessage += "\n" + string.Join("\n", unmetRequirements);
             }
+            
+            // 显示扣血信息
+            if (gameplayManager.HealthSystem != null)
+            {
+                int damage = gameplayManager.HealthSystem.CalculateDamageFromUnmetRequirements(
+                    gameplayManager.CurrentLevel.RequiredTraits, 
+                    gameplayManager.CurrentSet.TraitCounters
+                );
+                
+                if (damage > 0)
+                {
+                    feedbackMessage += $"\n💀 Health lost: {damage}";
+                }
+            }
+            
+            // 检查金色要求奖励
+            if (gameplayManager.CurrentLevel != null)
+            {
+                var metGoldenRequirements = gameplayManager.CurrentLevel.CheckGoldenRequirements(
+                    gameplayManager.CurrentSet.TraitCounters
+                );
+                
+                if (metGoldenRequirements.Count > 0)
+                {
+                    feedbackMessage += $"\n✨ Golden bonus: +{metGoldenRequirements.Count * 10} health!";
+                }
+            }
+            
+            feedbackMessage += "\n📦 Items consumed anyway!";
             
             ShowFeedback(feedbackMessage, Color.red);
             

@@ -73,3 +73,8 @@ MonoBehaviour:
     traits: 0c0000000700000009000000
     icon: {fileID: 21300000, guid: 6603a1598f159b142a4d0b741e4fd209, type: 3}
     description: 
+  - itemId: 22
+    itemName: Compressed Disgustive Biscuit
+    traits: 06000000070000000a00000009000000
+    icon: {fileID: 21300000, guid: 9e9a08c7e9da45f4d9c8f5e27884104e, type: 3}
+    description: 

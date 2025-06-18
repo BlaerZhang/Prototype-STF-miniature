@@ -147,7 +147,8 @@ TextureImporter:
     secondaryTextures: []
     spriteCustomMetadata:
       entries: []
-    nameFileIdTable: {}
+    nameFileIdTable:
+      sticky-boot_0: -7071019499457783280
   mipmapLimitGroupName: 
   pSDRemoveMatte: 0
   userData: 

@@ -147,7 +147,8 @@ TextureImporter:
     secondaryTextures: []
     spriteCustomMetadata:
       entries: []
-    nameFileIdTable: {}
+    nameFileIdTable:
+      sonic-shoes_0: 8482908543927168598
   mipmapLimitGroupName: 
   pSDRemoveMatte: 0
   userData: 

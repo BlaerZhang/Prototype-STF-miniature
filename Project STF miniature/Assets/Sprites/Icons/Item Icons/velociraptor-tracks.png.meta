@@ -147,7 +147,8 @@ TextureImporter:
     secondaryTextures: []
     spriteCustomMetadata:
       entries: []
-    nameFileIdTable: {}
+    nameFileIdTable:
+      velociraptor-tracks_0: -716304668936764675
   mipmapLimitGroupName: 
   pSDRemoveMatte: 0
   userData: 

@@ -147,7 +147,8 @@ TextureImporter:
     secondaryTextures: []
     spriteCustomMetadata:
       entries: []
-    nameFileIdTable: {}
+    nameFileIdTable:
+      bunny-slippers_0: -7915605829917377408
   mipmapLimitGroupName: 
   pSDRemoveMatte: 0
   userData: 

@@ -147,7 +147,8 @@ TextureImporter:
     secondaryTextures: []
     spriteCustomMetadata:
       entries: []
-    nameFileIdTable: {}
+    nameFileIdTable:
+      achilles-heel_0: -2709153799936810629
   mipmapLimitGroupName: 
   pSDRemoveMatte: 0
   userData: 

@@ -147,7 +147,8 @@ TextureImporter:
     secondaryTextures: []
     spriteCustomMetadata:
       entries: []
-    nameFileIdTable: {}
+    nameFileIdTable:
+      steeltoe-boots_0: -2252791993131303061
   mipmapLimitGroupName: 
   pSDRemoveMatte: 0
   userData: 

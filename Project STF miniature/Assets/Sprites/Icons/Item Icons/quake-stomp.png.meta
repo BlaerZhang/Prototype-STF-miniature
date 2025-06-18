@@ -147,7 +147,8 @@ TextureImporter:
     secondaryTextures: []
     spriteCustomMetadata:
       entries: []
-    nameFileIdTable: {}
+    nameFileIdTable:
+      quake-stomp_0: -7781265678017683076
   mipmapLimitGroupName: 
   pSDRemoveMatte: 0
   userData: 
