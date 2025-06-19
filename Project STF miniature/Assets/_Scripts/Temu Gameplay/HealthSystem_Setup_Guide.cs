@@ -46,9 +46,10 @@ namespace TemuGameplay
    - HealthUI右键菜单：Test Damage Animation, Refresh Preview
 
 扣血计算公式：
-- 每个未满足的trait：差值 × 伤害倍数
+- 每个未满足的trait：要求数量 × 伤害倍数（部分满足视为不满足）
 - 多个trait累加扣血
-- 例：需要3个Running，只有1个 → (3-1) × 5 = 10点伤害
+- 例：需要3个Running，只有1个 → 3 × 5 = 15点伤害（完整扣血）
+- 例：需要3个Running，有3个或更多 → 0点伤害（完全满足）
 
 金色要求系统：
 - 随机生成概率：可在GameplayManager中设置

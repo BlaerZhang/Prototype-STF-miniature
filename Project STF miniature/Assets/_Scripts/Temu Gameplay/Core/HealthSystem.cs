@@ -111,6 +111,7 @@ namespace TemuGameplay.Core
 
         /// <summary>
         /// 根据未满足的trait要求计算应扣除的血量
+        /// 规则：部分满足视为不满足，扣除完整要求数量对应的血量
         /// </summary>
         public int CalculateDamageFromUnmetRequirements(System.Collections.Generic.Dictionary<Data.TraitType, int> requirements, 
                                                       System.Collections.Generic.Dictionary<Data.TraitType, Data.TraitCounter> currentCounts)
@@ -125,13 +126,20 @@ namespace TemuGameplay.Core
                 
                 if (currentCount < requiredCount)
                 {
-                    int difference = requiredCount - currentCount;
-                    int damage = Mathf.RoundToInt(difference * damageMultiplier);
+                    // 部分满足视为不满足，扣除完整要求数量对应的血量
+                    int damage = Mathf.RoundToInt(requiredCount * damageMultiplier);
                     totalDamage += damage;
                     
                     if (enableDebugLogs)
                     {
-                        Debug.Log($"Trait {trait}: Need {requiredCount}, Have {currentCount}, Difference: {difference}, Damage: {damage}");
+                        Debug.Log($"Trait {trait}: Need {requiredCount}, Have {currentCount} - UNMET! Full damage: {damage}");
+                    }
+                }
+                else
+                {
+                    if (enableDebugLogs)
+                    {
+                        Debug.Log($"Trait {trait}: Need {requiredCount}, Have {currentCount} - MET! No damage");
                     }
                 }
             }

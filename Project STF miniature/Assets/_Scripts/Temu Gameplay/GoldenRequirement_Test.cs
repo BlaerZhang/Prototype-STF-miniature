@@ -191,5 +191,44 @@ namespace TemuGameplay
             Debug.Log("  Expected: Damage first (-10), then heal (+10), net = 0");
             Debug.Log("  Player should end up with 100 health");
         }
+
+        [ContextMenu("Test New Damage Rules")]
+        public void TestNewDamageRules()
+        {
+            if (!Application.isPlaying || gameplayManager == null)
+            {
+                Debug.Log("❌ Cannot test - not playing or no GameplayManager");
+                return;
+            }
+
+            var healthSystem = gameplayManager.HealthSystem;
+            if (healthSystem == null)
+            {
+                Debug.Log("❌ No health system found");
+                return;
+            }
+
+            Debug.Log("=== New Damage Rules Test ===");
+            Debug.Log("Rule: Partial fulfillment = No fulfillment (full damage)");
+            Debug.Log("");
+
+            // 创建测试关卡
+            var testLevel = new LevelRequirement("Damage Rules Test");
+            testLevel.AddRequirement(TraitType.Hiking, 3);    // 需要3个
+            testLevel.AddRequirement(TraitType.Running, 2);   // 需要2个
+            testLevel.AddRequirement(TraitType.Sitting, 1);   // 需要1个
+            
+            gameplayManager.SetLevel(testLevel);
+            
+            Debug.Log("Test Requirements:");
+            Debug.Log("  Hiking: Need 3 → If have 0,1,2 = 15 damage each");
+            Debug.Log("  Running: Need 2 → If have 0,1 = 10 damage each");
+            Debug.Log("  Sitting: Need 1 → If have 0 = 5 damage");
+            Debug.Log("");
+            Debug.Log("Examples:");
+            Debug.Log("  Have: Hiking 1, Running 0, Sitting 1");
+            Debug.Log("  Result: 15 + 10 + 0 = 25 damage");
+            Debug.Log("  (Hiking partially met = full damage, Running unmet = full damage, Sitting met = no damage)");
+        }
     }
 } 
