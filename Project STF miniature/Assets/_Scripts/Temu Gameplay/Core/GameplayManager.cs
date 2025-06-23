@@ -137,50 +137,60 @@ namespace TemuGameplay.Core
             return;
         }
         
-        // 决定要使用多少种trait
-        int traitTypeCount = UnityEngine.Random.Range(randomSettings.minTraitTypes, randomSettings.maxTraitTypes + 1);
-        traitTypeCount = Mathf.Min(traitTypeCount, availableTraits.Count);
+        // 决定要使用多少种trait（为任选组预留一些traits）
+        int maxAvailableTraits = availableTraits.Count;
+        int reservedForGroups = (UnityEngine.Random.Range(0f, 1f) <= randomSettings.optionalGroupChance) ? 
+                               UnityEngine.Random.Range(randomSettings.minGroupSize, randomSettings.maxGroupSize + 1) : 0;
         
-        // 选择traits
-        var selectedTraits = SelectRandomTraits(availableTraits, traitTypeCount);
-        
-        // 为每个trait分配要求数量
-        var requirements = new Dictionary<TraitType, int>();
-        foreach (var trait in selectedTraits)
-        {
-            int maxAvailable = traitCounts[trait];
-            int baseRequirement = UnityEngine.Random.Range(randomSettings.minTraitCount, randomSettings.maxTraitCount + 1);
-            
-            // 应用难度修正器
-            float difficultyFactor = 1f + (randomSettings.difficultyModifier * 0.5f);
-            int adjustedRequirement = Mathf.RoundToInt(baseRequirement * difficultyFactor);
-            
-            // 确保不超过可用数量
-            if (randomSettings.ensureCompletable)
-            {
-                adjustedRequirement = Mathf.Min(adjustedRequirement, maxAvailable);
-            }
-            
-            requirements[trait] = Mathf.Max(1, adjustedRequirement);
-        }
-        
-        // 生成关卡名称
-        string levelName = GenerateRandomLevelName();
+        int availableForIndependent = Mathf.Max(1, maxAvailableTraits - reservedForGroups);
+        int independentTraitCount = UnityEngine.Random.Range(
+            Mathf.Min(randomSettings.minTraitTypes, availableForIndependent), 
+            Mathf.Min(randomSettings.maxTraitTypes, availableForIndependent) + 1);
         
         // 创建关卡
+        string levelName = GenerateRandomLevelName();
         currentLevel = new LevelRequirement(levelName);
-        foreach (var req in requirements)
+        
+        var usedTraits = new List<TraitType>();
+        
+        // 生成独立要求
+        if (independentTraitCount > 0)
         {
-            currentLevel.AddRequirement(req.Key, req.Value);
+            var independentTraits = SelectRandomTraits(availableTraits, independentTraitCount);
+            usedTraits.AddRange(independentTraits);
+            
+            foreach (var trait in independentTraits)
+            {
+                int maxAvailable = traitCounts[trait];
+                int baseRequirement = UnityEngine.Random.Range(randomSettings.minTraitCount, randomSettings.maxTraitCount + 1);
+                
+                // 应用难度修正器
+                float difficultyFactor = 1f + (randomSettings.difficultyModifier * 0.5f);
+                int adjustedRequirement = Mathf.RoundToInt(baseRequirement * difficultyFactor);
+                
+                // 确保不超过可用数量
+                if (randomSettings.ensureCompletable)
+                {
+                    adjustedRequirement = Mathf.Min(adjustedRequirement, maxAvailable);
+                }
+                
+                currentLevel.AddRequirement(trait, Mathf.Max(1, adjustedRequirement));
+            }
         }
         
-        // 生成金色要求
-        GenerateGoldenRequirements(selectedTraits);
+        // 生成任选组
+        if (reservedForGroups > 0 && availableTraits.Count > usedTraits.Count)
+        {
+            GenerateOptionalGroups(availableTraits, usedTraits);
+        }
+        
+        // 生成金色要求（从所有使用的traits中选择）
+        GenerateGoldenRequirements(usedTraits);
         
         OnLevelChanged?.Invoke(currentLevel);
-        // 移除自动验证，等待手动提交
         
-        Debug.Log($"Generated random level: {levelName} with {requirements.Count} trait requirements");
+        int totalRequirements = currentLevel.RequiredTraits.Count + currentLevel.OptionalGroups.Count;
+        Debug.Log($"Generated random level: {levelName} with {currentLevel.RequiredTraits.Count} independent requirements and {currentLevel.OptionalGroups.Count} optional groups");
     }
 
     private List<TraitType> SelectRandomTraits(List<KeyValuePair<TraitType, int>> availableTraits, int count)
@@ -224,6 +234,60 @@ namespace TemuGameplay.Core
         var prefix = randomSettings.levelNamePrefixes[UnityEngine.Random.Range(0, randomSettings.levelNamePrefixes.Length)];
         var suffix = randomSettings.levelNameSuffixes[UnityEngine.Random.Range(0, randomSettings.levelNameSuffixes.Length)];
         return $"{prefix} {suffix}";
+    }
+
+    private void GenerateOptionalGroups(List<KeyValuePair<TraitType, int>> availableTraits, List<TraitType> usedTraits)
+    {
+        var traitCounts = itemDatabase.GetTraitTotalCounts();
+        
+        // 获取未使用的traits
+        var remainingTraits = availableTraits.Where(kvp => !usedTraits.Contains(kvp.Key)).ToList();
+        
+        if (remainingTraits.Count < randomSettings.minGroupSize)
+        {
+            Debug.Log("Not enough remaining traits for optional groups");
+            return;
+        }
+        
+        // 生成1个任选组（可以后续扩展为多个）
+        int groupSize = UnityEngine.Random.Range(randomSettings.minGroupSize, 
+                                                Mathf.Min(randomSettings.maxGroupSize, remainingTraits.Count) + 1);
+        
+        var groupTraits = SelectRandomTraits(remainingTraits, groupSize);
+        usedTraits.AddRange(groupTraits);
+        
+        // 生成组名
+        string groupName = randomSettings.groupNames[UnityEngine.Random.Range(0, randomSettings.groupNames.Length)] + " Group";
+        
+        // 决定需要满足的trait种类数量（比总数少1-2个）
+        int requiredTypes = UnityEngine.Random.Range(randomSettings.minRequiredTypes, 
+                                                   Mathf.Max(randomSettings.minRequiredTypes + 1, groupSize));
+        requiredTypes = Mathf.Min(requiredTypes, groupSize - 1); // 确保不是全部都要求
+        
+        // 创建任选组
+        var optionalGroup = new Data.OptionalRequirementGroup(groupName, requiredTypes, randomSettings.groupBaseDamage);
+        
+        foreach (var trait in groupTraits)
+        {
+            int maxAvailable = traitCounts[trait];
+            int baseRequirement = UnityEngine.Random.Range(randomSettings.minTraitCount, randomSettings.maxTraitCount + 1);
+            
+            // 应用难度修正器
+            float difficultyFactor = 1f + (randomSettings.difficultyModifier * 0.5f);
+            int adjustedRequirement = Mathf.RoundToInt(baseRequirement * difficultyFactor);
+            
+            // 确保不超过可用数量
+            if (randomSettings.ensureCompletable)
+            {
+                adjustedRequirement = Mathf.Min(adjustedRequirement, maxAvailable);
+            }
+            
+            optionalGroup.AddTraitRequirement(trait, Mathf.Max(1, adjustedRequirement));
+        }
+        
+        currentLevel.AddOptionalGroup(optionalGroup);
+        
+        Debug.Log($"Generated optional group '{groupName}': {groupSize} traits, need {requiredTypes} types, damage: {randomSettings.groupBaseDamage}");
     }
 
         private void LoadItemsFromScriptableObject()
@@ -421,12 +485,12 @@ namespace TemuGameplay.Core
             }
             else
             {
-                // 先计算并扣除血量
+                // 先计算并扣除血量（使用新的完整计算方法）
                 int damage = 0;
                 if (healthSystem != null)
                 {
-                    damage = healthSystem.CalculateDamageFromUnmetRequirements(
-                        currentLevel.RequiredTraits, 
+                    damage = healthSystem.CalculateDamageFromLevelRequirement(
+                        currentLevel, 
                         currentSet.TraitCounters
                     );
                     
