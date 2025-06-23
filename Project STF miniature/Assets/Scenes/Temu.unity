@@ -1233,15 +1233,15 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 4da3411624629df4294ad3b6cdabd394, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  itemDataSO: {fileID: 11400000, guid: f2492fc1438103348afc4428e0881283, type: 2}
+  itemDataSO: {fileID: 11400000, guid: f0e88b0961dc0164582d8fa0b05b4502, type: 2}
   currentLevelConfig: {fileID: 11400000, guid: f710bf46dfa542a4181af78b0dc5ca84, type: 2}
   defaultMaxSetSize: -1
   levelMode: 1
   randomSettings:
-    minTraitTypes: 3
-    maxTraitTypes: 4
-    minTraitCount: 1
-    maxTraitCount: 2
+    minTraitTypes: 2
+    maxTraitTypes: 6
+    minTraitCount: 2
+    maxTraitCount: 4
     levelNamePrefixes:
     - Challenge
     - Mission
@@ -1254,8 +1254,8 @@ MonoBehaviour:
     - Gamma
     - Delta
     - Epsilon
-    ensureCompletable: 1
-    favorActiveTraits: 1
+    ensureCompletable: 0
+    favorActiveTraits: 0
     difficultyModifier: 0
   goldenRequirementChance: 0.5
   goldenHealAmount: 10

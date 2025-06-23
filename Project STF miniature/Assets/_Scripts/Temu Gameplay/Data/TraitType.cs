@@ -18,5 +18,12 @@ namespace TemuGameplay.Data
         Medic,
         Booster,
         Movement,
+        
+        Straight,
+        Flush,
+        Kind,
+        FourSuits,
+        Pairs,
+        Faces,
     }
 } 
