@@ -155,8 +155,8 @@ namespace TemuGameplay.UI
             // 显示扣血信息
             if (gameplayManager.HealthSystem != null)
             {
-                int damage = gameplayManager.HealthSystem.CalculateDamageFromUnmetRequirements(
-                    gameplayManager.CurrentLevel.RequiredTraits, 
+                int damage = gameplayManager.HealthSystem.CalculateDamageFromLevelRequirement(
+                    gameplayManager.CurrentLevel, 
                     gameplayManager.CurrentSet.TraitCounters
                 );
                 

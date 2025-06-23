@@ -140,6 +140,52 @@ namespace TemuGameplay.Core
         }
 
         /// <summary>
+        /// 根据完整的LevelRequirement计算应扣除的血量（包括独立要求和任选组）
+        /// </summary>
+        public int CalculateDamageFromLevelRequirement(Data.LevelRequirement levelRequirement, 
+                                                     System.Collections.Generic.Dictionary<Data.TraitType, Data.TraitCounter> currentCounts)
+        {
+            if (levelRequirement == null) return 0;
+
+            float totalDamage = 0f;
+
+            // 计算独立要求的伤害
+            foreach (var requirement in levelRequirement.RequiredTraits)
+            {
+                var trait = requirement.Key;
+                var requiredCount = requirement.Value;
+                var currentCount = currentCounts.ContainsKey(trait) ? currentCounts[trait].CurrentCount : 0;
+                
+                if (currentCount < requiredCount)
+                {
+                    int difference = requiredCount - currentCount;
+                    float damage = difference * damageMultiplier;
+                    totalDamage += damage;
+                    
+                    if (enableDebugLogs)
+                    {
+                        Debug.Log($"Independent Trait {trait}: Need {requiredCount}, Have {currentCount}, Difference: {difference}, Damage: {damage}");
+                    }
+                }
+            }
+
+            // 计算任选组的渐进伤害
+            foreach (var group in levelRequirement.OptionalGroups)
+            {
+                float groupDamage = group.CalculateGroupDamage(currentCounts);
+                totalDamage += groupDamage;
+                
+                if (enableDebugLogs)
+                {
+                    int metCount = group.CheckMetTypesCount(currentCounts);
+                    Debug.Log($"Optional Group '{group.GroupName}': Met {metCount}/{group.RequiredTypesCount} types, Group Damage: {groupDamage}");
+                }
+            }
+            
+            return Mathf.RoundToInt(totalDamage);
+        }
+
+        /// <summary>
         /// 设置伤害倍数
         /// </summary>
         public void SetDamageMultiplier(float multiplier)

@@ -24,11 +24,19 @@ namespace TemuGameplay.UI
         [SerializeField] private float shakeStrength = 10f;
         [SerializeField] private float shakeDuration = 0.3f;
         
+        [Header("Preview Display Mode")]
+        [SerializeField] private bool useFuzzyDamagePreview = false; // 是否使用模糊显示模式
+        [SerializeField] private int lowRiskThreshold = 5;    // 低风险阈值
+        [SerializeField] private int highRiskThreshold = 20;  // 高风险阈值
+        
         [Header("Color Settings")]
         [SerializeField] private Color healthyColor = Color.green;
         [SerializeField] private Color mediumColor = Color.yellow;
         [SerializeField] private Color lowColor = Color.red;
         [SerializeField] private Color previewTextColor = Color.red;
+        [SerializeField] private Color lowRiskColor = Color.green;    // 低风险颜色
+        [SerializeField] private Color mediumRiskColor = Color.yellow; // 中风险颜色
+        [SerializeField] private Color highRiskColor = Color.red;     // 高风险颜色
         
         [Header("Thresholds")]
         [SerializeField] private float mediumHealthThreshold = 0.6f;
@@ -185,9 +193,9 @@ namespace TemuGameplay.UI
                 return;
             }
 
-            // 计算预览伤害
-            int previewDamage = healthSystem.CalculateDamageFromUnmetRequirements(
-                currentLevel.RequiredTraits, 
+            // 计算预览伤害（使用新的完整计算方法）
+            int previewDamage = healthSystem.CalculateDamageFromLevelRequirement(
+                currentLevel, 
                 currentSet.TraitCounters
             );
 
@@ -209,6 +217,67 @@ namespace TemuGameplay.UI
             int finalHealth = Mathf.Min(maxHealth, healthAfterDamage + goldenHeal);
             // 计算净变化
             int netHealthChange = finalHealth - currentHealth;
+
+            // 根据显示模式选择不同的显示方式
+            if (useFuzzyDamagePreview)
+            {
+                UpdateFuzzyDamagePreview(netHealthChange);
+            }
+            else
+            {
+                UpdateDetailedDamagePreview(previewDamage, goldenHeal, netHealthChange);
+            }
+        }
+
+        private void UpdateFuzzyDamagePreview(int netHealthChange)
+        {
+            // 停止任何动画
+            damagePreviewText.transform.DOKill();
+            damagePreviewText.transform.localScale = Vector3.one;
+
+            // 只有当净伤害为负（实际会掉血）时才显示风险等级
+            if (netHealthChange >= 0)
+            {
+                // 不掉血或者还能回血，不显示任何内容
+                damagePreviewText.text = "";
+                return;
+            }
+
+            // 计算实际掉血量（取绝对值）
+            int actualDamage = Mathf.Abs(netHealthChange);
+            
+            string riskText;
+            Color riskColor;
+
+            if (actualDamage <= lowRiskThreshold)
+            {
+                riskText = "Low Risk of Danger";
+                riskColor = lowRiskColor;
+            }
+            else if (actualDamage >= highRiskThreshold)
+            {
+                riskText = "High Risk of Danger";
+                riskColor = highRiskColor;
+                
+                // 高风险时添加轻微脉冲动画
+                damagePreviewText.transform.DOScale(1.05f, 1f)
+                    .SetLoops(-1, LoopType.Yoyo)
+                    .SetEase(Ease.InOutSine);
+            }
+            else
+            {
+                riskText = "Medium Risk of Danger";
+                riskColor = mediumRiskColor;
+            }
+
+            damagePreviewText.text = riskText;
+            damagePreviewText.color = riskColor;
+        }
+
+        private void UpdateDetailedDamagePreview(int previewDamage, int goldenHeal, int netHealthChange)
+        {
+            // 恢复原始颜色
+            damagePreviewText.color = previewTextColor;
 
             if (previewDamage > 0 && goldenHeal > 0)
             {
@@ -304,6 +373,36 @@ namespace TemuGameplay.UI
             if (damagePreviewText != null) damagePreviewText.transform.DOKill();
         }
 
+        /// <summary>
+        /// 设置伤害预览显示模式
+        /// </summary>
+        public void SetFuzzyDamagePreview(bool enabled)
+        {
+            useFuzzyDamagePreview = enabled;
+            UpdateDamagePreview();
+        }
+
+        /// <summary>
+        /// 切换伤害预览显示模式
+        /// </summary>
+        public void ToggleDamagePreviewMode()
+        {
+            SetFuzzyDamagePreview(!useFuzzyDamagePreview);
+        }
+
+        /// <summary>
+        /// 设置风险阈值
+        /// </summary>
+        public void SetRiskThresholds(int lowThreshold, int highThreshold)
+        {
+            lowRiskThreshold = lowThreshold;
+            highRiskThreshold = highThreshold;
+            if (useFuzzyDamagePreview)
+            {
+                UpdateDamagePreview();
+            }
+        }
+
         #region Context Menu Methods
         [ContextMenu("Test Damage Animation")]
         public void TestDamageAnimation()
@@ -320,6 +419,43 @@ namespace TemuGameplay.UI
             if (Application.isPlaying)
             {
                 UpdateDamagePreview();
+            }
+        }
+
+        [ContextMenu("Toggle Fuzzy Preview Mode")]
+        public void TestToggleFuzzyMode()
+        {
+            if (Application.isPlaying)
+            {
+                ToggleDamagePreviewMode();
+                Debug.Log($"Fuzzy preview mode: {(useFuzzyDamagePreview ? "Enabled" : "Disabled")}");
+            }
+        }
+
+        [ContextMenu("Test Low Risk")]
+        public void TestLowRisk()
+        {
+            if (Application.isPlaying && useFuzzyDamagePreview)
+            {
+                UpdateFuzzyDamagePreview(-3); // 模拟低风险
+            }
+        }
+
+        [ContextMenu("Test Medium Risk")]
+        public void TestMediumRisk()
+        {
+            if (Application.isPlaying && useFuzzyDamagePreview)
+            {
+                UpdateFuzzyDamagePreview(-12); // 模拟中风险
+            }
+        }
+
+        [ContextMenu("Test High Risk")]
+        public void TestHighRisk()
+        {
+            if (Application.isPlaying && useFuzzyDamagePreview)
+            {
+                UpdateFuzzyDamagePreview(-25); // 模拟高风险
             }
         }
         #endregion

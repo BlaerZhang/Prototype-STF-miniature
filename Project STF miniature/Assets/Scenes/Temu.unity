@@ -1238,10 +1238,16 @@ MonoBehaviour:
   defaultMaxSetSize: -1
   levelMode: 1
   randomSettings:
-    minTraitTypes: 3
-    maxTraitTypes: 4
+    minTraitTypes: 1
+    maxTraitTypes: 3
     minTraitCount: 1
     maxTraitCount: 2
+    optionalGroupChance: 1
+    maxOptionalGroups: 2
+    minGroupSize: 3
+    maxGroupSize: 4
+    minRequiredTypes: 1
+    groupBaseDamage: 24
     levelNamePrefixes:
     - Challenge
     - Mission
@@ -1254,10 +1260,16 @@ MonoBehaviour:
     - Gamma
     - Delta
     - Epsilon
+    groupNames:
+    - Mobility
+    - Combat
+    - Support
+    - Utility
+    - Stealth
     ensureCompletable: 1
     favorActiveTraits: 1
     difficultyModifier: 0
-  goldenRequirementChance: 0.5
+  goldenRequirementChance: 0
   goldenHealAmount: 10
 --- !u!114 &1248418174
 MonoBehaviour:
@@ -1881,10 +1893,16 @@ MonoBehaviour:
   enableShakeEffect: 1
   shakeStrength: 10
   shakeDuration: 0.3
+  useFuzzyDamagePreview: 1
+  lowRiskThreshold: 9
+  highRiskThreshold: 20
   healthyColor: {r: 0, g: 1, b: 0, a: 1}
   mediumColor: {r: 1, g: 0.92156863, b: 0.015686275, a: 1}
   lowColor: {r: 1, g: 0, b: 0, a: 1}
   previewTextColor: {r: 1, g: 0, b: 0, a: 1}
+  lowRiskColor: {r: 0, g: 1, b: 0, a: 1}
+  mediumRiskColor: {r: 1, g: 0.92156863, b: 0.015686275, a: 1}
+  highRiskColor: {r: 1, g: 0, b: 0, a: 1}
   mediumHealthThreshold: 0.6
   lowHealthThreshold: 0.3
 --- !u!1 &1761527148
@@ -2112,7 +2130,7 @@ RectTransform:
   m_AnchorMin: {x: 1, y: 1}
   m_AnchorMax: {x: 1, y: 1}
   m_AnchoredPosition: {x: -20, y: -15}
-  m_SizeDelta: {x: 450, y: 50}
+  m_SizeDelta: {x: 600, y: 50}
   m_Pivot: {x: 1, y: 1}
 --- !u!114 &2046484859
 MonoBehaviour:

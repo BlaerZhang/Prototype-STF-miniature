@@ -86,47 +86,99 @@ namespace TemuGameplay.UI
             objectiveLines.Add($"Objective: {level.LevelName}");
             objectiveLines.Add(""); // Empty line
 
-            // 显示普通要求
-            foreach (var requirement in level.RequiredTraits)
-            {
-                string traitName = GetTraitDisplayName(requirement.Key);
-                int currentCount = 0;
-                
-                if (gameplayManager?.CurrentSet?.TraitCounters?.ContainsKey(requirement.Key) == true)
-                {
-                    currentCount = gameplayManager.CurrentSet.TraitCounters[requirement.Key].CurrentCount;
-                }
+            // 使用LevelRequirement的新方法获取所有要求显示
+            var allRequirements = level.GetAllRequirementsDisplay(gameplayManager?.CurrentSet?.TraitCounters);
+            
+            bool hasIndependent = false;
+            bool hasOptionalGroups = false;
+            bool hasGolden = false;
 
-                // Color based on requirement completion
-                string statusIcon = currentCount >= requirement.Value ? "√" : "×";
-                string line = $"{statusIcon}{traitName}: {currentCount}/{requirement.Value}";
-                objectiveLines.Add(line);
+            // 先显示独立要求
+            foreach (var (text, isGolden, isOptionalGroup) in allRequirements)
+            {
+                if (!isGolden && !isOptionalGroup)
+                {
+                    if (!hasIndependent)
+                    {
+                        objectiveLines.Add("Independent Requirements:");
+                        hasIndependent = true;
+                    }
+                    string traitName = text.Split(':')[0];
+                    string displayName = GetTraitDisplayName(ParseTraitType(traitName));
+                    string count = text.Split(':')[1];
+                    objectiveLines.Add($"{text.Replace(traitName, displayName)}");
+                }
+            }
+
+            // 显示任选组要求
+            if (hasIndependent && allRequirements.Any(req => req.isOptionalGroup))
+            {
+                objectiveLines.Add(""); // Empty line
+            }
+            
+            foreach (var (text, isGolden, isOptionalGroup) in allRequirements)
+            {
+                if (!isGolden && isOptionalGroup)
+                {
+                    if (!hasOptionalGroups && !text.StartsWith("  ")) // 只有组标题才显示分组头
+                    {
+                        objectiveLines.Add("Optional Groups:");
+                        hasOptionalGroups = true;
+                    }
+                    
+                    if (text.StartsWith("  ")) // 子项，显示trait名称
+                    {
+                        string cleanText = text.Trim();
+                        string[] parts = cleanText.Split(' ');
+                        if (parts.Length >= 2)
+                        {
+                            string statusIcon = parts[0];
+                            string traitName = parts[1].Replace(":", "");
+                            string displayName = GetTraitDisplayName(ParseTraitType(traitName));
+                            string count = cleanText.Split(':')[1];
+                            objectiveLines.Add($"    {statusIcon} {displayName}:{count}");
+                        }
+                    }
+                    else
+                    {
+                        objectiveLines.Add(text);
+                    }
+                }
             }
 
             // 显示金色要求
-            if (level.GoldenRequirements != null && level.GoldenRequirements.Count > 0)
+            var goldenRequirements = allRequirements.Where(req => req.isGolden).ToList();
+            if (goldenRequirements.Count > 0)
             {
                 objectiveLines.Add(""); // Empty line
                 objectiveLines.Add("Golden Requirements:");
 
-                foreach (var goldenReq in level.GoldenRequirements)
+                foreach (var (text, isGolden, isOptionalGroup) in goldenRequirements)
                 {
-                    string traitName = GetTraitDisplayName(goldenReq.Key);
-                    int currentCount = 0;
-                    
-                    if (gameplayManager?.CurrentSet?.TraitCounters?.ContainsKey(goldenReq.Key) == true)
+                    string processedText = text;
+                    // 替换trait名称为显示名称
+                    foreach (TraitType trait in System.Enum.GetValues(typeof(TraitType)))
                     {
-                        currentCount = gameplayManager.CurrentSet.TraitCounters[goldenReq.Key].CurrentCount;
+                        string enumName = trait.ToString();
+                        string displayName = GetTraitDisplayName(trait);
+                        processedText = processedText.Replace($"✨{enumName}:", $"✨{displayName}:");
                     }
-
-                    // Golden requirements use different icons and formatting
-                    string statusIcon = currentCount >= goldenReq.Value ? "✨" : "🔸";
-                    string line = $"{statusIcon}<color=#FFD700>{traitName}: {currentCount}/{goldenReq.Value} (Heal +10)</color>";
+                    
+                    string line = $"<color=#FFD700>{processedText}</color>";
                     objectiveLines.Add(line);
                 }
             }
 
             levelObjectiveText.text = string.Join("\n", objectiveLines);
+        }
+        
+        private TraitType ParseTraitType(string traitName)
+        {
+            if (System.Enum.TryParse<TraitType>(traitName, out TraitType result))
+            {
+                return result;
+            }
+            return TraitType.Hiking; // fallback
         }
 
         private string GetTraitDisplayName(TraitType trait)
