@@ -16,7 +16,7 @@
 namespace JoostenProductions {
     public class UpdateManager : SingletonBehaviour<UpdateManager> {
         // If someone needs this on scene switch, it'll be recreated. Will have to add proper cleanup support in case this is set to true
-        protected override bool DoNotDestroyOnLoad { get { return false; } }
+        protected override bool DoNotDestroyOnLoad { get { return true; } }
 
         private static event Action OnUpdateEvent;
         private static event Action OnFixedUpdateEvent;

@@ -1,10 +1,10 @@
 fileFormatVersion: 2
-guid: 4b29a4254e5ad83438b56e4ae73c65bf
+guid: ce075816c54e0d7488c064491c59303d
 TextureImporter:
   internalIDToNameTable:
   - first:
-      213: 6802414005993490869
-    second: Fog_0
+      213: -8087328983155867304
+    second: Red_Icon@4x_0
   externalObjects: {}
   serializedVersion: 13
   mipmaps:
@@ -46,12 +46,12 @@ TextureImporter:
   nPOTScale: 0
   lightmap: 0
   compressionQuality: 50
-  spriteMode: 2
+  spriteMode: 1
   spriteExtrude: 1
   spriteMeshType: 1
   alignment: 0
   spritePivot: {x: 0.5, y: 0.5}
-  spritePixelsToUnits: 1150
+  spritePixelsToUnits: 4800
   spriteBorder: {x: 0, y: 0, z: 0, w: 0}
   spriteGenerateFallbackPhysicsShape: 1
   alphaUsage: 1
@@ -113,13 +113,13 @@ TextureImporter:
     serializedVersion: 2
     sprites:
     - serializedVersion: 2
-      name: Fog_0
+      name: Red_Icon@4x_0
       rect:
         serializedVersion: 2
-        x: 0
-        y: 0
-        width: 1159
-        height: 673
+        x: 143
+        y: 143
+        width: 338
+        height: 338
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -128,8 +128,8 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: -1
       bones: []
-      spriteID: 5b9426a6f77076e50800000000000000
-      internalID: 6802414005993490869
+      spriteID: 8510649632904cf80800000000000000
+      internalID: -8087328983155867304
       vertices: []
       indices: 
       edges: []
@@ -138,7 +138,7 @@ TextureImporter:
     customData: 
     physicsShape: []
     bones: []
-    spriteID: 
+    spriteID: 5e97eb03825dee720800000000000000
     internalID: 0
     vertices: []
     indices: 
@@ -148,7 +148,7 @@ TextureImporter:
     spriteCustomMetadata:
       entries: []
     nameFileIdTable:
-      Fog_0: 6802414005993490869
+      Red_Icon@4x_0: -8087328983155867304
   mipmapLimitGroupName: 
   pSDRemoveMatte: 0
   userData: 
