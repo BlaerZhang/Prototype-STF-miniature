@@ -64,7 +64,7 @@ public class ClearFog : OverridableMonoBehaviour
             // 淡出迷雾
             fogSprite.DOFade(0f, fadeTime).OnComplete(() =>
             {
-                fogObject.SetActive(false);
+                // fogObject.SetActive(false);
             });
         }
     }

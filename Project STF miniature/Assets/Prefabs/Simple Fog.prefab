@@ -10,7 +10,8 @@ GameObject:
   m_Component:
   - component: {fileID: 2918047400111188225}
   - component: {fileID: 3774539971523845301}
-  - component: {fileID: 5440937383107485717}
+  - component: {fileID: 5118983594039703764}
+  - component: {fileID: 4167774466284014766}
   m_Layer: 0
   m_Name: Simple Fog
   m_TagString: Fog
@@ -76,7 +77,7 @@ SpriteRenderer:
   m_LightmapParameters: {fileID: 0}
   m_SortingLayerID: 0
   m_SortingLayer: 0
-  m_SortingOrder: 1
+  m_SortingOrder: 2
   m_Sprite: {fileID: 6802414005993490869, guid: 4b29a4254e5ad83438b56e4ae73c65bf, type: 3}
   m_Color: {r: 0, g: 0, b: 0, a: 1}
   m_FlipX: 0
@@ -88,8 +89,8 @@ SpriteRenderer:
   m_WasSpriteAssigned: 1
   m_MaskInteraction: 0
   m_SpriteSortPoint: 0
---- !u!58 &5440937383107485717
-CircleCollider2D:
+--- !u!60 &5118983594039703764
+PolygonCollider2D:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
@@ -123,4 +124,47 @@ CircleCollider2D:
   m_CompositeOperation: 0
   m_CompositeOrder: 0
   m_Offset: {x: 0, y: 0}
-  m_Radius: 0.25
+  m_SpriteTilingProperty:
+    border: {x: 0, y: 0, z: 0, w: 0}
+    pivot: {x: 0.5, y: 0.5}
+    oldSize: {x: 1.0078261, y: 0.5852174}
+    newSize: {x: 1, y: 1}
+    adaptiveTilingThreshold: 0.5
+    drawMode: 0
+    adaptiveTiling: 0
+  m_AutoTiling: 0
+  m_Points:
+    m_Paths:
+    - - {x: -0.45, y: 0}
+      - {x: 0, y: 0.25}
+      - {x: 0.45, y: 0}
+      - {x: 0, y: -0.25}
+  m_UseDelaunayMesh: 0
+--- !u!114 &4167774466284014766
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 8806221838426123009}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: c14057ed2405a39418097fdd6d119bca, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  requirementPrefab: {fileID: 1307739346881871096, guid: b5961df768798a540ba8d7a39f07db56, type: 3}
+  typeCountWeights:
+  - typeCount: 1
+    weight: 4
+  - typeCount: 2
+    weight: 4
+  - typeCount: 3
+    weight: 2
+  maxRequiredCount: 10
+  minRequiredCount: 1
+  displayYOffset: 0.1
+  requiredColors:
+  - {r: 1, g: 0, b: 0, a: 1}
+  - {r: 0, g: 0, b: 1, a: 1}
+  - {r: 1, g: 0.92156863, b: 0.015686275, a: 1}
+  enableDebugLog: 0
