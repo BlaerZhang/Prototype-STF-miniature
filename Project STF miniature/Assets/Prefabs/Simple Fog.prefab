@@ -164,7 +164,7 @@ MonoBehaviour:
   minRequiredCount: 1
   displayYOffset: 0.1
   requiredColors:
-  - {r: 1, g: 0, b: 0, a: 1}
-  - {r: 0, g: 0, b: 1, a: 1}
-  - {r: 1, g: 0.92156863, b: 0.015686275, a: 1}
+  - {r: 0.627451, g: 0.1254902, b: 0.16078432, a: 1}
+  - {r: 0, g: 0.3803922, b: 0.60784316, a: 1}
+  - {r: 0.7960785, g: 0.56078434, b: 0.18039216, a: 1}
   enableDebugLog: 0
