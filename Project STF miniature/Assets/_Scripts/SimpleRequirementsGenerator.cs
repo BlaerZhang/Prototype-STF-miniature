@@ -147,7 +147,7 @@ public class SimpleRequirementsGenerator : MonoBehaviour
         {
             LogDebug("需求数量概率分布:");
             for (int i = 0; i < range; i++)
-            {
+        {
                 float prob = i == 0 ? cumulativeProbabilities[i] : 
                             cumulativeProbabilities[i] - cumulativeProbabilities[i-1];
                 LogDebug($"  数量{countValues[i]}: {prob:P1}");
@@ -311,7 +311,7 @@ public class SimpleRequirementsGenerator : MonoBehaviour
     
     [ContextMenu("预览需求数量分布")]
     void PreviewRequiredCountDistribution()
-    {
+        {
         if (!CheckRequiredCountRange()) return;
         
         Debug.Log("=== 需求数量概率分布 ===");
@@ -329,7 +329,7 @@ public class SimpleRequirementsGenerator : MonoBehaviour
     
     [ContextMenu("测试曲线分布(100次)")]
     void TestCurveDistribution()
-    {
+            {
         if (!CheckRequiredCountRange()) return;
         
         BuildCurveProbabilityTable();
