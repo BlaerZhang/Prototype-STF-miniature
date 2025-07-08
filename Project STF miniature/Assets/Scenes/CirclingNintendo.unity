@@ -2455,8 +2455,8 @@ MonoBehaviour:
       m_Calls:
       - m_Target: {fileID: 1902738849}
         m_TargetAssemblyTypeName: UITimerText, Assembly-CSharp
-        m_MethodName: AddOneHour
-        m_Mode: 3
+        m_MethodName: MinusOneHour
+        m_Mode: 1
         m_Arguments:
           m_ObjectArgument: {fileID: 0}
           m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
