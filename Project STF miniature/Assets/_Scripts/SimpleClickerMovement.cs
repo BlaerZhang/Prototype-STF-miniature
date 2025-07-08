@@ -21,6 +21,9 @@ public class SimpleClickerMovement : OverridableMonoBehaviour
     public AudioClip footStepSounds;
     public AudioClip upgradeSound;
 
+    [Header("粒子效果")]
+    public ParticleSystem getCouponParticle;
+
     [Header("输入设置")]
     private Vector2 moveInput;
     private bool runInput;
@@ -29,6 +32,18 @@ public class SimpleClickerMovement : OverridableMonoBehaviour
     private const float DIAGONAL_SPEED_MODIFIER = 0.707f;
 
     private Keyboard keyboard;
+
+    protected override void OnEnable()
+    {
+        base.OnEnable();
+        CirclingResourceManager.OnItemCountChanged += CouponGetFeedback;
+    }
+
+    protected override void OnDisable()
+    {
+        base.OnDisable();
+        CirclingResourceManager.OnItemCountChanged -= CouponGetFeedback;
+    }
 
     void Start()
     {
@@ -128,5 +143,17 @@ public class SimpleClickerMovement : OverridableMonoBehaviour
         // 角色进行步伐动画, 并设置初始大小
         transform.DOPunchScale(new Vector3(0.1f, 0.1f, 0), 0.2f).OnComplete(() => transform.DOScale(Vector3.one, 0.1f));
         AudioManager.Instance.PlaySound(footStepSounds, 1, true);
+    }
+
+    private void CouponGetFeedback(CirclingItemType itemType, int count, int changedCount)
+    {
+        if (itemType != CirclingItemType.Coupon || changedCount <= 0) return;
+
+        // Play Particle Effect
+        getCouponParticle.Play();
+
+        // Play Sound
+        AudioManager.Instance.PlaySound(AudioManager.Instance.soundClips["Quest Complete Intro"]);
+        AudioManager.Instance.PlaySound(AudioManager.Instance.soundClips["Quest Complete"]);
     }
 }

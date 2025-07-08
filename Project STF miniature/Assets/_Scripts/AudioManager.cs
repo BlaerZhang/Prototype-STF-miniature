@@ -1,10 +1,14 @@
 using System.Collections;
 using UnityEngine;
+using Sirenix.OdinInspector;
+using UnityEngine.Rendering;
 
-    public class AudioManager : MonoBehaviour
+public class AudioManager : MonoBehaviour
     {
         public static AudioManager Instance;
         [Range(0,1)] [SerializeField] private float soundVolume = 0.75f;
+
+        public SerializedDictionary<string, AudioClip> soundClips;
 
         private void Awake()
         {
