@@ -9,17 +9,23 @@ public class UITimerText : MonoBehaviour
 
     void OnEnable()
     {
-        SimpleGridCounter.OnGridCountChanged += UpdateTimerText;
+        SimpleGridCounter.OnGridCountChanged += AddOneHour;
         currentHour = 0;
         currentDay = 1;
+        UpdateTimerText();
     }
 
     void OnDisable()
     {
-        SimpleGridCounter.OnGridCountChanged -= UpdateTimerText;
+        SimpleGridCounter.OnGridCountChanged -= AddOneHour;
     }
 
-    void UpdateTimerText(int stepCount)
+    public void UpdateTimerText()
+    {
+        timerText.text = $"Day {currentDay}\n{currentHour:D2}:00";
+    }
+
+    public void AddOneHour(int stepCount = 0)
     {
         currentHour ++;
         if (currentHour >= 24)
@@ -27,13 +33,7 @@ public class UITimerText : MonoBehaviour
             currentDay++;
             currentHour = 0;
         }
-
-        timerText.text = $"Day {currentDay}\n{currentHour:D2}:00";
-    }
-
-    public void AddOneHour()
-    {
-        UpdateTimerText(1);
+        UpdateTimerText();
     }
 
     public void MinusOneHour()
@@ -44,6 +44,6 @@ public class UITimerText : MonoBehaviour
             currentDay--;
             currentHour = 23;
         }
-        timerText.text = $"Day {currentDay}\n{currentHour:D2}:00";
+        UpdateTimerText();
     }
 }
