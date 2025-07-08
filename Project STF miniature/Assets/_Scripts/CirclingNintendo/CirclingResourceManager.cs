@@ -71,7 +71,10 @@ public class CirclingResourceManager : MonoBehaviour
         {
             Destroy(this);
         }
+    }
 
+    void Start()
+    {
         foreach (var item in itemCount)
         {
             OnItemCountChanged?.Invoke(item.Key, item.Value);
