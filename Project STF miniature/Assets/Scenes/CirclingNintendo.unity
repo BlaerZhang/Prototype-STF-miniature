@@ -2898,6 +2898,14 @@ PrefabInstance:
       propertyPath: fruitQuestProbability
       value: 0.5
       objectReference: {fileID: 0}
+    - target: {fileID: 8020889430639666051, guid: 06142f94dae4ca045b5a947026886f16, type: 3}
+      propertyPath: fruitQuestRequiredFixedItem1
+      value: 5
+      objectReference: {fileID: 0}
+    - target: {fileID: 8020889430639666051, guid: 06142f94dae4ca045b5a947026886f16, type: 3}
+      propertyPath: isFruitQuestRequiredItemsRandom
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 8528425038955774737, guid: 06142f94dae4ca045b5a947026886f16, type: 3}
       propertyPath: m_Sprite
       value: 
@@ -7158,6 +7166,18 @@ PrefabInstance:
       propertyPath: fruitQuestProbability
       value: 0.5
       objectReference: {fileID: 0}
+    - target: {fileID: 8020889430639666051, guid: 06142f94dae4ca045b5a947026886f16, type: 3}
+      propertyPath: fruitQuestRequiredFixedItem1
+      value: 2
+      objectReference: {fileID: 0}
+    - target: {fileID: 8020889430639666051, guid: 06142f94dae4ca045b5a947026886f16, type: 3}
+      propertyPath: fruitQuestRequiredFixedItem2
+      value: 4
+      objectReference: {fileID: 0}
+    - target: {fileID: 8020889430639666051, guid: 06142f94dae4ca045b5a947026886f16, type: 3}
+      propertyPath: isFruitQuestRequiredItemsRandom
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 8528425038955774737, guid: 06142f94dae4ca045b5a947026886f16, type: 3}
       propertyPath: m_Sprite
       value: 
@@ -11050,6 +11070,18 @@ PrefabInstance:
     - target: {fileID: 8020889430639666051, guid: 06142f94dae4ca045b5a947026886f16, type: 3}
       propertyPath: fruitQuestProbability
       value: 0.5
+      objectReference: {fileID: 0}
+    - target: {fileID: 8020889430639666051, guid: 06142f94dae4ca045b5a947026886f16, type: 3}
+      propertyPath: fruitQuestRequiredFixedItem1
+      value: 4
+      objectReference: {fileID: 0}
+    - target: {fileID: 8020889430639666051, guid: 06142f94dae4ca045b5a947026886f16, type: 3}
+      propertyPath: fruitQuestRequiredFixedItem2
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 8020889430639666051, guid: 06142f94dae4ca045b5a947026886f16, type: 3}
+      propertyPath: isFruitQuestRequiredItemsRandom
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 8528425038955774737, guid: 06142f94dae4ca045b5a947026886f16, type: 3}
       propertyPath: m_Sprite
@@ -17462,6 +17494,14 @@ PrefabInstance:
       propertyPath: fruitQuestProbability
       value: 0.5
       objectReference: {fileID: 0}
+    - target: {fileID: 8020889430639666051, guid: 06142f94dae4ca045b5a947026886f16, type: 3}
+      propertyPath: fruitQuestRequiredFixedItem2
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 8020889430639666051, guid: 06142f94dae4ca045b5a947026886f16, type: 3}
+      propertyPath: isFruitQuestRequiredItemsRandom
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 8528425038955774737, guid: 06142f94dae4ca045b5a947026886f16, type: 3}
       propertyPath: m_Sprite
       value: 
@@ -21021,6 +21061,18 @@ PrefabInstance:
       propertyPath: fruitQuestProbability
       value: 0.5
       objectReference: {fileID: 0}
+    - target: {fileID: 8020889430639666051, guid: 06142f94dae4ca045b5a947026886f16, type: 3}
+      propertyPath: fruitQuestRequiredFixedItem1
+      value: 5
+      objectReference: {fileID: 0}
+    - target: {fileID: 8020889430639666051, guid: 06142f94dae4ca045b5a947026886f16, type: 3}
+      propertyPath: fruitQuestRequiredFixedItem2
+      value: 2
+      objectReference: {fileID: 0}
+    - target: {fileID: 8020889430639666051, guid: 06142f94dae4ca045b5a947026886f16, type: 3}
+      propertyPath: isFruitQuestRequiredItemsRandom
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 8528425038955774737, guid: 06142f94dae4ca045b5a947026886f16, type: 3}
       propertyPath: m_Sprite
       value: 
@@ -21554,6 +21606,14 @@ PrefabInstance:
     - target: {fileID: 8020889430639666051, guid: 06142f94dae4ca045b5a947026886f16, type: 3}
       propertyPath: fruitQuestProbability
       value: 0.5
+      objectReference: {fileID: 0}
+    - target: {fileID: 8020889430639666051, guid: 06142f94dae4ca045b5a947026886f16, type: 3}
+      propertyPath: fruitQuestRequiredFixedItem2
+      value: 4
+      objectReference: {fileID: 0}
+    - target: {fileID: 8020889430639666051, guid: 06142f94dae4ca045b5a947026886f16, type: 3}
+      propertyPath: isFruitQuestRequiredItemsRandom
+      value: 0
       objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
