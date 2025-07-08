@@ -18,6 +18,9 @@ public class CirclingNPC : MonoBehaviour
     [Header("Fruit Quest")]
     [SerializeField] [Range(0, 1)] private float fruitQuestProbability = 0.5f;
     private float DeliveryQuestProbability => 1 - fruitQuestProbability;
+    public bool isFruitQuestRequiredItemsRandom = true;
+    public CirclingItemType fruitQuestRequiredFixedItem1 = CirclingItemType.Watermelon;
+    public CirclingItemType fruitQuestRequiredFixedItem2 = CirclingItemType.Apple;
     private Dictionary<CirclingItemType, int> fruitQuestRequiredItems;
 
     public static Action<string, Sprite, int> OnDeliveryQuestGenerated;
@@ -50,16 +53,28 @@ public class CirclingNPC : MonoBehaviour
     private void GenerateFruitQuest()
     {
         isInFruitQuest = true;
-        // Generate 2 types of fruits(index 0-5), each with 1 quantity
         fruitQuestRequiredItems = new Dictionary<CirclingItemType, int>();
-        int fruitType1 = Random.Range(0, 5);
-        int fruitType2 = Random.Range(0, 5);
-        while (fruitType1 == fruitType2)
+        int fruitType1 = 0;
+        int fruitType2 = 0;
+         if (isFruitQuestRequiredItemsRandom)
         {
+            // Generate 2 types of fruits(index 0-5), each with 1 quantity
+            fruitType1 = Random.Range(0, 5);
             fruitType2 = Random.Range(0, 5);
+            while (fruitType1 == fruitType2)
+            {
+                fruitType2 = Random.Range(0, 5);
+            }
+            fruitQuestRequiredItems.Add((CirclingItemType)fruitType1, 1);
+            fruitQuestRequiredItems.Add((CirclingItemType)fruitType2, 1);
         }
-        fruitQuestRequiredItems.Add((CirclingItemType)fruitType1, 1);
-        fruitQuestRequiredItems.Add((CirclingItemType)fruitType2, 1);
+        else
+        {
+            fruitType1 = (int)fruitQuestRequiredFixedItem1;
+            fruitType2 = (int)fruitQuestRequiredFixedItem2;
+            fruitQuestRequiredItems.Add((CirclingItemType)fruitType1, 1);
+            fruitQuestRequiredItems.Add((CirclingItemType)fruitType2, 1);
+        }
 
         // Update Quest Icon
         questIcons[0].gameObject.SetActive(true);
