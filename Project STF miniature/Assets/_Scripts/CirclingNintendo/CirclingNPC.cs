@@ -22,7 +22,10 @@ public class CirclingNPC : MonoBehaviour
     public CirclingItemType fruitQuestRequiredFixedItem1 = CirclingItemType.Watermelon;
     public CirclingItemType fruitQuestRequiredFixedItem2 = CirclingItemType.Apple;
     private Dictionary<CirclingItemType, int> fruitQuestRequiredItems;
+    public int fruitQuestCouponRewardCount = 2;
 
+    [Header("Delivery Quest")]
+    public int deliveryQuestCouponRewardCount = 1;
     public static Action<string, Sprite, int> OnDeliveryQuestGenerated;
     
     void OnEnable()
@@ -114,16 +117,16 @@ public class CirclingNPC : MonoBehaviour
             CirclingResourceManager.Instance.RemoveItem(item.Key, item.Value);
         }
         //Complete the quest
-        CompleteQuest();
+        CompleteQuest(fruitQuestCouponRewardCount);
     }
 
     private void CompleteDeliveryQuest(string npcName)
     {
         if (npcName != this.npcName) return;
-        CompleteQuest();
+        CompleteQuest(deliveryQuestCouponRewardCount);
     }
 
-    public void CompleteQuest()
+    public void CompleteQuest(int couponRewardCount = 1)
     {
         // Reset quest status
         isInFruitQuest = false;
@@ -134,7 +137,7 @@ public class CirclingNPC : MonoBehaviour
         questIcons[1].gameObject.SetActive(false);
 
         // Coupon Reward
-        CirclingResourceManager.Instance.AddItem(CirclingItemType.Coupon, 1);
+        CirclingResourceManager.Instance.AddItem(CirclingItemType.Coupon, couponRewardCount);
     }
 
     void OnTriggerEnter2D(Collider2D other)
