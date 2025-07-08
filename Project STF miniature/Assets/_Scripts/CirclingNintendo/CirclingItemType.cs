@@ -14,5 +14,6 @@ public enum CirclingItemType
     Blue = 9,
     Green = 10,
     Orange = 11,
-    Purple = 12
+    Purple = 12,
+    FireFlower = 13,
 }

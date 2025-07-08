@@ -2,6 +2,7 @@ using UnityEngine;
 using System.Collections.Generic;
 using Sirenix.OdinInspector;
 using System;
+using UnityEngine.Rendering;
 
 public class CirclingResourceManager : MonoBehaviour
 {
@@ -21,24 +22,28 @@ public class CirclingResourceManager : MonoBehaviour
         {CirclingItemType.Green, 0},
         {CirclingItemType.Orange, 0},
         {CirclingItemType.Purple, 0},
+        {CirclingItemType.FireFlower, 0},
     };
 
-    public List<Sprite> itemSprites;
+    public SerializedDictionary<CirclingItemType, Sprite> itemSprites;
 
     public static CirclingResourceManager Instance;
 
-    public static Action<CirclingItemType, int> OnItemCountChanged;
+    /// <param name="itemType">物品类型</param>
+    /// <param name="count">物品数量</param>
+    /// <param name="changedCount">变化数量，正数表示增加，负数表示减少</param>
+    public static Action<CirclingItemType, int, int> OnItemCountChanged;
 
     public void AddItem(CirclingItemType itemType, int count)
     {
         itemCount[itemType] = Mathf.Max(itemCount[itemType] + count, 0);
-        OnItemCountChanged?.Invoke(itemType, itemCount[itemType]);
+        OnItemCountChanged?.Invoke(itemType, itemCount[itemType], count);
     }
 
     public void RemoveItem(CirclingItemType itemType, int count)
     {
         itemCount[itemType] = Mathf.Max(itemCount[itemType] - count, 0);
-        OnItemCountChanged?.Invoke(itemType, itemCount[itemType]);
+        OnItemCountChanged?.Invoke(itemType, itemCount[itemType], -count);
     }
 
     public void AddOneItem(int itemTypeIndex)
@@ -58,7 +63,7 @@ public class CirclingResourceManager : MonoBehaviour
 
     public Sprite GetItemSprite(CirclingItemType itemType)
     {
-        return itemSprites[(int)itemType];
+        return itemSprites[itemType];
     }
 
     void Awake()
@@ -77,7 +82,7 @@ public class CirclingResourceManager : MonoBehaviour
     {
         foreach (var item in itemCount)
         {
-            OnItemCountChanged?.Invoke(item.Key, item.Value);
+            OnItemCountChanged?.Invoke(item.Key, item.Value, 0);
         }
     }
 }

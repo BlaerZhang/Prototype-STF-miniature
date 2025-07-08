@@ -118,8 +118,6 @@ public class CirclingNPC : MonoBehaviour
         questIcons[0].gameObject.SetActive(false);
         questIcons[1].gameObject.SetActive(false);
 
-        // Play Particle Effect
-
         // Coupon Reward
         CirclingResourceManager.Instance.AddItem(CirclingItemType.Coupon, 1);
     }
