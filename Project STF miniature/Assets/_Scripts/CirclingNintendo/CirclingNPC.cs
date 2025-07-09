@@ -12,8 +12,11 @@ public class CirclingNPC : MonoBehaviour
     public bool IsInQuest => isInFruitQuest || isInDeliveryQuest;
 
     [Header("Quest UI")]
-    public List<Image> questIcons;
-    public Sprite deliveryQuestIcon;
+    public List<Image> fruitRequirementsIconUIs;
+    public Image questStatusIconUI;
+    public Sprite questStatusIconSprite_InFruitQuest;
+    public Sprite questStatusIconSprite_InDeliveryQuest;
+    public Sprite questStatusIconSprite_NewQuest;
     
     [Header("Fruit Quest")]
     [SerializeField] [Range(0, 1)] private float fruitQuestProbability = 0.5f;
@@ -37,6 +40,16 @@ public class CirclingNPC : MonoBehaviour
     {
         CirclingDeliverySubmitArea.OnDelivered -= CompleteDeliveryQuest;
     }
+
+    void Start()
+    {
+        // Reset Quest Icon
+        fruitRequirementsIconUIs[0].gameObject.SetActive(!isFruitQuestRequiredItemsRandom);
+        fruitRequirementsIconUIs[1].gameObject.SetActive(!isFruitQuestRequiredItemsRandom);
+        fruitRequirementsIconUIs[0].sprite = CirclingResourceManager.Instance.GetItemSprite(fruitQuestRequiredFixedItem1);
+        fruitRequirementsIconUIs[1].sprite = CirclingResourceManager.Instance.GetItemSprite(fruitQuestRequiredFixedItem2);
+        questStatusIconUI.sprite = questStatusIconSprite_NewQuest;
+    }
     
 
     public void GenerateRandomQuest()
@@ -57,8 +70,9 @@ public class CirclingNPC : MonoBehaviour
     {
         isInFruitQuest = true;
         fruitQuestRequiredItems = new Dictionary<CirclingItemType, int>();
-        int fruitType1 = 0;
-        int fruitType2 = 0;
+        int fruitType1;
+        int fruitType2;
+        
          if (isFruitQuestRequiredItemsRandom)
         {
             // Generate 2 types of fruits(index 0-5), each with 1 quantity
@@ -80,10 +94,11 @@ public class CirclingNPC : MonoBehaviour
         }
 
         // Update Quest Icon
-        questIcons[0].gameObject.SetActive(true);
-        questIcons[0].sprite = CirclingResourceManager.Instance.GetItemSprite((CirclingItemType)fruitType1);
-        questIcons[1].gameObject.SetActive(true);
-        questIcons[1].sprite = CirclingResourceManager.Instance.GetItemSprite((CirclingItemType)fruitType2);
+        fruitRequirementsIconUIs[0].gameObject.SetActive(true);
+        fruitRequirementsIconUIs[0].sprite = CirclingResourceManager.Instance.GetItemSprite((CirclingItemType)fruitType1);
+        fruitRequirementsIconUIs[1].gameObject.SetActive(true);
+        fruitRequirementsIconUIs[1].sprite = CirclingResourceManager.Instance.GetItemSprite((CirclingItemType)fruitType2);
+        questStatusIconUI.sprite = questStatusIconSprite_InFruitQuest;
     }
 
     private void GenerateDeliveryQuest()
@@ -93,9 +108,7 @@ public class CirclingNPC : MonoBehaviour
         OnDeliveryQuestGenerated?.Invoke(npcName, GetComponent<Image>().sprite, randomDeliveryQuestIndex);
 
         // Update Quest Icon
-        questIcons[0].gameObject.SetActive(true);
-        questIcons[0].sprite = deliveryQuestIcon;
-        questIcons[1].gameObject.SetActive(false);
+        questStatusIconUI.sprite = questStatusIconSprite_InDeliveryQuest;
     }
 
     private void TryCompleteFruitQuest()
@@ -133,8 +146,9 @@ public class CirclingNPC : MonoBehaviour
         isInDeliveryQuest = false;
 
         // Reset Quest Icon
-        questIcons[0].gameObject.SetActive(false);
-        questIcons[1].gameObject.SetActive(false);
+        fruitRequirementsIconUIs[0].gameObject.SetActive(!isFruitQuestRequiredItemsRandom);
+        fruitRequirementsIconUIs[1].gameObject.SetActive(!isFruitQuestRequiredItemsRandom);
+        questStatusIconUI.sprite = questStatusIconSprite_NewQuest;
 
         // Coupon Reward
         CirclingResourceManager.Instance.AddItem(CirclingItemType.Coupon, couponRewardCount);
