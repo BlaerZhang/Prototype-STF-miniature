@@ -20665,7 +20665,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 8020889430639666051, guid: 06142f94dae4ca045b5a947026886f16, type: 3}
       propertyPath: fruitQuestRequiredFixedItem2
-      value: 4
+      value: 3
       objectReference: {fileID: 0}
     - target: {fileID: 8020889430639666051, guid: 06142f94dae4ca045b5a947026886f16, type: 3}
       propertyPath: isFruitQuestRequiredItemsRandom
