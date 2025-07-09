@@ -246,6 +246,18 @@ PrefabInstance:
       propertyPath: m_Name
       value: "\uFF1F Box Grid"
       objectReference: {fileID: 0}
+    - target: {fileID: 7912225204454987889, guid: bd8e4a0e81034b24a877580cf2d7e184, type: 3}
+      propertyPath: m_Colors.m_SelectedColor.b
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 7912225204454987889, guid: bd8e4a0e81034b24a877580cf2d7e184, type: 3}
+      propertyPath: m_Colors.m_SelectedColor.g
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 7912225204454987889, guid: bd8e4a0e81034b24a877580cf2d7e184, type: 3}
+      propertyPath: m_Colors.m_SelectedColor.r
+      value: 0
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects:
