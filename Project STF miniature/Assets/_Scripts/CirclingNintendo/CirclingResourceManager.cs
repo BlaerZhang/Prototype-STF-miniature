@@ -22,7 +22,14 @@ public class CirclingResourceManager : MonoBehaviour
         {CirclingItemType.Green, 0},
         {CirclingItemType.Orange, 0},
         {CirclingItemType.Purple, 0},
-        {CirclingItemType.FireFlower, 0},
+        {CirclingItemType.Black, 0},
+        {CirclingItemType.Rainbow, 0},
+        {CirclingItemType.HPPotion, 0},
+        {CirclingItemType.AffairShopCoupon, 0},
+        {CirclingItemType.TradeShopCoupon, 0},
+        {CirclingItemType.LotteryShopCoupon, 0},
+        {CirclingItemType.TrafficShopCoupon, 0},
+        {CirclingItemType.MysteryBox, 0},
     };
 
     public SerializedDictionary<CirclingItemType, Sprite> itemSprites;
@@ -64,6 +71,18 @@ public class CirclingResourceManager : MonoBehaviour
     public Sprite GetItemSprite(CirclingItemType itemType)
     {
         return itemSprites[itemType];
+    }
+
+    public bool TryBuyItem(CirclingItemType itemType, int itemQuantity, int itemPrice)
+    {
+        if (itemPrice > itemCount[CirclingItemType.Coupon])
+        {
+            return false;
+        }
+        
+        RemoveItem(CirclingItemType.Coupon, itemPrice);
+        AddItem(itemType, itemQuantity);
+        return true;
     }
 
     void Awake()

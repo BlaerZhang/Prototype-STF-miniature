@@ -15,5 +15,12 @@ public enum CirclingItemType
     Green = 10,
     Orange = 11,
     Purple = 12,
-    FireFlower = 13,
+    Black = 13,
+    Rainbow = 14,
+    HPPotion = 15,
+    AffairShopCoupon = 16,
+    TradeShopCoupon = 17,
+    LotteryShopCoupon = 18,
+    TrafficShopCoupon = 19,
+    MysteryBox = 99,
 }
