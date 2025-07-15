@@ -50,7 +50,7 @@ public class CirclingShopUI : MonoBehaviour
         else
         {
             // Show the error message
-            Debug.LogError($"Not enough resources to buy {itemForSale.itemType} x{itemForSale.quantity} for {itemForSale.price} coupons");
+            Debug.Log($"Not enough resources to buy {itemForSale.itemType} x{itemForSale.quantity} for {itemForSale.price} coupons");
             
             // Flash the price text
             itemSlot.transform.Find("Price Text").GetComponent<TMP_Text>().DOColor(Color.red, 0.25f).SetEase(Ease.Flash, 4, 0.25f);
