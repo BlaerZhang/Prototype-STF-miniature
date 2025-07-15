@@ -14,14 +14,18 @@ public class UITimerText : MonoBehaviour
     void OnEnable()
     {
         SimpleGridCounter.OnGridCountChanged += AddOneHour;
-        currentHour = 0;
-        currentDay = 1;
-        UpdateTimerText();
     }
 
     void OnDisable()
     {
         SimpleGridCounter.OnGridCountChanged -= AddOneHour;
+    }
+
+    void Start()
+    {
+        currentHour = 0;
+        currentDay = 1;
+        UpdateTimerText();
     }
 
     public void UpdateTimerText()

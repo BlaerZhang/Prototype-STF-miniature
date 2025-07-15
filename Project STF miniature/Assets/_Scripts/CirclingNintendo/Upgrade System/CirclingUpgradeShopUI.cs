@@ -78,7 +78,8 @@ public class CirclingUpgradeShopUI : MonoBehaviour
             Debug.LogError($"Not enough resources to buy {upgradeForSale.UpgradeName} for {upgradeForSale.UpgradeCost} coupons");
             
             // Flash the price text
-            upgradeSlot.transform.Find("Price Text").GetComponent<TMP_Text>().DOColor(Color.red, 0.5f).SetEase(Ease.Flash, 4, 0.5f);
+            upgradeSlot.transform.Find("Price Text").GetComponent<TMP_Text>().DOColor(Color.red, 0.25f).SetEase(Ease.Flash, 4, 0.25f);
+            upgradeSlot.GetComponent<Image>().DOColor(Color.red, 0.25f).SetEase(Ease.Flash, 4, 0.25f);
             upgradeSlot.transform.DOShakePosition(0.5f, 10, 10, 0, false, true);
 
             // Play the error sound

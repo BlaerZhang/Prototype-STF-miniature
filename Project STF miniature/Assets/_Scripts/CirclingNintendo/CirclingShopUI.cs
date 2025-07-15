@@ -37,13 +37,15 @@ public class CirclingShopUI : MonoBehaviour
             // Show the success message
             Debug.Log($"Bought {itemForSale.itemType} x{itemForSale.quantity} for {itemForSale.price} coupons");
 
-            // Disable the itemSlot
-            if (itemForSale.itemType == CirclingItemType.MysteryBox) return;
-            itemSlot.GetComponent<Button>().interactable = false;
-            itemSlot.transform.Find("Price Text").GetComponent<TMP_Text>().text = "SOLD";
-
             // Play the buy sound
             AudioManager.Instance.PlaySound(AudioManager.Instance.soundClips["Buy"]);
+
+            // If the item is a mystery box, don't disable the itemSlot
+            if (itemForSale.itemType == CirclingItemType.MysteryBox) return;
+
+            // Disable the itemSlot
+            itemSlot.GetComponent<Button>().interactable = false;
+            itemSlot.transform.Find("Price Text").GetComponent<TMP_Text>().text = "SOLD";
         }
         else
         {
@@ -51,7 +53,8 @@ public class CirclingShopUI : MonoBehaviour
             Debug.LogError($"Not enough resources to buy {itemForSale.itemType} x{itemForSale.quantity} for {itemForSale.price} coupons");
             
             // Flash the price text
-            itemSlot.transform.Find("Price Text").GetComponent<TMP_Text>().DOColor(Color.red, 0.5f).SetEase(Ease.Flash, 4, 0.5f);
+            itemSlot.transform.Find("Price Text").GetComponent<TMP_Text>().DOColor(Color.red, 0.25f).SetEase(Ease.Flash, 4, 0.25f);
+            itemSlot.GetComponent<Image>().DOColor(Color.red, 0.25f).SetEase(Ease.Flash, 4, 0.25f);
             itemSlot.transform.DOShakePosition(0.5f, 10, 10, 0, false, true);
 
             // Play the error sound
