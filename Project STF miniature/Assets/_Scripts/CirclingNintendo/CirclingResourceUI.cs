@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using TMPro;
 using Sirenix.OdinInspector;
 using UnityEngine.Rendering;
+using UnityEngine.UI;
 
 public class CirclingResourceUI : MonoBehaviour
 {
@@ -21,6 +22,7 @@ public class CirclingResourceUI : MonoBehaviour
     void UpdateItemCount(CirclingItemType itemType, int count, int changedCount)
     {
         if (!resourcesUIs.ContainsKey(itemType)) return;
+        resourcesUIs[itemType].transform.Find("Resource Icon").GetComponent<Image>().sprite = CirclingResourceManager.Instance.GetItemSprite(itemType);
         resourcesUIs[itemType].transform.Find("Resource Quantity Text").GetComponent<TMP_Text>().text = count.ToString();
     }
 }

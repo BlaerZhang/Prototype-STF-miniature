@@ -73,15 +73,25 @@ public class CirclingResourceManager : MonoBehaviour
         return itemSprites[itemType];
     }
 
-    public bool TryBuyItem(CirclingItemType itemType, int itemQuantity, int itemPrice)
+    public bool TryBuyItem(CirclingItemType itemTypeToBuy, int itemQuantityToBuy, CirclingItemType itemTypeToPay, int itemQuantityToPay)
     {
-        if (itemPrice > itemCount[CirclingItemType.Coupon])
+        if (TryPayItem(itemTypeToPay, itemQuantityToPay))
+        {
+            AddItem(itemTypeToBuy, itemQuantityToBuy);
+            return true;
+        }
+        
+        return false;
+    }
+
+    public bool TryPayItem(CirclingItemType itemTypeToPay, int itemQuantity)
+    {
+        if (itemQuantity > itemCount[itemTypeToPay])
         {
             return false;
         }
-        
-        RemoveItem(CirclingItemType.Coupon, itemPrice);
-        AddItem(itemType, itemQuantity);
+
+        RemoveItem(itemTypeToPay, itemQuantity);
         return true;
     }
 

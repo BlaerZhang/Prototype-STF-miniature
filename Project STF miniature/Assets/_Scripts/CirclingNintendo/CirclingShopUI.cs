@@ -32,7 +32,7 @@ public class CirclingShopUI : MonoBehaviour
 
     void OnItemSlotClicked(CirclingItemForSale itemForSale, GameObject itemSlot)
     {
-        if (CirclingResourceManager.Instance.TryBuyItem(itemForSale.itemType, itemForSale.quantity, itemForSale.price))
+        if (CirclingResourceManager.Instance.TryBuyItem(itemForSale.itemType, itemForSale.quantity, CirclingItemType.Coupon, itemForSale.price))
         {
             // Show the success message
             Debug.Log($"Bought {itemForSale.itemType} x{itemForSale.quantity} for {itemForSale.price} coupons");
@@ -41,6 +41,9 @@ public class CirclingShopUI : MonoBehaviour
             if (itemForSale.itemType == CirclingItemType.MysteryBox) return;
             itemSlot.GetComponent<Button>().interactable = false;
             itemSlot.transform.Find("Price Text").GetComponent<TMP_Text>().text = "SOLD";
+
+            // Play the buy sound
+            AudioManager.Instance.PlaySound(AudioManager.Instance.soundClips["Buy"]);
         }
         else
         {
@@ -50,6 +53,9 @@ public class CirclingShopUI : MonoBehaviour
             // Flash the price text
             itemSlot.transform.Find("Price Text").GetComponent<TMP_Text>().DOColor(Color.red, 0.5f).SetEase(Ease.Flash, 4, 0.5f);
             itemSlot.transform.DOShakePosition(0.5f, 10, 10, 0, false, true);
+
+            // Play the error sound
+            AudioManager.Instance.PlaySound(AudioManager.Instance.soundClips["Error"]);
         }
     }
 
