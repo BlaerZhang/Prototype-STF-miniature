@@ -15,6 +15,7 @@ public class CirclingNPC : MonoBehaviour
     public List<Image> fruitRequirementsIconUIs;
     public Image questStatusIconUI;
     public Sprite questStatusIconSprite_InFruitQuest;
+    public Sprite questStatusIconSprite_FruitQuestSubmittable;
     public Sprite questStatusIconSprite_InDeliveryQuest;
     public Sprite questStatusIconSprite_NewQuest;
     
@@ -34,11 +35,13 @@ public class CirclingNPC : MonoBehaviour
     void OnEnable()
     {
         CirclingDeliverySubmitArea.OnDelivered += CompleteDeliveryQuest;
+        CirclingResourceManager.OnItemCountChanged += OnItemCountChanged;
     }
     
     void OnDisable()
     {
         CirclingDeliverySubmitArea.OnDelivered -= CompleteDeliveryQuest;
+        CirclingResourceManager.OnItemCountChanged -= OnItemCountChanged;
     }
 
     void Start()
@@ -111,19 +114,36 @@ public class CirclingNPC : MonoBehaviour
         questStatusIconUI.sprite = questStatusIconSprite_InDeliveryQuest;
     }
 
+    public bool CheckFruitQuestSubmittable()
+    {
+        if (!isInFruitQuest) return false;
+
+        foreach (var item in fruitQuestRequiredItems)
+        {
+            if (CirclingResourceManager.Instance.GetItemCount(item.Key) < item.Value) 
+            {
+                return false;
+            }
+        }
+        return true;
+    }
+
+    private void OnItemCountChanged(CirclingItemType itemType, int itemCount, int changedCount)
+    {
+        if (isInFruitQuest)
+        {
+            questStatusIconUI.sprite =  CheckFruitQuestSubmittable() ? 
+            questStatusIconSprite_FruitQuestSubmittable : questStatusIconSprite_InFruitQuest;
+        }
+    }
+
     public void TryCompleteFruitQuest()
     {
         if (!isInFruitQuest) return;
         
         //Check if the player has all the required items
-        foreach (var item in fruitQuestRequiredItems)
-        {
-            if (CirclingResourceManager.Instance.GetItemCount(item.Key) < item.Value) 
-            {
-                Debug.Log($"Player does not have all the required items: {item.Key} x {item.Value}");
-                return;
-            }
-        }
+        if (!CheckFruitQuestSubmittable()) return;
+
         //Remove the items from the player's inventory
         foreach (var item in fruitQuestRequiredItems)
         {
