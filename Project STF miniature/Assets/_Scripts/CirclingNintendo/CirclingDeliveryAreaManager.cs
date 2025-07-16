@@ -9,7 +9,8 @@ public class CirclingDeliveryAreaManager : MonoBehaviour
     [Header("配置")]
     [SerializeField] private List<CirclingDeliverySubmitArea> deliveryAreas = new List<CirclingDeliverySubmitArea>();
     
-    private Dictionary<CirclingDeliverySubmitArea, bool> areaAvailability = new Dictionary<CirclingDeliverySubmitArea, bool>();
+    // NPC名称到送货区域的映射
+    private Dictionary<string, CirclingDeliverySubmitArea> npcToAreaMapping = new Dictionary<string, CirclingDeliverySubmitArea>();
 
     void Awake()
     {
@@ -45,74 +46,80 @@ public class CirclingDeliveryAreaManager : MonoBehaviour
             deliveryAreas = FindObjectsOfType<CirclingDeliverySubmitArea>().ToList();
         }
 
-        // 初始化可用性字典
-        areaAvailability.Clear();
-        foreach (var area in deliveryAreas)
-        {
-            areaAvailability[area] = true; // true = 可用
-        }
+        // 初始化NPC到送货区的映射
+        BuildNPCToAreaMapping();
 
-        Debug.Log($"初始化送货区管理器: 找到 {deliveryAreas.Count} 个送货区");
+        Debug.Log($"初始化送货区管理器: 找到 {deliveryAreas.Count} 个送货区，映射了 {npcToAreaMapping.Count} 个NPC");
     }
 
-    void HandleDeliveryQuestRequest(string npcName, Sprite npcSprite, int originalIndex)
+    void BuildNPCToAreaMapping()
     {
-        // 寻找一个可用的送货区
-        CirclingDeliverySubmitArea availableArea = GetAvailableArea();
+        npcToAreaMapping.Clear();
         
-        if (availableArea != null)
+        foreach (var area in deliveryAreas)
         {
-            // 标记该区域为占用
-            areaAvailability[availableArea] = false;
+            string boundNPCName = area.GetBoundNPCName();
+            if (!string.IsNullOrEmpty(boundNPCName))
+            {
+                npcToAreaMapping[boundNPCName] = area;
+                Debug.Log($"绑定NPC {boundNPCName} 到送货区 {area.name}");
+            }
+        }
+    }
+
+    void HandleDeliveryQuestRequest(string senderNpcName, Sprite npcSprite, int originalIndex)
+    {
+        // 获取所有可用的送货区（排除发送者自己的区域）
+        List<CirclingDeliverySubmitArea> availableAreas = GetAvailableAreas(senderNpcName);
+        
+        if (availableAreas.Count > 0)
+        {
+            // 随机选择一个可用的送货区
+            int randomIndex = Random.Range(0, availableAreas.Count);
+            CirclingDeliverySubmitArea selectedArea = availableAreas[randomIndex];
             
-            // 直接调用该区域的处理方法，绕过原来的index系统
-            availableArea.HandleDeliveryQuest(npcName, npcSprite);
+            // 添加任务到选中的送货区
+            selectedArea.AddDeliveryQuest(senderNpcName, npcSprite);
             
-            Debug.Log($"为NPC {npcName} 分配送货区: {availableArea.name}");
+            Debug.Log($"为NPC {senderNpcName} 分配送货区: {selectedArea.name} (绑定NPC: {selectedArea.GetBoundNPCName()})");
         }
         else
         {
-            Debug.LogWarning($"没有可用的送货区给NPC {npcName}！所有送货区都被占用了。");
+            Debug.LogWarning($"没有可用的送货区给NPC {senderNpcName}！");
         }
     }
 
-    void HandleDeliveryCompleted(string npcName)
+    void HandleDeliveryCompleted(string deliveredNpcName, string targetNpcName)
     {
-        // 找到对应的送货区并释放它
-        foreach (var kvp in areaAvailability.ToList())
-        {
-            if (!kvp.Value && kvp.Key.IsCurrentlyHandling(npcName))
-            {
-                areaAvailability[kvp.Key] = true; // 标记为可用
-                Debug.Log($"送货区 {kvp.Key.name} 已释放 (NPC: {npcName})");
-                break;
-            }
-        }
+        Debug.Log($"送货完成: {deliveredNpcName} 的任务已送达到 {targetNpcName}");
+        
+        // 这里可以添加更多的完成逻辑
+        // 例如：给玩家奖励、更新统计数据等
     }
 
-    CirclingDeliverySubmitArea GetAvailableArea()
+    List<CirclingDeliverySubmitArea> GetAvailableAreas(string senderNpcName)
     {
-        // 返回一个随机的可用的送货区
         List<CirclingDeliverySubmitArea> availableAreas = new List<CirclingDeliverySubmitArea>();
         
-        // 收集所有可用的送货区
-        foreach (var kvp in areaAvailability)
+        foreach (var area in deliveryAreas)
         {
-            if (kvp.Value) // true = 可用
+            string boundNPCName = area.GetBoundNPCName();
+            
+            // 排除发送者自己的区域
+            if (boundNPCName != senderNpcName)
             {
-                availableAreas.Add(kvp.Key);
+                availableAreas.Add(area);
             }
         }
         
-        // 如果没有可用区域，返回null
-        if (availableAreas.Count == 0)
-        {
-            return null;
-        }
-        
-        // 随机选择一个可用区域
-        int randomIndex = Random.Range(0, availableAreas.Count);
-        return availableAreas[randomIndex];
+        return availableAreas;
+    }
+
+    // 根据NPC名称获取对应的送货区
+    public CirclingDeliverySubmitArea GetAreaForNPC(string npcName)
+    {
+        npcToAreaMapping.TryGetValue(npcName, out CirclingDeliverySubmitArea area);
+        return area;
     }
 
     // 调试方法
@@ -123,13 +130,14 @@ public class CirclingDeliveryAreaManager : MonoBehaviour
     {
         if (!showDebugInfo) return;
         
-        GUILayout.BeginArea(new Rect(10, 10, 300, 200));
+        GUILayout.BeginArea(new Rect(10, 10, 400, 300));
         GUILayout.Label("送货区状态:");
         
-        foreach (var kvp in areaAvailability)
+        foreach (var area in deliveryAreas)
         {
-            string status = kvp.Value ? "可用" : "占用";
-            GUILayout.Label($"{kvp.Key.name}: {status}");
+            string boundNPC = area.GetBoundNPCName();
+            int questCount = area.GetQuestCount();
+            GUILayout.Label($"{area.name} (绑定: {boundNPC}) - 任务数: {questCount}");
         }
         
         GUILayout.EndArea();

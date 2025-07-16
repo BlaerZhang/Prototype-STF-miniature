@@ -358,7 +358,11 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: ff22506046f01e846914f54df2b3c4c4, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  boundNPCName: 
   questIcon: {fileID: 1677226963544919587}
+  questIconContainer: {fileID: 0}
+  iconCycleInterval: 0.5
+  deliveryQuests: []
 --- !u!61 &5690754517918772186
 BoxCollider2D:
   m_ObjectHideFlags: 0

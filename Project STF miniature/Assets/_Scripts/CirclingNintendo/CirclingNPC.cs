@@ -159,7 +159,7 @@ public class CirclingNPC : MonoBehaviour
         CompleteQuest(fruitQuestCouponRewardCount);
     }
 
-    private void CompleteDeliveryQuest(string npcName)
+    private void CompleteDeliveryQuest(string npcName, string targetNPCName)
     {
         if (npcName != this.npcName) return;
         CompleteQuest(deliveryQuestCouponRewardCount);

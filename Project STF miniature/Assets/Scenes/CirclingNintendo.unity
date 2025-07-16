@@ -496,6 +496,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: Delivery Target Area (4)
       objectReference: {fileID: 0}
+    - target: {fileID: 5029483690568747748, guid: 0c3d697ead2694a42bf5e7939b4d1f7c, type: 3}
+      propertyPath: boundNPCName
+      value: Bowser
+      objectReference: {fileID: 0}
     - target: {fileID: 5326143031787438289, guid: 0c3d697ead2694a42bf5e7939b4d1f7c, type: 3}
       propertyPath: m_Enabled
       value: 0
@@ -6425,6 +6429,10 @@ PrefabInstance:
     - target: {fileID: 4687289228640842205, guid: 0c3d697ead2694a42bf5e7939b4d1f7c, type: 3}
       propertyPath: m_Name
       value: Delivery Target Area (3)
+      objectReference: {fileID: 0}
+    - target: {fileID: 5029483690568747748, guid: 0c3d697ead2694a42bf5e7939b4d1f7c, type: 3}
+      propertyPath: boundNPCName
+      value: Luigi
       objectReference: {fileID: 0}
     - target: {fileID: 5326143031787438289, guid: 0c3d697ead2694a42bf5e7939b4d1f7c, type: 3}
       propertyPath: m_Enabled
@@ -15111,6 +15119,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: Delivery Target Area (5)
       objectReference: {fileID: 0}
+    - target: {fileID: 5029483690568747748, guid: 0c3d697ead2694a42bf5e7939b4d1f7c, type: 3}
+      propertyPath: boundNPCName
+      value: Yoshi
+      objectReference: {fileID: 0}
     - target: {fileID: 5326143031787438289, guid: 0c3d697ead2694a42bf5e7939b4d1f7c, type: 3}
       propertyPath: m_Enabled
       value: 0
@@ -21729,6 +21741,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: Delivery Target Area (1)
       objectReference: {fileID: 0}
+    - target: {fileID: 5029483690568747748, guid: 0c3d697ead2694a42bf5e7939b4d1f7c, type: 3}
+      propertyPath: boundNPCName
+      value: Donkey Kong
+      objectReference: {fileID: 0}
     - target: {fileID: 5326143031787438289, guid: 0c3d697ead2694a42bf5e7939b4d1f7c, type: 3}
       propertyPath: m_Enabled
       value: 0
@@ -24288,6 +24304,10 @@ PrefabInstance:
     - target: {fileID: 4687289228640842205, guid: 0c3d697ead2694a42bf5e7939b4d1f7c, type: 3}
       propertyPath: m_Name
       value: Delivery Target Area (2)
+      objectReference: {fileID: 0}
+    - target: {fileID: 5029483690568747748, guid: 0c3d697ead2694a42bf5e7939b4d1f7c, type: 3}
+      propertyPath: boundNPCName
+      value: Mario
       objectReference: {fileID: 0}
     - target: {fileID: 5326143031787438289, guid: 0c3d697ead2694a42bf5e7939b4d1f7c, type: 3}
       propertyPath: m_Enabled
@@ -27922,6 +27942,10 @@ PrefabInstance:
     - target: {fileID: 4687289228640842205, guid: 0c3d697ead2694a42bf5e7939b4d1f7c, type: 3}
       propertyPath: m_Name
       value: Delivery Target Area
+      objectReference: {fileID: 0}
+    - target: {fileID: 5029483690568747748, guid: 0c3d697ead2694a42bf5e7939b4d1f7c, type: 3}
+      propertyPath: boundNPCName
+      value: Princess Peach
       objectReference: {fileID: 0}
     - target: {fileID: 5326143031787438289, guid: 0c3d697ead2694a42bf5e7939b4d1f7c, type: 3}
       propertyPath: m_Enabled
