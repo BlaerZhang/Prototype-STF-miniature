@@ -15,6 +15,7 @@ public class CirclingNPC : MonoBehaviour
     public List<Image> fruitRequirementsIconUIs;
     public Image questStatusIconUI;
     public Sprite questStatusIconSprite_InFruitQuest;
+    public Sprite questStatusIconSprite_FruitQuestSubmittable;
     public Sprite questStatusIconSprite_InDeliveryQuest;
     public Sprite questStatusIconSprite_NewQuest;
     
@@ -34,11 +35,13 @@ public class CirclingNPC : MonoBehaviour
     void OnEnable()
     {
         CirclingDeliverySubmitArea.OnDelivered += CompleteDeliveryQuest;
+        CirclingResourceManager.OnItemCountChanged += OnItemCountChanged;
     }
     
     void OnDisable()
     {
         CirclingDeliverySubmitArea.OnDelivered -= CompleteDeliveryQuest;
+        CirclingResourceManager.OnItemCountChanged -= OnItemCountChanged;
     }
 
     void Start()
@@ -98,7 +101,8 @@ public class CirclingNPC : MonoBehaviour
         fruitRequirementsIconUIs[0].sprite = CirclingResourceManager.Instance.GetItemSprite((CirclingItemType)fruitType1);
         fruitRequirementsIconUIs[1].gameObject.SetActive(true);
         fruitRequirementsIconUIs[1].sprite = CirclingResourceManager.Instance.GetItemSprite((CirclingItemType)fruitType2);
-        questStatusIconUI.sprite = questStatusIconSprite_InFruitQuest;
+        questStatusIconUI.sprite =  CheckFruitQuestSubmittable() ? 
+            questStatusIconSprite_FruitQuestSubmittable : questStatusIconSprite_InFruitQuest;
     }
 
     private void GenerateDeliveryQuest()
@@ -111,19 +115,36 @@ public class CirclingNPC : MonoBehaviour
         questStatusIconUI.sprite = questStatusIconSprite_InDeliveryQuest;
     }
 
-    public void TryCompleteFruitQuest()
+    public bool CheckFruitQuestSubmittable()
     {
-        if (!isInFruitQuest) return;
-        
-        //Check if the player has all the required items
+        if (!isInFruitQuest) return false;
+
         foreach (var item in fruitQuestRequiredItems)
         {
             if (CirclingResourceManager.Instance.GetItemCount(item.Key) < item.Value) 
             {
-                Debug.Log($"Player does not have all the required items: {item.Key} x {item.Value}");
-                return;
+                return false;
             }
         }
+        return true;
+    }
+
+    private void OnItemCountChanged(CirclingItemType itemType, int itemCount, int changedCount)
+    {
+        if (isInFruitQuest)
+        {
+            questStatusIconUI.sprite =  CheckFruitQuestSubmittable() ? 
+            questStatusIconSprite_FruitQuestSubmittable : questStatusIconSprite_InFruitQuest;
+        }
+    }
+
+    private void TryCompleteFruitQuest()
+    {
+        if (!isInFruitQuest) return;
+        
+        //Check if the player has all the required items
+        if (!CheckFruitQuestSubmittable()) return;
+
         //Remove the items from the player's inventory
         foreach (var item in fruitQuestRequiredItems)
         {
@@ -152,6 +173,12 @@ public class CirclingNPC : MonoBehaviour
 
         // Coupon Reward
         CirclingResourceManager.Instance.AddItem(CirclingItemType.Coupon, couponRewardCount);
+    }
+
+    public void OnNPCGridClicked()
+    {
+        if (isInFruitQuest) TryCompleteFruitQuest();
+        else if (!IsInQuest) GenerateRandomQuest();
     }
 
     void OnTriggerEnter2D(Collider2D other)

@@ -523,19 +523,7 @@ MonoBehaviour:
       m_Calls:
       - m_Target: {fileID: 8020889430639666051}
         m_TargetAssemblyTypeName: CirclingNPC, Assembly-CSharp
-        m_MethodName: GenerateRandomQuest
-        m_Mode: 1
-        m_Arguments:
-          m_ObjectArgument: {fileID: 0}
-          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
-          m_IntArgument: 0
-          m_FloatArgument: 0
-          m_StringArgument: 
-          m_BoolArgument: 0
-        m_CallState: 2
-      - m_Target: {fileID: 8020889430639666051}
-        m_TargetAssemblyTypeName: CirclingNPC, Assembly-CSharp
-        m_MethodName: TryCompleteFruitQuest
+        m_MethodName: OnNPCGridClicked
         m_Mode: 1
         m_Arguments:
           m_ObjectArgument: {fileID: 0}
@@ -565,6 +553,7 @@ MonoBehaviour:
   - {fileID: 2616762521058179897}
   questStatusIconUI: {fileID: 5439733371051932182}
   questStatusIconSprite_InFruitQuest: {fileID: -119524519, guid: 847024aa758762045a7b6f953135918a, type: 3}
+  questStatusIconSprite_FruitQuestSubmittable: {fileID: -652065510, guid: 847024aa758762045a7b6f953135918a, type: 3}
   questStatusIconSprite_InDeliveryQuest: {fileID: 1589789706, guid: 847024aa758762045a7b6f953135918a, type: 3}
   questStatusIconSprite_NewQuest: {fileID: -889491641, guid: 847024aa758762045a7b6f953135918a, type: 3}
   fruitQuestProbability: 0.5
