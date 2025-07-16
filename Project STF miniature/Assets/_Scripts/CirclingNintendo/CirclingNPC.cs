@@ -101,7 +101,8 @@ public class CirclingNPC : MonoBehaviour
         fruitRequirementsIconUIs[0].sprite = CirclingResourceManager.Instance.GetItemSprite((CirclingItemType)fruitType1);
         fruitRequirementsIconUIs[1].gameObject.SetActive(true);
         fruitRequirementsIconUIs[1].sprite = CirclingResourceManager.Instance.GetItemSprite((CirclingItemType)fruitType2);
-        questStatusIconUI.sprite = questStatusIconSprite_InFruitQuest;
+        questStatusIconUI.sprite =  CheckFruitQuestSubmittable() ? 
+            questStatusIconSprite_FruitQuestSubmittable : questStatusIconSprite_InFruitQuest;
     }
 
     private void GenerateDeliveryQuest()
