@@ -31,17 +31,22 @@ public class CirclingNPC : MonoBehaviour
     [Header("Delivery Quest")]
     public int deliveryQuestCouponRewardCount = 1;
     public static Action<string, Sprite, int> OnDeliveryQuestGenerated;
+
+    [Header("Upgrade Quest")]
+    private int currentUpgradeCouponBonusCount = 0;
     
     void OnEnable()
     {
         CirclingDeliverySubmitArea.OnDelivered += CompleteDeliveryQuest;
         CirclingResourceManager.OnItemCountChanged += OnItemCountChanged;
+        CirclingUpgradeManager.OnUpgradeAdded += OnUpgradeAdded;
     }
     
     void OnDisable()
     {
         CirclingDeliverySubmitArea.OnDelivered -= CompleteDeliveryQuest;
         CirclingResourceManager.OnItemCountChanged -= OnItemCountChanged;
+        CirclingUpgradeManager.OnUpgradeAdded -= OnUpgradeAdded;
     }
 
     void Start()
@@ -172,7 +177,7 @@ public class CirclingNPC : MonoBehaviour
         questStatusIconUI.sprite = questStatusIconSprite_NewQuest;
 
         // Coupon Reward
-        CirclingResourceManager.Instance.AddItem(CirclingItemType.Coupon, couponRewardCount);
+        CirclingResourceManager.Instance.AddItem(CirclingItemType.Coupon, couponRewardCount + currentUpgradeCouponBonusCount);
     }
 
     public void OnNPCGridClicked()
@@ -184,6 +189,12 @@ public class CirclingNPC : MonoBehaviour
     void OnTriggerEnter2D(Collider2D other)
     {
         if (other.gameObject.CompareTag("Player")) TryCompleteFruitQuest();
-    }   
+    }
+
+    void OnUpgradeAdded(CirclingUpgrade upgrade)
+    {
+        if (upgrade.UpgradeName != "Increase Coupon") return;
+        currentUpgradeCouponBonusCount = upgrade.upgradeLevel;
+    }
 
 }

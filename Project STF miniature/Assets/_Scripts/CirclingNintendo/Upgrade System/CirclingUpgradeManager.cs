@@ -2,11 +2,14 @@ using UnityEngine;
 using System.Collections.Generic;
 using TMPro;
 using System.Linq;
+using System;
 
 public class CirclingUpgradeManager : MonoBehaviour
 {
     public List<CirclingUpgrade> upgrades;
     public TMP_Text upgradeDisplayUI;
+
+    public static event Action<CirclingUpgrade> OnUpgradeAdded;
 
     void OnEnable()
     {
@@ -34,6 +37,7 @@ public class CirclingUpgradeManager : MonoBehaviour
             upgrades.Add(upgrade);
         }
         UpdateUpgradeDisplay();
+        OnUpgradeAdded?.Invoke(upgrade);
     }
 
     void UpdateUpgradeDisplay()
