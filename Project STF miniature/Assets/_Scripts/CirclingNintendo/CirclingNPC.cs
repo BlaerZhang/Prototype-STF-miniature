@@ -137,7 +137,7 @@ public class CirclingNPC : MonoBehaviour
         }
     }
 
-    public void TryCompleteFruitQuest()
+    private void TryCompleteFruitQuest()
     {
         if (!isInFruitQuest) return;
         
@@ -172,6 +172,12 @@ public class CirclingNPC : MonoBehaviour
 
         // Coupon Reward
         CirclingResourceManager.Instance.AddItem(CirclingItemType.Coupon, couponRewardCount);
+    }
+
+    public void OnNPCGridClicked()
+    {
+        if (isInFruitQuest) TryCompleteFruitQuest();
+        else if (!IsInQuest) GenerateRandomQuest();
     }
 
     void OnTriggerEnter2D(Collider2D other)
