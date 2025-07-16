@@ -1,8 +1,10 @@
 using UnityEngine;
 using TMPro;
 using System;
+using JoostenProductions;
+using UnityEngine.InputSystem;
 
-public class UITimerText : MonoBehaviour
+public class UITimerText : OverridableMonoBehaviour
 {
     public TMP_Text timerText;
     private int currentHour;
@@ -13,11 +15,13 @@ public class UITimerText : MonoBehaviour
 
     void OnEnable()
     {
+        base.OnEnable();
         SimpleGridCounter.OnGridCountChanged += AddOneHour;
     }
 
     void OnDisable()
     {
+        base.OnDisable();
         SimpleGridCounter.OnGridCountChanged -= AddOneHour;
     }
 
@@ -28,15 +32,25 @@ public class UITimerText : MonoBehaviour
         UpdateTimerText();
     }
 
+    public override void UpdateMe()
+    {
+        if (Keyboard.current.spaceKey.wasPressedThisFrame)
+        {
+            AddOneHour();
+        }
+    }
+
     public void UpdateTimerText()
     {
         timerText.text = $"Day {currentDay}\n{currentHour:D2}:00";
 
-        //Temp
+        ///Temp
         if(currentHour == 0 || currentHour == 12 || currentHour == 24)
         {
             OnShopRefreshingTime?.Invoke();
         }
+        timerText.text = $"<size=48>{12 - currentHour%12} </size>hours until the next shop refresh\n" + timerText.text;
+        ///
     }
 
     public void AddOneHour(int stepCount = 0)

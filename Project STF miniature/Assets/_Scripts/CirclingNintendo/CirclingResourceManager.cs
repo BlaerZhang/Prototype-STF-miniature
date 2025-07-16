@@ -29,6 +29,7 @@ public class CirclingResourceManager : MonoBehaviour
         {CirclingItemType.TradeShopCoupon, 0},
         {CirclingItemType.LotteryShopCoupon, 0},
         {CirclingItemType.TrafficShopCoupon, 0},
+        {CirclingItemType.DrawCoupon, 0},
         {CirclingItemType.MysteryBox, 0},
     };
 

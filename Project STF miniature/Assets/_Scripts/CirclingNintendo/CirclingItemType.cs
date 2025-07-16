@@ -22,5 +22,6 @@ public enum CirclingItemType
     TradeShopCoupon = 17,
     LotteryShopCoupon = 18,
     TrafficShopCoupon = 19,
+    DrawCoupon = 20,
     MysteryBox = 99,
 }

@@ -111,7 +111,7 @@ public class CirclingNPC : MonoBehaviour
         questStatusIconUI.sprite = questStatusIconSprite_InDeliveryQuest;
     }
 
-    private void TryCompleteFruitQuest()
+    public void TryCompleteFruitQuest()
     {
         if (!isInFruitQuest) return;
         
