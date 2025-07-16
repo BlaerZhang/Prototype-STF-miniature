@@ -13283,15 +13283,15 @@ PrefabInstance:
     m_Modifications:
     - target: {fileID: 952048107902964194, guid: b39cdc860b83d0f42bb2bfd6e12d86bc, type: 3}
       propertyPath: m_LocalScale.x
-      value: 0.3
+      value: 0.6
       objectReference: {fileID: 0}
     - target: {fileID: 952048107902964194, guid: b39cdc860b83d0f42bb2bfd6e12d86bc, type: 3}
       propertyPath: m_LocalScale.y
-      value: 0.3
+      value: 0.6
       objectReference: {fileID: 0}
     - target: {fileID: 952048107902964194, guid: b39cdc860b83d0f42bb2bfd6e12d86bc, type: 3}
       propertyPath: m_LocalScale.z
-      value: 0.3
+      value: 0.6
       objectReference: {fileID: 0}
     - target: {fileID: 952048107902964194, guid: b39cdc860b83d0f42bb2bfd6e12d86bc, type: 3}
       propertyPath: m_LocalPosition.x
@@ -26946,6 +26946,10 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 779529314}
     m_Modifications:
+    - target: {fileID: 9167707926077215, guid: cbb1c1de05f63a64f97af66e97427a1a, type: 3}
+      propertyPath: m_Sprite
+      value: 
+      objectReference: {fileID: 8699926738720995835, guid: 4755b1ac0de9d7f47a930111c98df327, type: 3}
     - target: {fileID: 2451787322523902513, guid: cbb1c1de05f63a64f97af66e97427a1a, type: 3}
       propertyPath: m_IsActive
       value: 0
