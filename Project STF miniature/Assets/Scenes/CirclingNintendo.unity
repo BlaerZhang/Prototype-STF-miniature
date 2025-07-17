@@ -5704,7 +5704,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 1335306822282642527, guid: cbb1c1de05f63a64f97af66e97427a1a, type: 3}
       propertyPath: 'itemsPools.Array.data[1].m_Values.Array.data[6]'
-      value: 0.3
+      value: 0.1
       objectReference: {fileID: 0}
     - target: {fileID: 1335306822282642527, guid: cbb1c1de05f63a64f97af66e97427a1a, type: 3}
       propertyPath: itemsPools.Array.data[0].m_Keys.Array.data[0].price
@@ -7050,7 +7050,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 1335306822282642527, guid: cbb1c1de05f63a64f97af66e97427a1a, type: 3}
       propertyPath: 'itemsPools.Array.data[0].m_Values.Array.data[12]'
-      value: 1
+      value: 0.2
       objectReference: {fileID: 0}
     - target: {fileID: 1335306822282642527, guid: cbb1c1de05f63a64f97af66e97427a1a, type: 3}
       propertyPath: itemsPools.Array.data[1].m_Keys.Array.data[4].price
@@ -17949,7 +17949,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 1335306822282642527, guid: cbb1c1de05f63a64f97af66e97427a1a, type: 3}
       propertyPath: 'itemsPools.Array.data[0].m_Values.Array.data[12]'
-      value: 1
+      value: 0.2
       objectReference: {fileID: 0}
     - target: {fileID: 1335306822282642527, guid: cbb1c1de05f63a64f97af66e97427a1a, type: 3}
       propertyPath: itemsPools.Array.data[1].m_Keys.Array.data[4].price
@@ -28107,7 +28107,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 1335306822282642527, guid: cbb1c1de05f63a64f97af66e97427a1a, type: 3}
       propertyPath: 'itemsPools.Array.data[0].m_Values.Array.data[12]'
-      value: 1
+      value: 0.2
       objectReference: {fileID: 0}
     - target: {fileID: 1335306822282642527, guid: cbb1c1de05f63a64f97af66e97427a1a, type: 3}
       propertyPath: itemsPools.Array.data[1].m_Keys.Array.data[4].price
