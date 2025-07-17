@@ -14,7 +14,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   upgradeName: Increase Distance per Move
   upgradeDescription: Increase the maximum number of moving slots for each move,
-    +1 each time
+    +2 each time
   upgradeType: 3
   upgradeMaxLevel: 5
   upgradeCostPerLevel: 0100000001000000010000000100000001000000

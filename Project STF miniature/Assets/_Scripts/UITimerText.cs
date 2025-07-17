@@ -45,11 +45,11 @@ public class UITimerText : OverridableMonoBehaviour
         timerText.text = $"Day {currentDay}\n{currentHour:D2}:00";
 
         ///Temp
-        if(currentHour == 0 || currentHour == 12 || currentHour == 24)
+        if(currentHour == 0 || currentHour == 8 || currentHour == 16 || currentHour == 24)
         {
             OnShopRefreshingTime?.Invoke();
         }
-        timerText.text = $"<size=48>{12 - currentHour%12} </size>hours until the next shop refresh\n" + timerText.text;
+        timerText.text = $"<size=48>{8 - currentHour%8} </size>hours until the next shop refresh\n" + timerText.text;
         ///
     }
 

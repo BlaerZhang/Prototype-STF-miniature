@@ -13,8 +13,7 @@ MonoBehaviour:
   m_Name: RefreshStoreListUD
   m_EditorClassIdentifier: 
   upgradeName: Refresh Store List
-  upgradeDescription: You can manually refresh shop lists once during a store's items
-    update cycle
+  upgradeDescription: You can manually refresh shop lists once per day
   upgradeType: 1
   upgradeMaxLevel: 1
-  upgradeCostPerLevel: 02000000
+  upgradeCostPerLevel: 01000000

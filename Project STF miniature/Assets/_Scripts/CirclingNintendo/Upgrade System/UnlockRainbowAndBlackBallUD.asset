@@ -12,8 +12,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: e507b22ba0fbb8044b6ad9bb11a1e653, type: 3}
   m_Name: UnlockRainbowAndBlackBallUD
   m_EditorClassIdentifier: 
-  upgradeName: Unlock Rainbow / Black Ball
-  upgradeDescription: Add black and rainbow balls into the lottery pool
+  upgradeName: Unlock Rainbow / White Ball
+  upgradeDescription: Black and Rainbow balls can be purchased from Transport Shop
+    now.
   upgradeType: 2
   upgradeMaxLevel: 1
   upgradeCostPerLevel: 01000000

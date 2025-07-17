@@ -13,8 +13,7 @@ MonoBehaviour:
   m_Name: RemoteViewStoreUD
   m_EditorClassIdentifier: 
   upgradeName: Remote View Store
-  upgradeDescription: Allow players to remotely view the current product list of
-    each store grid
+  upgradeDescription: Shop can now be viewed remotely
   upgradeType: 1
   upgradeMaxLevel: 1
-  upgradeCostPerLevel: 01000000
+  upgradeCostPerLevel: 02000000
