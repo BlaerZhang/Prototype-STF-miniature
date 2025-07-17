@@ -115,28 +115,18 @@ public class CirclingDeliverySubmitArea : MonoBehaviour
     }
 
     // 获取绑定的NPC名称
-    public string GetBoundNPCName()
-    {
-        return boundNPCName;
-    }
+    public string GetBoundNPCName() => boundNPCName;
 
     // 获取当前任务数量
-    public int GetQuestCount()
-    {
-        return deliveryQuests.Count;
-    }
+    public int GetQuestCount() => deliveryQuests.Count;
 
     // 检查是否有来自指定NPC的任务
     public bool HasQuestFromNPC(string npcName)
-    {
-        return deliveryQuests.Any(quest => quest.senderNpcName == npcName);
-    }
+        => deliveryQuests.Any(quest => quest.senderNpcName == npcName);
 
     // 设置绑定的NPC（用于运行时配置）
     public void SetBoundNPC(string npcName)
-    {
-        boundNPCName = npcName;
-    }
+        => boundNPCName = npcName;
 
     void OnTriggerEnter2D(Collider2D other)
     {
