@@ -420,7 +420,7 @@ MonoBehaviour:
   enableCombination: 1
   combinationSettings:
     method: 0
-    maxDistance: 10
+    maxDistance: 1
     spawnDelay: 0.2
     absorbDuration: 0.4
     scaleCurve:

@@ -15,11 +15,13 @@ public class CirclingUpgradeManager : MonoBehaviour
     void OnEnable()
     {
         CirclingUpgradeShopUI.OnUpgradeSold += AddUpgrade;
+        OnUpgradeAdded += AddFreeRefreshOnUpgrade;
     }
 
     void OnDisable()
     {
         CirclingUpgradeShopUI.OnUpgradeSold -= AddUpgrade;
+        OnUpgradeAdded -= AddFreeRefreshOnUpgrade;
     }
 
     public void AddUpgrade(CirclingUpgrade upgrade)
@@ -65,6 +67,17 @@ public class CirclingUpgradeManager : MonoBehaviour
         else
         {
             Destroy(this);
+        }
+    }
+
+    /// <summary>
+    /// Temporary function of some upgrade effects
+    /// </summary>
+    void AddFreeRefreshOnUpgrade(CirclingUpgrade upgrade)
+    {
+        if (upgrade.UpgradeName == "Shop Manual Refresh")
+        {
+            CirclingResourceManager.Instance.AddItem(CirclingItemType.ShopRefresh, 1);
         }
     }
 }
