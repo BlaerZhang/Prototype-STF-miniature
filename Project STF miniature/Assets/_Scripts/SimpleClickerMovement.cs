@@ -2,6 +2,7 @@ using UnityEngine;
 using JoostenProductions;
 using DG.Tweening;
 using UnityEngine.InputSystem;
+using DamageNumbersPro;
 
 public class SimpleClickerMovement : OverridableMonoBehaviour
 {
@@ -23,6 +24,7 @@ public class SimpleClickerMovement : OverridableMonoBehaviour
 
     [Header("粒子效果")]
     public ParticleSystem getCouponParticle;
+    public DamageNumber couponCountParticlePrefab;
 
     [Header("输入设置")]
     private Vector2 moveInput;
@@ -151,6 +153,9 @@ public class SimpleClickerMovement : OverridableMonoBehaviour
 
         // Play Particle Effect
         getCouponParticle.Play();
+
+        // Play Coupon Count Particle
+        DamageNumber couponCountParticle = couponCountParticlePrefab.Spawn(transform.position, changedCount);
 
         // Play Sound
         AudioManager.Instance.PlaySound(AudioManager.Instance.soundClips["Quest Complete Intro"]);

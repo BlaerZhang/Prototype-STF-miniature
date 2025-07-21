@@ -12,6 +12,7 @@ public class UITimerText : OverridableMonoBehaviour
 
     //Temp
     public static Action OnShopRefreshingTime;
+    public static Action OnDayChanged;
 
     void OnEnable()
     {
@@ -60,6 +61,7 @@ public class UITimerText : OverridableMonoBehaviour
         {
             currentDay++;
             currentHour = 0;
+            OnDayChanged?.Invoke();
         }
         UpdateTimerText();
     }

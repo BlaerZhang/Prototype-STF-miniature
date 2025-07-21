@@ -3,12 +3,14 @@ using Sirenix.OdinInspector;
 using UnityEngine.Rendering;
 using System.Collections.Generic;
 using System;
+using System.Linq;
 
 public class CirclingShop : MonoBehaviour
 {
     public List<SerializedDictionary<CirclingItemForSale, float>> itemsPools;
     public List<CirclingItemForSale> itemsInSlots;
     public static Action<List<CirclingItemForSale>> OnItemsForSaleGenerated;
+    public static Action<CirclingShop> OnShopRefreshed;
     private CirclingShopUI _shopUI;
 
     void Start()
@@ -20,11 +22,13 @@ public class CirclingShop : MonoBehaviour
     void OnEnable()
     {
         UITimerText.OnShopRefreshingTime += GenerateItemsForSale;
+        UITimerText.OnDayChanged += RefillShopRefresh;
     }
     
     void OnDisable()
     {
         UITimerText.OnShopRefreshingTime -= GenerateItemsForSale;
+        UITimerText.OnDayChanged -= RefillShopRefresh;
     }
 
     public void GenerateItemsForSale()
@@ -64,5 +68,27 @@ public class CirclingShop : MonoBehaviour
         }
 
         return null;
+    }
+
+    void RefillShopRefresh()
+    {
+        // If the player has the upgrade "Shop Manual Refresh", refill the shop refresh with the level of the upgrade
+        int _shopRefreshLevel = 0;
+        if (CirclingUpgradeManager.Instance.upgrades.Any(upgrade => upgrade.UpgradeName == "Shop Manual Refresh"))
+        {
+            _shopRefreshLevel = CirclingUpgradeManager.Instance.upgrades.First(upgrade => upgrade.UpgradeName == "Shop Manual Refresh").upgradeLevel;
+        }
+
+        CirclingResourceManager.Instance.SetItemCount(CirclingItemType.ShopRefresh, _shopRefreshLevel);
+    }
+
+    public void ManualRefreshShop()
+    {
+        if (CirclingResourceManager.Instance.GetItemCount(CirclingItemType.ShopRefresh) > 0)
+        {
+            CirclingResourceManager.Instance.RemoveItem(CirclingItemType.ShopRefresh, 1);
+            GenerateItemsForSale();
+            OnShopRefreshed?.Invoke(this);
+        }
     }
 }

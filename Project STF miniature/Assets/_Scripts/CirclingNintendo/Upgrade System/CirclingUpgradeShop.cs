@@ -13,14 +13,19 @@ public class CirclingUpgradeShop : MonoBehaviour
 
     public static Action<List<CirclingUpgrade>> OnUpgradesInSlotsGenerated;
 
+    [Header("Upgrade Grid UI")]
+    public GameObject upgradeShopHighlight;
+
     void OnEnable()
     {
         CirclingUpgradeShopUI.OnUpgradeSold += OnUpgradeSold;
+        CirclingResourceManager.OnItemCountChanged += CheckIfAnyUpgradeCanBeBought;
     }
 
     void OnDisable()
     {
         CirclingUpgradeShopUI.OnUpgradeSold -= OnUpgradeSold;
+        CirclingResourceManager.OnItemCountChanged -= CheckIfAnyUpgradeCanBeBought;
     }
 
     void Start()
@@ -54,6 +59,35 @@ public class CirclingUpgradeShop : MonoBehaviour
                 GenerateUpgradesForSale();
             }
         }
+    }
+
+    void CheckIfAnyUpgradeCanBeBought(CirclingItemType itemType, int count, int changedCount)
+    {
+        // if any upgrade of all slots can be bought, set the upgradeShopHighlight to true
+        bool canBeBought = false;
+        foreach(var upgrade in upgradesInSlots)
+        {
+            if (CheckIfPlayerHasEnoughCoupons(upgrade))
+            {
+                canBeBought = true;
+                break;
+            }
+        }
+
+        upgradeShopHighlight.SetActive(canBeBought);
+    }
+
+    public bool CheckIfPlayerHasEnoughCoupons(CirclingUpgrade upgrade)
+    {
+        var itemTypeToPay = upgrade.upgradeData.upgradeType switch
+        {
+            CirclingUpgradeType.AffairShop => CirclingItemType.AffairShopCoupon,
+            CirclingUpgradeType.TradeShop => CirclingItemType.TradeShopCoupon,
+            CirclingUpgradeType.LotteryShop => CirclingItemType.LotteryShopCoupon,
+            CirclingUpgradeType.TrafficShop => CirclingItemType.TrafficShopCoupon,
+        };
+
+        return CirclingResourceManager.Instance.GetItemCount(itemTypeToPay) >= upgrade.UpgradeCost;
     }
 }
 

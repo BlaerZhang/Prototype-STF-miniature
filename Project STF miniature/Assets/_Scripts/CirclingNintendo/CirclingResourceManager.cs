@@ -30,6 +30,7 @@ public class CirclingResourceManager : MonoBehaviour
         {CirclingItemType.LotteryShopCoupon, 0},
         {CirclingItemType.TrafficShopCoupon, 0},
         {CirclingItemType.DrawCoupon, 0},
+        {CirclingItemType.ShopRefresh, 0},
         {CirclingItemType.MysteryBox, 0},
     };
 
@@ -67,6 +68,12 @@ public class CirclingResourceManager : MonoBehaviour
     public int GetItemCount(CirclingItemType itemType)
     {
         return itemCount[itemType];
+    }
+
+    public void SetItemCount(CirclingItemType itemType, int count)
+    {
+        itemCount[itemType] = count;
+        OnItemCountChanged?.Invoke(itemType, itemCount[itemType], 0);
     }
 
     public Sprite GetItemSprite(CirclingItemType itemType)

@@ -23,5 +23,6 @@ public enum CirclingItemType
     LotteryShopCoupon = 18,
     TrafficShopCoupon = 19,
     DrawCoupon = 20,
+    ShopRefresh = 98,
     MysteryBox = 99,
 }

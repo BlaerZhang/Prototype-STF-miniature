@@ -35,7 +35,7 @@ public class CirclingUpgradeShopUI : MonoBehaviour
             if (upgradeForSale == null) continue;
             // Instantiate the upgradeForSalePrefab and set the upgradeForSale to the upgradeForSalePrefab
             var _upgradeSlot = Instantiate(upgradeForSalePrefab, upgradeSlotsParent);
-            var itemTypeToPay = upgradeForSale.upgradeData.upgradeType switch
+            var itemTypeToPay = upgradeForSale.UpgradeType switch
         {
             CirclingUpgradeType.AffairShop => CirclingItemType.AffairShopCoupon,
             CirclingUpgradeType.TradeShop => CirclingItemType.TradeShopCoupon,
@@ -53,7 +53,7 @@ public class CirclingUpgradeShopUI : MonoBehaviour
 
     void OnUpgradeSlotClicked(CirclingUpgrade upgradeForSale, GameObject upgradeSlot)
     {
-        var itemTypeToPay = upgradeForSale.upgradeData.upgradeType switch
+        var itemTypeToPay = upgradeForSale.UpgradeType switch
         {
             CirclingUpgradeType.AffairShop => CirclingItemType.AffairShopCoupon,
             CirclingUpgradeType.TradeShop => CirclingItemType.TradeShopCoupon,
@@ -86,5 +86,4 @@ public class CirclingUpgradeShopUI : MonoBehaviour
             AudioManager.Instance.PlaySound(AudioManager.Instance.soundClips["Error"]);
         }
     }
-
 }

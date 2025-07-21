@@ -8,6 +8,23 @@ public class CirclingShopUI : MonoBehaviour
 {
     public GameObject itemForSalePrefab;
     public Transform itemSlotsParent;
+    public Button shopRefreshButton;
+    public Dictionary<CirclingItemForSale, GameObject> currentItemsForSaleAndSlots;
+
+    [Header("Upgrade Related")]
+    public bool isRainbowWhiteBallUnlocked = false;
+
+    void OnEnable()
+    {
+        CirclingUpgradeManager.OnUpgradeAdded += OnUpgradeAdded;
+        CirclingResourceManager.OnItemCountChanged += UpdateRefreshButton;
+    }
+    
+    void OnDisable()
+    {
+        CirclingUpgradeManager.OnUpgradeAdded -= OnUpgradeAdded;
+        CirclingResourceManager.OnItemCountChanged -= UpdateRefreshButton;
+    }
 
     public void GenerateItemSlotUI(List<CirclingItemForSale> itemsForSale)
     {
@@ -16,6 +33,8 @@ public class CirclingShopUI : MonoBehaviour
         {
             Destroy(child.gameObject);
         }
+
+        currentItemsForSaleAndSlots = new Dictionary<CirclingItemForSale, GameObject>();
 
         foreach (var itemForSale in itemsForSale)
         {
@@ -27,6 +46,15 @@ public class CirclingShopUI : MonoBehaviour
             _itemSlot.transform.Find("Item Icon/Item Quantity Text").GetComponent<TMP_Text>().text = $"x{itemForSale.quantity}";
             _itemSlot.transform.Find("Item Icon").GetComponent<Image>().sprite = CirclingResourceManager.Instance.GetItemSprite(itemForSale.itemType);
             _itemSlot.GetComponent<Button>().onClick.AddListener(() => OnItemSlotClicked(itemForSale, _itemSlot));
+
+            // If white and rainbow ball are not unlocked, disable the itemSlot if the item is a white or rainbow ball
+            if (!isRainbowWhiteBallUnlocked && (itemForSale.itemType == CirclingItemType.Black || itemForSale.itemType == CirclingItemType.Rainbow))
+            {
+                _itemSlot.transform.Find("Price Text").GetComponent<TMP_Text>().text = "LOCKED";
+                _itemSlot.GetComponent<Button>().interactable = false;
+            }
+
+            currentItemsForSaleAndSlots.Add(itemForSale, _itemSlot);
         }
     }
 
@@ -40,8 +68,8 @@ public class CirclingShopUI : MonoBehaviour
             // Play the buy sound
             AudioManager.Instance.PlaySound(AudioManager.Instance.soundClips["Buy"]);
 
-            // If the item is a mystery box, don't disable the itemSlot
-            if (itemForSale.itemType == CirclingItemType.MysteryBox) return;
+            // If the item is a mystery box for 3 coupons, don't disable the itemSlot
+            if (itemForSale.itemType == CirclingItemType.MysteryBox && itemForSale.price == 3) return;
 
             // Disable the itemSlot
             itemSlot.GetComponent<Button>().interactable = false;
@@ -62,4 +90,25 @@ public class CirclingShopUI : MonoBehaviour
         }
     }
 
-}
+    void OnUpgradeAdded(CirclingUpgrade upgrade)
+    {
+        if (upgrade.UpgradeName != "Unlock Rainbow / White Ball") return;
+        isRainbowWhiteBallUnlocked = true;
+
+        foreach (var itemForSale in currentItemsForSaleAndSlots.Keys)
+        {
+            if (itemForSale.itemType == CirclingItemType.Black || itemForSale.itemType == CirclingItemType.Rainbow)
+            {
+                currentItemsForSaleAndSlots[itemForSale].GetComponent<Button>().interactable = true;
+                currentItemsForSaleAndSlots[itemForSale].transform.Find("Price Text").GetComponent<TMP_Text>().text = itemForSale.price.ToString();
+            }
+        }
+    }
+
+    void UpdateRefreshButton(CirclingItemType itemType, int itemCount, int changeCount)
+    {
+        //Update the shop refresh button
+        if (itemType != CirclingItemType.ShopRefresh) return;
+        shopRefreshButton.interactable = itemCount > 0;
+    }
+}  

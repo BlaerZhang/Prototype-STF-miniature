@@ -8,8 +8,9 @@ public class CirclingUpgradeManager : MonoBehaviour
 {
     public List<CirclingUpgrade> upgrades;
     public TMP_Text upgradeDisplayUI;
+    public static CirclingUpgradeManager Instance;
 
-    public static event Action<CirclingUpgrade> OnUpgradeAdded;
+    public static Action<CirclingUpgrade> OnUpgradeAdded;
 
     void OnEnable()
     {
@@ -53,5 +54,17 @@ public class CirclingUpgradeManager : MonoBehaviour
     void Start()
     {
         UpdateUpgradeDisplay();
+    }
+
+    void Awake()
+    {
+        if (Instance == null)
+        {
+            Instance = this;
+        }
+        else
+        {
+            Destroy(this);
+        }
     }
 }

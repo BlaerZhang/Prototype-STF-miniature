@@ -12,9 +12,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: e507b22ba0fbb8044b6ad9bb11a1e653, type: 3}
   m_Name: IncreaseManualRefresh
   m_EditorClassIdentifier: 
-  upgradeName: More maunal refresh
-  upgradeDescription: Add store manual refresh oppotunity by 1 per lvl (REQUIRE Manual
-    Refresh Unlock)
+  upgradeName: Shop Manual Refresh
+  upgradeDescription: Unlock store manual refresh feature, and add usage by 1 per
+    lvl
   upgradeType: 1
-  upgradeMaxLevel: 5
-  upgradeCostPerLevel: 0100000001000000010000000100000001000000
+  upgradeMaxLevel: 6
+  upgradeCostPerLevel: 010000000100000001000000010000000100000001000000

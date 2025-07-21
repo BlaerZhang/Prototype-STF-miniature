@@ -7,6 +7,7 @@ public class CirclingUpgrade
     public int upgradeLevel;
     public string UpgradeName => upgradeData.upgradeName;
     public string UpgradeDescription => upgradeData.upgradeDescription;
+    public CirclingUpgradeType UpgradeType => upgradeData.upgradeType;
     public int UpgradeCost => upgradeData.upgradeCostPerLevel[upgradeLevel - 1];
 
     public CirclingUpgrade(CirclingUpgradeData upgradeData)

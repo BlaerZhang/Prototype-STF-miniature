@@ -919,7 +919,7 @@ MonoBehaviour:
       m_Calls:
       - m_Target: {fileID: 1335306822282642527}
         m_TargetAssemblyTypeName: CirclingShop, Assembly-CSharp
-        m_MethodName: GenerateItemsForSale
+        m_MethodName: ManualRefreshShop
         m_Mode: 1
         m_Arguments:
           m_ObjectArgument: {fileID: 0}
@@ -1169,3 +1169,5 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   itemForSalePrefab: {fileID: 8373572879251702581, guid: 73215a7c8ae57f843bf596570751f5ff, type: 3}
   itemSlotsParent: {fileID: 2478538658395101216}
+  shopRefreshButton: {fileID: 6866425145532358110}
+  isRainbowWhiteBallUnlocked: 0
