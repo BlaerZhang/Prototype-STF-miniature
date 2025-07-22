@@ -51,8 +51,8 @@ namespace SpinWheel
         {
             if (spinWheelController != null)
             {
-                spinWheelController.OnSpinStart += OnSpinStarted;
-                spinWheelController.OnSpinComplete += OnSpinCompleted;
+                SpinWheelController.OnSpinStart += OnSpinStarted;
+                SpinWheelController.OnSpinComplete += OnSpinCompleted;
             }
         }
         
@@ -119,8 +119,8 @@ namespace SpinWheel
             
             if (spinWheelController != null)
             {
-                spinWheelController.OnSpinStart -= OnSpinStarted;
-                spinWheelController.OnSpinComplete -= OnSpinCompleted;
+                SpinWheelController.OnSpinStart -= OnSpinStarted;
+                SpinWheelController.OnSpinComplete -= OnSpinCompleted;
             }
         }
     }

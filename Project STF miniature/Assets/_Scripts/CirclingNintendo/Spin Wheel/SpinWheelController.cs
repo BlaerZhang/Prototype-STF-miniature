@@ -28,10 +28,10 @@ namespace SpinWheel
         [SerializeField] private SpinWheelPrizePool currentPrizePool;
         
         // 事件回调
-        public System.Action<PrizeItem> OnSpinComplete;
-        public System.Action OnSpinStart;
+        public static Action<PrizeItem> OnSpinComplete;
+        public static Action OnSpinStart;
         
-        private Tween currentSpinTween;
+        private Sequence currentSpinSequence;
         
         private void Awake()
         {
@@ -47,7 +47,7 @@ namespace SpinWheel
         {
             if (isSpinning)
             {
-                Debug.LogWarning("转盘正在旋转中，请等待完成");
+                Debug.LogWarning("转盘生成完成");
                 return;
             }
             
@@ -61,12 +61,9 @@ namespace SpinWheel
             
             // 设置UI
             spinWheelUI.SetupWheel(prizePool);
-            
-            // 开始抽奖
-            PerformSpin();
         }
         
-        private void PerformSpin()
+        public void PerformSpin()
         {
             isSpinning = true;
             OnSpinStart?.Invoke();
@@ -84,21 +81,25 @@ namespace SpinWheel
             // 执行旋转动画
             // 指针在顶部，我们需要让奖项转到顶部位置
             // 由于转盘是顺时针旋转，需要计算正确的旋转角度
-            currentSpinTween = spinWheelUI.WheelTransform.DORotate(
+            currentSpinSequence = DOTween.Sequence();
+            currentSpinSequence
+            .Append(spinWheelUI.WheelTransform.DORotate(
                 new Vector3(0, 0, finalAngle), // 正值：让奖项区域转到指针位置
                 spinDuration,
                 RotateMode.FastBeyond360
-            )
-            .SetEase(Ease.OutQuart) // 模拟现实转盘的减速效果
+            )).SetEase(Ease.OutQuart)
+            // 模拟现实转盘的减速效果
             .OnComplete(() => {
                 OnSpinCompleted(winningPrize);
             });
+
+            currentSpinSequence.Play();
         }
         
         private void OnSpinCompleted(PrizeItem winningPrize)
         {
             isSpinning = false;
-            currentSpinTween = null;
+            currentSpinSequence = null;
 
             // Reset wheel angle
             spinWheelUI.WheelTransform.localRotation = Quaternion.identity;
@@ -112,10 +113,10 @@ namespace SpinWheel
         /// </summary>
         public void StopSpin()
         {
-            if (currentSpinTween != null)
+            if (currentSpinSequence != null)
             {
-                currentSpinTween.Kill();
-                currentSpinTween = null;
+                currentSpinSequence.Kill();
+                currentSpinSequence = null;
                 isSpinning = false;
             }
         }

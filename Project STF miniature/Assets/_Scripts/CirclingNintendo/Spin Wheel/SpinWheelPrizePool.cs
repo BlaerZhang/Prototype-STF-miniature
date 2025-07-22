@@ -17,6 +17,9 @@ namespace SpinWheel
         
         [LabelText("权重"), Range(0.1f, 100f)]
         public float weight = 1f;
+
+        [LabelText("奖项内容")]
+        public List<CirclingItemForSale> prizeContent;
         
         [HideInInspector]
         public float normalizedWeight; // 归一化权重，用于计算角度
