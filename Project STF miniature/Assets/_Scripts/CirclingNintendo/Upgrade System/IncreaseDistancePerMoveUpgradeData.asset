@@ -12,7 +12,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: e507b22ba0fbb8044b6ad9bb11a1e653, type: 3}
   m_Name: IncreaseDistancePerMoveUpgradeData
   m_EditorClassIdentifier: 
-  upgradeName: Increase Distance per Move
+  upgradeName: Increase Distance Per Move
   upgradeDescription: Increase the maximum number of moving slots for each move,
     +2 each time
   upgradeType: 3
