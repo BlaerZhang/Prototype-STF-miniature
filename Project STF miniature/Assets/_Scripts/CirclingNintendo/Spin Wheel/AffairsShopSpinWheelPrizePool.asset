@@ -1,0 +1,32 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: b6195932a6d791943afa38200836095a, type: 3}
+  m_Name: AffairsShopSpinWheelPrizePool
+  m_EditorClassIdentifier: Assembly-CSharp:SpinWheel:SpinWheelPrizePool
+  poolName: Affairs Shop Mystery Box
+  prizes:
+    m_Keys:
+    - Fruit of you choice x2
+    - HP Potion
+    m_Values:
+    - prizeName: Fruit of you choice x2
+      prizeIcon: {fileID: -1745978149, guid: 847024aa758762045a7b6f953135918a, type: 3}
+      weight: 27
+      normalizedWeight: 0.5744681
+      startAngle: 0
+      endAngle: 206.8085
+    - prizeName: HP Potion x1
+      prizeIcon: {fileID: 3966737642716396791, guid: d06ebb659f3efa14b92b7263780a7c79, type: 3}
+      weight: 20
+      normalizedWeight: 0.42553192
+      startAngle: 206.8085
+      endAngle: 360
