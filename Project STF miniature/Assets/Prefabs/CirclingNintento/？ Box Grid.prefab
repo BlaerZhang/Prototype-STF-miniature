@@ -258,6 +258,22 @@ PrefabInstance:
       propertyPath: m_Colors.m_SelectedColor.r
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 7912225204454987889, guid: bd8e4a0e81034b24a877580cf2d7e184, type: 3}
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_Mode
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 7912225204454987889, guid: bd8e4a0e81034b24a877580cf2d7e184, type: 3}
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_Target
+      value: 
+      objectReference: {fileID: 498781066695972087}
+    - target: {fileID: 7912225204454987889, guid: bd8e4a0e81034b24a877580cf2d7e184, type: 3}
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_MethodName
+      value: Draw
+      objectReference: {fileID: 0}
+    - target: {fileID: 7912225204454987889, guid: bd8e4a0e81034b24a877580cf2d7e184, type: 3}
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_TargetAssemblyTypeName
+      value: CirclingMysteryBox, Assembly-CSharp
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects:
@@ -267,10 +283,31 @@ PrefabInstance:
     - targetCorrespondingSourceObject: {fileID: 7042503337442802047, guid: bd8e4a0e81034b24a877580cf2d7e184, type: 3}
       insertIndex: 1
       addedObject: {fileID: 4235501841919681200}
-    m_AddedComponents: []
+    m_AddedComponents:
+    - targetCorrespondingSourceObject: {fileID: 7874135053102392954, guid: bd8e4a0e81034b24a877580cf2d7e184, type: 3}
+      insertIndex: 3
+      addedObject: {fileID: 498781066695972087}
   m_SourcePrefab: {fileID: 100100000, guid: bd8e4a0e81034b24a877580cf2d7e184, type: 3}
 --- !u!224 &7276443641746197955 stripped
 RectTransform:
   m_CorrespondingSourceObject: {fileID: 7042503337442802047, guid: bd8e4a0e81034b24a877580cf2d7e184, type: 3}
   m_PrefabInstance: {fileID: 378550344602973372}
   m_PrefabAsset: {fileID: 0}
+--- !u!1 &7495799115485795014 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 7874135053102392954, guid: bd8e4a0e81034b24a877580cf2d7e184, type: 3}
+  m_PrefabInstance: {fileID: 378550344602973372}
+  m_PrefabAsset: {fileID: 0}
+--- !u!114 &498781066695972087
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 7495799115485795014}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 06e7bfc6a0ea2074c94a044c6e7982ca, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  prizePool: {fileID: 0}

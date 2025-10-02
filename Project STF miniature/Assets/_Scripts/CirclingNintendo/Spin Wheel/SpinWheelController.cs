@@ -60,13 +60,19 @@ namespace SpinWheel
             currentPrizePool = prizePool;
             
             // 设置UI
+            spinWheelUI.WheelTransform.localRotation = Quaternion.identity;
             spinWheelUI.SetupWheel(prizePool);
+            spinWheelUI.WheelPanel.gameObject.SetActive(true);
         }
         
         public void PerformSpin()
         {
+            if (isSpinning) return;
             isSpinning = true;
             OnSpinStart?.Invoke();
+
+            // Reset wheel angle
+            spinWheelUI.WheelTransform.localRotation = Quaternion.identity;
             
             // 先确定中奖奖项
             PrizeItem winningPrize = currentPrizePool.GetRandomPrize();
@@ -100,9 +106,6 @@ namespace SpinWheel
         {
             isSpinning = false;
             currentSpinSequence = null;
-
-            // Reset wheel angle
-            spinWheelUI.WheelTransform.localRotation = Quaternion.identity;
             
             Debug.Log($"恭喜获得: {winningPrize.prizeName}");
             OnSpinComplete?.Invoke(winningPrize);

@@ -9,6 +9,10 @@ namespace SpinWheel
     public class SpinWheelUI : MonoBehaviour
     {
         [Header("转盘UI组件")]
+
+        [LabelText("转盘Panel")]
+        [SerializeField] private RectTransform wheelPanel;
+
         [LabelText("转盘背景")]
         [SerializeField] private Image wheelBackground;
         
@@ -39,6 +43,7 @@ namespace SpinWheel
         private List<LineRenderer> divisionLines = new List<LineRenderer>();
         
         public RectTransform WheelTransform => wheelContainer;
+        public RectTransform WheelPanel => wheelPanel;
         
         private void Awake()
         {

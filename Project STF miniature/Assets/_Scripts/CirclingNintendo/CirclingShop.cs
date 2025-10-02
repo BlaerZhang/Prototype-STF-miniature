@@ -4,9 +4,12 @@ using UnityEngine.Rendering;
 using System.Collections.Generic;
 using System;
 using System.Linq;
+using SpinWheel;
 
 public class CirclingShop : MonoBehaviour
 {
+    private SpinWheelController spinWheelController;
+    [SerializeField] private SpinWheelPrizePool mysteryBoxPrizePool;
     public List<SerializedDictionary<CirclingItemForSale, float>> itemsPools;
     public List<CirclingItemForSale> itemsInSlots;
     public static Action<List<CirclingItemForSale>> OnItemsForSaleGenerated;
@@ -16,6 +19,7 @@ public class CirclingShop : MonoBehaviour
     void Start()
     {
         _shopUI = GetComponent<CirclingShopUI>();
+        spinWheelController = FindObjectOfType<SpinWheelController>();
         GenerateItemsForSale();
     }
 
@@ -23,12 +27,14 @@ public class CirclingShop : MonoBehaviour
     {
         UITimerText.OnShopRefreshingTime += GenerateItemsForSale;
         UITimerText.OnDayChanged += RefillShopRefresh;
+        CirclingShopUI.OnMysteryBoxPurchased += DrawMysteryBox;
     }
     
     void OnDisable()
     {
         UITimerText.OnShopRefreshingTime -= GenerateItemsForSale;
         UITimerText.OnDayChanged -= RefillShopRefresh;
+        CirclingShopUI.OnMysteryBoxPurchased -= DrawMysteryBox;
     }
 
     public void GenerateItemsForSale()
@@ -68,6 +74,14 @@ public class CirclingShop : MonoBehaviour
         }
 
         return null;
+    }
+
+    public void DrawMysteryBox(CirclingShopUI shopUI)
+    {
+        if (shopUI == _shopUI)
+        {
+            spinWheelController.StartSpin(mysteryBoxPrizePool);
+        }
     }
 
     void RefillShopRefresh()

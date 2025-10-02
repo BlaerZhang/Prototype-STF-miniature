@@ -1,12 +1,14 @@
 using UnityEngine;
 using UnityEngine.InputSystem;
 using Unity.Cinemachine;
+using HUDIndicator;
 
 public class CameraController : MonoBehaviour
 {
     [Header("相机引用")]
     [SerializeField] private CinemachineCamera playerCamera;
     [SerializeField] private CinemachineCamera overviewCamera;
+    [SerializeField] private IndicatorRenderer indicator;
     
     [Header("相机设置")]
     [SerializeField] private float dragSpeed = 0.01f;
@@ -99,5 +101,10 @@ public class CameraController : MonoBehaviour
         Vector3 newPosition = player.position;
         newPosition.z = originalOverviewPosition.z; // 保持原始z轴距离
         overviewCamera.transform.position = newPosition;
+    }
+
+    public void ToggleHUDIndicator()
+    {
+        indicator.visible = !indicator.visible;
     }
 } 

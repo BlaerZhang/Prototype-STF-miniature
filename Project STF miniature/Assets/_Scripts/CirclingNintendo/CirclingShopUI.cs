@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using TMPro;
 using UnityEngine.UI;
 using DG.Tweening;
+using System;
 
 public class CirclingShopUI : MonoBehaviour
 {
@@ -13,6 +14,8 @@ public class CirclingShopUI : MonoBehaviour
 
     [Header("Upgrade Related")]
     public bool isRainbowWhiteBallUnlocked = false;
+
+    public static Action<CirclingShopUI> OnMysteryBoxPurchased;
 
     void OnEnable()
     {
@@ -67,6 +70,12 @@ public class CirclingShopUI : MonoBehaviour
 
             // Play the buy sound
             AudioManager.Instance.PlaySound(AudioManager.Instance.soundClips["Buy"]);
+
+            // If the item is a mystery box, notify the shop that a mystery box has been purchased
+            if (itemForSale.itemType == CirclingItemType.MysteryBox)
+            {
+                OnMysteryBoxPurchased?.Invoke(this);
+            }
 
             // If the item is a mystery box for 3 coupons, don't disable the itemSlot
             if (itemForSale.itemType == CirclingItemType.MysteryBox && itemForSale.price == 3) return;

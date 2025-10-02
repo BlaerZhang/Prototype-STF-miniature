@@ -15,18 +15,83 @@ MonoBehaviour:
   poolName: Affairs Shop Mystery Box
   prizes:
     m_Keys:
-    - Fruit of you choice x2
+    - Fruit of Your Choice x2
     - HP Potion
+    - Fruit of Your Choice x1
+    - Affairs Upgrade Coupon I
+    - Affairs Upgrade Coupon II
+    - Orange Ball
+    - Purple Ball
+    - Upgrade Coupon of Your Choice
     m_Values:
-    - prizeName: Fruit of you choice x2
+    - prizeName: Fruit of Your Choice x2
       prizeIcon: {fileID: -1745978149, guid: 847024aa758762045a7b6f953135918a, type: 3}
-      weight: 27
-      normalizedWeight: 0.5744681
+      weight: 25
+      prizeContent: []
+      normalizedWeight: 0.25
       startAngle: 0
-      endAngle: 206.8085
+      endAngle: 90
     - prizeName: HP Potion x1
       prizeIcon: {fileID: 3966737642716396791, guid: d06ebb659f3efa14b92b7263780a7c79, type: 3}
-      weight: 20
-      normalizedWeight: 0.42553192
-      startAngle: 206.8085
+      weight: 5
+      prizeContent:
+      - itemType: 15
+        quantity: 1
+        price: 0
+      normalizedWeight: 0.05
+      startAngle: 90
+      endAngle: 108
+    - prizeName: Fruit of Your Choice x1
+      prizeIcon: {fileID: -1745978149, guid: 847024aa758762045a7b6f953135918a, type: 3}
+      weight: 12
+      prizeContent: []
+      normalizedWeight: 0.12
+      startAngle: 108
+      endAngle: 151.2
+    - prizeName: Affairs Upgrade Coupon
+      prizeIcon: {fileID: 21300000, guid: 6f52619238ec5a242b5bef91b7369505, type: 3}
+      weight: 15
+      prizeContent:
+      - itemType: 16
+        quantity: 1
+        price: 0
+      normalizedWeight: 0.15
+      startAngle: 151.2
+      endAngle: 205.2
+    - prizeName: Affairs Upgrade Coupon
+      prizeIcon: {fileID: 21300000, guid: 6f52619238ec5a242b5bef91b7369505, type: 3}
+      weight: 15
+      prizeContent:
+      - itemType: 16
+        quantity: 1
+        price: 0
+      normalizedWeight: 0.15
+      startAngle: 205.2
+      endAngle: 259.2
+    - prizeName: Orange Ball
+      prizeIcon: {fileID: 786458271214585461, guid: 8ab23d67b8b6aff4999311e185e72506, type: 3}
+      weight: 6.5
+      prizeContent:
+      - itemType: 11
+        quantity: 1
+        price: 0
+      normalizedWeight: 0.065
+      startAngle: 259.2
+      endAngle: 282.6
+    - prizeName: Purple Ball
+      prizeIcon: {fileID: 5916413350653133897, guid: 642c41106ff02854ca1995a189389721, type: 3}
+      weight: 6.5
+      prizeContent:
+      - itemType: 12
+        quantity: 1
+        price: 0
+      normalizedWeight: 0.065
+      startAngle: 282.6
+      endAngle: 306
+    - prizeName: Upgrade Coupon of Your Choice
+      prizeIcon: {fileID: -2115917567, guid: 847024aa758762045a7b6f953135918a, type: 3}
+      weight: 15
+      prizeContent: []
+      normalizedWeight: 0.15
+      startAngle: 306
       endAngle: 360
