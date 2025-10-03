@@ -5,6 +5,7 @@ public class SimpleGridCounter : MonoBehaviour
 {
     public int gridCount = 0;
     public static Action<int> OnGridCountChanged;
+    public static Action<int> OnTimeSpentforGrid;
 
     void Start()
     {
@@ -18,6 +19,7 @@ public class SimpleGridCounter : MonoBehaviour
             Debug.Log("Fog entered");
             gridCount++;
             OnGridCountChanged?.Invoke(gridCount);
+            OnTimeSpentforGrid?.Invoke(other.GetComponent<SimpleRequirementsGenerator>().timeCost);
         }
     }
 }

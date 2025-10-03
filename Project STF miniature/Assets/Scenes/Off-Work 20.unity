@@ -13855,11 +13855,11 @@ PrefabInstance:
       objectReference: {fileID: 505306024}
     - target: {fileID: 1542622727926676645, guid: 548daa30882523442873b6319ad7d359, type: 3}
       propertyPath: m_LocalPosition.x
-      value: 7.017
+      value: 7.03
       objectReference: {fileID: 0}
     - target: {fileID: 1542622727926676645, guid: 548daa30882523442873b6319ad7d359, type: 3}
       propertyPath: m_LocalPosition.y
-      value: -1.403
+      value: 0.371
       objectReference: {fileID: 0}
     - target: {fileID: 3180894219568920643, guid: 548daa30882523442873b6319ad7d359, type: 3}
       propertyPath: m_LocalPosition.x
@@ -33481,11 +33481,11 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 952048107902964194, guid: b39cdc860b83d0f42bb2bfd6e12d86bc, type: 3}
       propertyPath: m_LocalPosition.x
-      value: -0.01
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 952048107902964194, guid: b39cdc860b83d0f42bb2bfd6e12d86bc, type: 3}
       propertyPath: m_LocalPosition.y
-      value: 0.028
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 952048107902964194, guid: b39cdc860b83d0f42bb2bfd6e12d86bc, type: 3}
       propertyPath: m_ConstrainProportionsScale
@@ -33525,11 +33525,11 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 7609785472360362873, guid: b39cdc860b83d0f42bb2bfd6e12d86bc, type: 3}
       propertyPath: m_LocalPosition.x
-      value: 7.017
+      value: 7.03
       objectReference: {fileID: 0}
     - target: {fileID: 7609785472360362873, guid: b39cdc860b83d0f42bb2bfd6e12d86bc, type: 3}
       propertyPath: m_LocalPosition.y
-      value: -1.403
+      value: 0.371
       objectReference: {fileID: 0}
     - target: {fileID: 7609785472360362873, guid: b39cdc860b83d0f42bb2bfd6e12d86bc, type: 3}
       propertyPath: m_LocalPosition.z
@@ -39507,12 +39507,12 @@ MonoBehaviour:
       m_Calls:
       - m_Target: {fileID: 1021686224}
         m_TargetAssemblyTypeName: UITimerText, Assembly-CSharp
-        m_MethodName: AddOneHour
+        m_MethodName: AddMinutes
         m_Mode: 3
         m_Arguments:
           m_ObjectArgument: {fileID: 0}
           m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
-          m_IntArgument: 0
+          m_IntArgument: 1
           m_FloatArgument: 0
           m_StringArgument: 
           m_BoolArgument: 0
@@ -101379,17 +101379,17 @@ MonoBehaviour:
   renderers:
   - {fileID: 1743180745}
   style:
-    texture: {fileID: 2800000, guid: 84b4c828b929e3c4991c9d0b20cb3aab, type: 3}
+    texture: {fileID: 2800000, guid: ca9562e672d23f143a2c1c9361144ef9, type: 3}
     color: {r: 1, g: 1, b: 1, a: 1}
-    width: 32
-    height: 32
+    width: 64
+    height: 64
   showArrow: 1
   arrowStyle:
     texture: {fileID: 2800000, guid: b14d512c127ad2545b2ce2126a7690c6, type: 3}
     color: {r: 1, g: 1, b: 1, a: 1}
     margin: 0
-    width: 16
-    height: 16
+    width: 32
+    height: 32
 --- !u!4 &1651296729 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: 2918047400111188225, guid: 2f94d09109055bd4aa925252281d244d, type: 3}
@@ -113799,12 +113799,12 @@ MonoBehaviour:
       m_Calls:
       - m_Target: {fileID: 1021686224}
         m_TargetAssemblyTypeName: UITimerText, Assembly-CSharp
-        m_MethodName: AddOneHour
+        m_MethodName: MinusMinutes
         m_Mode: 3
         m_Arguments:
           m_ObjectArgument: {fileID: 0}
           m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
-          m_IntArgument: 0
+          m_IntArgument: 1
           m_FloatArgument: 0
           m_StringArgument: 
           m_BoolArgument: 0

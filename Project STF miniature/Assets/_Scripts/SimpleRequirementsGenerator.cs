@@ -36,6 +36,15 @@ public class SimpleRequirementsGenerator : MonoBehaviour
     [Tooltip("曲线采样精度，值越大越精确但性能略差")]
     [Range(10, 100)]
     public int curveSampleCount = 50;
+
+    [Header("权重配置 (消耗时间 -> 权重)")]
+    [Tooltip("消耗时间：生成几种不同的消耗时间\n权重：该数量被选中的概率权重")]
+    public List<TypeCountWeight> timeCostWeights = new List<TypeCountWeight>()
+    {
+        new TypeCountWeight { typeCount = 1, weight = 4f },
+        new TypeCountWeight { typeCount = 2, weight = 4f },
+        new TypeCountWeight { typeCount = 3, weight = 2f }
+    };
     
     [Header("布局")]
     public float displayYOffset = 0.1f;
@@ -51,6 +60,7 @@ public class SimpleRequirementsGenerator : MonoBehaviour
     // 曲线概率查找表
     private float[] cumulativeProbabilities;
     private int[] countValues;
+    [SerializeField] public int timeCost = 1;
     
     void Start() => TryGenerateRequirements();
 
@@ -59,9 +69,10 @@ public class SimpleRequirementsGenerator : MonoBehaviour
         if (!IsValidConfiguration()) return;
         
         int typeCount = GetRandomTypeCount();
+        this.timeCost = GetRandomTimeCost();  // 修复：将结果赋值给成员变量
         typeCount = Mathf.Min(typeCount, requiredColors.Count);
         
-        LogDebug($"生成 {typeCount} 种需求类型");
+        LogDebug($"生成 {typeCount} 种需求类型，时间消耗 {this.timeCost} 分钟");
         
         CreateRequirementObjects(typeCount);
     }
@@ -72,7 +83,8 @@ public class SimpleRequirementsGenerator : MonoBehaviour
         return CheckNotNull(requirementPrefab, "RequirementPrefab未设置") &&
                CheckTypeCountWeights() &&
                CheckRequiredCountRange() &&
-               CheckList(requiredColors, "颜色列表");
+               CheckList(requiredColors, "颜色列表") &&
+               CheckList(timeCostWeights, "消耗时间列表");
     }
 
     bool CheckNotNull(Object obj, string errorMsg)
@@ -179,6 +191,30 @@ public class SimpleRequirementsGenerator : MonoBehaviour
         return maxRequiredCount;
     }
 
+    int GetRandomTimeCost()
+    {
+        float totalWeight = timeCostWeights.Sum(x => x.weight);
+        float randomValue = Random.Range(0f, totalWeight);
+        
+        LogDebug($"时间消耗权重配置: {string.Join(",", timeCostWeights.Select(x => $"{x.typeCount}分钟:{x.weight}"))} 总计:{totalWeight:F1} 随机值:{randomValue:F1}");
+
+        float currentWeight = 0f;
+        foreach (var item in timeCostWeights)
+        {
+            currentWeight += item.weight;
+            if (randomValue <= currentWeight)  // 修复：使用 <= 而不是 <
+            {
+                LogDebug($"选中{item.typeCount}分钟 (权重:{item.weight})");
+                return item.typeCount;
+            }
+        }
+
+        // 浮点精度兜底：返回最大时间消耗
+        var maxTimeCost = timeCostWeights.Max(x => x.typeCount);
+        LogDebug($"兜底返回最大时间消耗: {maxTimeCost}");
+        return maxTimeCost;
+    }
+
     bool CheckTypeCountWeights()
     {
         if (!CheckList(typeCountWeights, "权重配置")) return false;
@@ -239,6 +275,16 @@ public class SimpleRequirementsGenerator : MonoBehaviour
             int requiredAmount = GetRandomRequiredCount(); // 使用曲线分布
             SetRequirementData(requirement, colors[i], requiredAmount, i + 1);
         }
+
+        CreateTimeCostObject(timeCost);
+    }
+
+    void CreateTimeCostObject(int timeCost)
+    {
+        var position = transform.position + Vector3.up * (- 1 * displayYOffset);
+        var requirement = Instantiate(requirementPrefab, position, Quaternion.identity, transform);
+        requirement.GetComponentInChildren<TMP_Text>().text = timeCost.ToString() + "<size=0.6>min</size>";
+        requirement.GetComponentInChildren<SpriteRenderer>().enabled = false;
     }
 
     void SetRequirementData(GameObject requirement, Color color, int amount, int index)
@@ -306,6 +352,21 @@ public class SimpleRequirementsGenerator : MonoBehaviour
         {
             float percentage = (item.weight / total) * 100f;
             Debug.Log($"{item.typeCount}种类型: 权重{item.weight}, 概率{percentage:F1}%");
+        }
+    }
+    
+    [ContextMenu("预览时间消耗权重分布")]
+    void PreviewTimeCostWeightDistribution()
+    {
+        if (!CheckList(timeCostWeights, "时间消耗权重配置")) return;
+        
+        float total = timeCostWeights.Sum(x => x.weight);
+        Debug.Log("=== 时间消耗权重分布 ===");
+        
+        foreach (var item in timeCostWeights.OrderBy(x => x.typeCount))
+        {
+            float percentage = (item.weight / total) * 100f;
+            Debug.Log($"{item.typeCount}分钟: 权重{item.weight}, 概率{percentage:F1}%");
         }
     }
     
