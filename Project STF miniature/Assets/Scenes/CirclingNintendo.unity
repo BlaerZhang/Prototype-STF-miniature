@@ -14247,6 +14247,9 @@ MonoBehaviour:
   addOnEnable: 1
   removeOnDisable: 1
   timerText: {fileID: 1902738850}
+  startHour: 0
+  startDay: 0
+  startMinute: 0
 --- !u!114 &1902738850
 MonoBehaviour:
   m_ObjectHideFlags: 0
