@@ -69,7 +69,7 @@ public class SimpleRequirementsGenerator : MonoBehaviour
         if (!IsValidConfiguration()) return;
         
         int typeCount = GetRandomTypeCount();
-        this.timeCost = GetRandomTimeCost();  // 修复：将结果赋值给成员变量
+        // this.timeCost = GetRandomTimeCost();  // 修复：将结果赋值给成员变量
         typeCount = Mathf.Min(typeCount, requiredColors.Count);
         
         LogDebug($"生成 {typeCount} 种需求类型，时间消耗 {this.timeCost} 分钟");
@@ -276,7 +276,7 @@ public class SimpleRequirementsGenerator : MonoBehaviour
             SetRequirementData(requirement, colors[i], requiredAmount, i + 1);
         }
 
-        CreateTimeCostObject(timeCost);
+        // CreateTimeCostObject(timeCost);
     }
 
     void CreateTimeCostObject(int timeCost)

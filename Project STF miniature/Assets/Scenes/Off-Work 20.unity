@@ -61904,7 +61904,7 @@ MonoBehaviour:
   addOnEnable: 1
   removeOnDisable: 1
   timerText: {fileID: 1021686221}
-  startHour: 0
+  startHour: 19
   startDay: 0
   startMinute: 0
 --- !u!1001 &1026225202
